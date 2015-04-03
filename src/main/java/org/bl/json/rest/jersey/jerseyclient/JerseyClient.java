@@ -14,7 +14,7 @@ import javax.ws.rs.client.Client;
 
 public class JerseyClient {
 
-    private static Logger LOG = LoggerFactory.getLogger(JerseyClient.class.getName());
+    public static Logger LOG = LoggerFactory.getLogger(JerseyClient.class.getName());
 
     public static void main(String[] args) {
         Client client = new ResteasyClientBuilder().build();

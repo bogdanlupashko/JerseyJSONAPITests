@@ -2,7 +2,11 @@ package org.bl.test;
 
 import org.bl.RestClient;
 import org.bl.json.rest.jersey.AuthLogin;
+import org.bl.json.rest.jersey.AuthLogout;
+import org.bl.json.rest.jersey.UserProfile;
+import org.bl.json.rest.jersey.jerseyclient.JerseyClient;
 import org.bl.json.rest.jersey.jerseyclient.jersey.rest.service.Auth;
+import org.bl.json.rest.jersey.jerseyclient.jersey.rest.service.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,7 +18,7 @@ import org.testng.annotations.Test;
  */
 
 
-public class TestSimple {
+public class TestAuth {
 
     static RestClient client;
     static String token;
@@ -26,8 +30,16 @@ public class TestSimple {
     }
 
     @Test
-    public void loginTests() {
+    public void authLogin() {
         getToken();
+    }
+
+    @Test
+    public void authLogout() {
+        Auth service = client.proxy(Auth.class);
+        AuthLogout respose = service.authLogout(token);
+        Assert.assertTrue(!respose.toString().isEmpty());
+        JerseyClient.LOG.error(respose.toString());
     }
 
     private  String getToken() {
