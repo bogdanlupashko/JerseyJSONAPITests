@@ -1,7 +1,7 @@
-package com.javacodegeeks.enterprise.rest.jersey.jerseyclient;
+package org.bl.json.rest.jersey.jerseyclient;
 
-import com.javacodegeeks.enterprise.rest.jersey.AuthLogin;
-import com.javacodegeeks.enterprise.rest.jersey.jerseyclient.jersey.rest.service.Auth;
+import org.bl.json.rest.jersey.AuthLogin;
+import org.bl.json.rest.jersey.jerseyclient.jersey.rest.service.Auth;
 
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;

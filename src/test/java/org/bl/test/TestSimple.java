@@ -1,8 +1,8 @@
-package com.blablabla.test;
+package org.bl.test;
 
-import com.blablabla.RestClient;
-import com.javacodegeeks.enterprise.rest.jersey.AuthLogin;
-import com.javacodegeeks.enterprise.rest.jersey.jerseyclient.jersey.rest.service.Auth;
+import org.bl.RestClient;
+import org.bl.json.rest.jersey.AuthLogin;
+import org.bl.json.rest.jersey.jerseyclient.jersey.rest.service.Auth;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

@@ -1,4 +1,4 @@
-package com.javacodegeeks.enterprise.rest.jersey;
+package org.bl.json.rest.jersey;
 
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;

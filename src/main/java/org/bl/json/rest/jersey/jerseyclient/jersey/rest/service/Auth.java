@@ -1,7 +1,6 @@
-package com.javacodegeeks.enterprise.rest.jersey.jerseyclient.jersey.rest.service;
+package org.bl.json.rest.jersey.jerseyclient.jersey.rest.service;
 
-import com.javacodegeeks.enterprise.rest.jersey.AuthLogin;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.bl.json.rest.jersey.AuthLogin;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

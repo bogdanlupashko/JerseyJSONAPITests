@@ -1,6 +1,6 @@
-package com.javacodegeeks.enterprise.rest.jersey.jerseyclient.jersey.rest.service;
+package org.bl.json.rest.jersey.jerseyclient.jersey.rest.service;
 
-import com.javacodegeeks.enterprise.rest.jersey.UserProfile;
+import org.bl.json.rest.jersey.UserProfile;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
