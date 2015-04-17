@@ -1,7 +1,7 @@
 package org.bl.json.jersey.rest.service;
 
-import org.bl.json.jersey.model.UserAgent;
-import org.bl.json.jersey.model.UserProfile;
+import org.bl.json.jersey.model.user.UserAgent;
+import org.bl.json.jersey.model.user.UserProfile;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

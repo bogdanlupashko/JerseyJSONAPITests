@@ -1,6 +1,6 @@
 package org.bl.json.jersey.rest.service;
 
-import org.bl.json.jersey.model.AuthLogin;
+import org.bl.json.jersey.model.auth.AuthLogin;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

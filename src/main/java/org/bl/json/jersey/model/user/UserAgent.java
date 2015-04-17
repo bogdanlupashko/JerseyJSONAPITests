@@ -1,4 +1,4 @@
-package org.bl.json.jersey.model;
+package org.bl.json.jersey.model.user;
 
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;

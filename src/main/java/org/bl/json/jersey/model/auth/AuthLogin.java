@@ -1,4 +1,4 @@
-package org.bl.json.jersey.model;
+package org.bl.json.jersey.model.auth;
 
 
 public class AuthLogin {

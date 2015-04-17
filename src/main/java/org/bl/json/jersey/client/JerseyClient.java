@@ -1,6 +1,6 @@
 package org.bl.json.jersey.client;
 
-import org.bl.json.jersey.model.AuthLogin;
+import org.bl.json.jersey.model.auth.AuthLogin;
 import org.bl.json.jersey.rest.service.Auth;
 
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
