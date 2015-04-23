@@ -7,7 +7,7 @@ import java.util.LinkedList;
 /**
  * Created by blupashko on 17.04.2015.
  */
-public class Homepage {
+public class CategoryHomepage {
     private LinkedList<Category> categories = new LinkedList<Category>();
 
     public LinkedList<Category> getCategories() {

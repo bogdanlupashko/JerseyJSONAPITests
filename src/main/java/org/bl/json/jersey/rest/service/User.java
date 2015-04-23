@@ -1,5 +1,6 @@
 package org.bl.json.jersey.rest.service;
 
+import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.user.UserAgent;
 import org.bl.json.jersey.model.user.UserProfile;
 
@@ -11,14 +12,14 @@ import javax.ws.rs.core.MediaType;
 public interface User {
 
     @GET
-    @Path("api/v1.4/user/profile")
+    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH +"user/profile")
     @Produces(MediaType.APPLICATION_JSON)
         //@Consumes("application/x-www-form-urlencoded")
     UserProfile userProfile(@QueryParam("token") String token);
 
 
     @PUT
-    @Path("api/v1.4/user/profile")
+    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH +"user/profile")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     UserProfile userProfile(@FormParam("token") String token,
@@ -33,7 +34,7 @@ public interface User {
 
 
     @GET
-    @Path("api/v1.4/user/agent")
+    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH +"user/agent")
     @Produces(MediaType.APPLICATION_JSON)
         //@Consumes("application/x-www-form-urlencoded")
     UserAgent userAgent(@QueryParam("token") String token);
