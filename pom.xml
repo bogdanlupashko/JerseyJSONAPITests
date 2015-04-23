@@ -14,13 +14,45 @@
         </repository>
     </repositories>
 
+    <properties>
+        <jdk.version>1.7</jdk.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>
+                                <!--org.bl.crawler.Enter-->
+                            </mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
     <dependencies>
 
-        <!--<dependency>-->
-        <!--<groupId>com.sun.jersey</groupId>-->
-        <!--<artifactId>jersey-server</artifactId>-->
-        <!--<version>1.9</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
@@ -33,12 +65,6 @@
             <version>1.19</version>
         </dependency>
 
-
-        <!--<dependency>-->
-        <!--<groupId>com.sun.jersey</groupId>-->
-        <!--<artifactId>jersey-json</artifactId>-->
-        <!--<version>1.9</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
@@ -64,6 +90,16 @@
             <artifactId>testng</artifactId>
             <version>6.1.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>4.1.6.RELEASE</version>
         </dependency>
 
     </dependencies>
