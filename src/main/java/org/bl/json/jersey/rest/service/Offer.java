@@ -17,17 +17,18 @@ import javax.ws.rs.core.MediaType;
 public interface Offer {
 
     @GET
-    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "offer/item")
-    @Produces(MediaType.APPLICATION_JSON)
-    OfferItem offerItem(@QueryParam("token") String token,
-                        @QueryParam("id") int id,
-                        @QueryParam("periodId") int periodId);
-
-    @GET
     @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "offer/list")
     @Produces(MediaType.APPLICATION_JSON)
     OffersList offerList(@QueryParam("token") String token,
+                         @QueryParam("id") int id);
+
+
+    @GET
+    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "offer/item")
+    @Produces(MediaType.APPLICATION_JSON)
+    OfferItem offerItem(@QueryParam("token") String token,
                         @QueryParam("id") int id);
+
 
 
 

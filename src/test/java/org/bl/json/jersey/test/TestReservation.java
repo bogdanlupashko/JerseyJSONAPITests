@@ -21,7 +21,7 @@ public class TestReservation {
 
     static RestClient client;
     static String token;
-    private int id = 40;//need to be changed
+    private int id = 612;//need to be changed
 
     @BeforeClass
     public  void init() {

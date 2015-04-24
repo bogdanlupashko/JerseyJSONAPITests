@@ -20,23 +20,16 @@ import org.testng.annotations.Test;
 public class TestOffer {
     static RestClient client;
     static String token;
-    private int id = 77; // править
-    private int periodId = 45; // need to be change
+    private int id = 20; // править
+    private int offerId = 254;
+  //  private int periodId = 45; // need to be change
 
 
     @BeforeClass
     public  void init() {
         client = new RestClient();
-        token = getToken();
-    }
-
-    @Test
-    public void offerItem() {
-        Offer service = client.proxy(Offer.class);
-        OfferItem respose = service.offerItem(token, id, periodId);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
+        token = TestAuth.token;
+//        token = getToken();
     }
 
 
@@ -46,8 +39,21 @@ public class TestOffer {
         OffersList respose = service.offerList(token, id);
         JerseyClient.LOG.error(respose.toString());
         Assert.assertNotNull(respose);
+       // offerId = respose.getOffers().getFirst().getId();
         JerseyClient.LOG.error(respose.toString());
     }
+
+
+    @Test
+    public void offerItem() {
+        Offer service = client.proxy(Offer.class);
+        OfferItem respose = service.offerItem(token, offerId);
+        JerseyClient.LOG.error(respose.toString());
+        Assert.assertNotNull(respose);
+        JerseyClient.LOG.error(respose.toString());
+    }
+
+
 
 
 

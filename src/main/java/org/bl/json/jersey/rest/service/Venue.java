@@ -14,20 +14,20 @@ import javax.ws.rs.core.MediaType;
 public interface Venue {
 
     @GET
-    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH +"/venue/item")
+    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH +"venue/item")
     @Produces(MediaType.APPLICATION_JSON)
     VenueItem venueItem(@QueryParam("token") String token,
                         @QueryParam("id") int id);
 
     @GET
-    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "/venue/list")
+    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "venue/list")
     @Produces(MediaType.APPLICATION_JSON)
     VenueList venueList(@QueryParam("token") String token);
 
     @GET
-    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "/venue/background")
+    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "venue/backgroundUrl")
     @Produces(MediaType.APPLICATION_JSON)
-    VenueBackground venueBackground(@QueryParam("token") String token,
+    VenueBackground venueBackgroundUrl(@QueryParam("token") String token,
                                     @QueryParam("venueId") int venueId);
 
 

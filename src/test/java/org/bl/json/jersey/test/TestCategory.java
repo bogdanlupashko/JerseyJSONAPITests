@@ -7,6 +7,8 @@ import org.bl.json.jersey.model.category.CategoryHomepage;
 import org.bl.json.jersey.model.category.CategoryList;
 import org.bl.json.jersey.rest.service.Auth;
 import org.bl.json.jersey.rest.service.Category;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -16,13 +18,18 @@ import org.testng.annotations.Test;
  */
 
 public class TestCategory {
+    public static Logger LOGGER = LoggerFactory.getLogger(TestCategory.class.getName());
+
+
     private RestClient client;
     private String token;
 
     @BeforeClass
     public void init() {
         client = new RestClient();
-        token = getToken();
+        token = TestAuth.token;
+        LOGGER.error(token);
+       // token = getToken();
     }
 
     @Test
@@ -45,9 +52,13 @@ public class TestCategory {
 
 
     private String getToken() {
+        LOGGER.error("getToken: " + TestAuth.token);
         if (TestAuth.token != null) {
+            LOGGER.error("if statement");
             return TestAuth.token;
         } else {
+            LOGGER.error("else statement");
+
             Auth service = client.proxy(Auth.class);
             AuthLogin respose = service.authLogin("googlecomua@mail.ru", "qqqqqq");
             Assert.assertNotNull(respose);

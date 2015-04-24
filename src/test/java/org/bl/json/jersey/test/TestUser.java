@@ -43,14 +43,14 @@ public class TestUser {
         JerseyClient.LOG.error(respose.toString());
     }
 
-    @Test
-    public void userProfileUpdate(){
-        User service = client.proxy(User.class);
-        UserProfile respose = service.userProfile(token, email, passwordRaw, passwordRepeat, phone, firstName, lastName, leaveDate, flightTime);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
-    }
+//    @Test
+//    public void userProfileUpdate(){
+//        User service = client.proxy(User.class);
+//        UserProfile respose = service.userProfile(token, email, passwordRaw, passwordRepeat, phone, firstName, lastName, leaveDate, flightTime);
+//        JerseyClient.LOG.error(respose.toString());
+//        Assert.assertNotNull(respose);
+//        JerseyClient.LOG.error(respose.toString());
+//    }
 
     @Test
          public void userAgent(){

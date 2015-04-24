@@ -49,9 +49,9 @@ public class TestVenue {
     }
 
     @Test
-    public void venueBackground() {
+    public void venueBackgroundUrl() {
         Venue service = client.proxy(Venue.class);
-        VenueBackground respose = service.venueBackground(token, id);
+        VenueBackground respose = service.venueBackgroundUrl(token, id);
         JerseyClient.LOG.error(respose.toString());
         Assert.assertNotNull(respose);
         JerseyClient.LOG.error(respose.toString());
