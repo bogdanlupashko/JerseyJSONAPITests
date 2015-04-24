@@ -28,14 +28,14 @@ public class TestHost {
         token = getToken();
     }
 
-    @Test
-    public void hostList() {
-        Host service = client.proxy(Host.class);
-        HostsList respose = service.hostsList(token, id);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
-    }
+//    @Test
+//    public void hostList() {
+//        Host service = client.proxy(Host.class);
+//        HostsList respose = service.hostsList(token, id);
+//        JerseyClient.LOG.error(respose.toString());
+//        Assert.assertNotNull(respose);
+//        JerseyClient.LOG.error(respose.toString());
+//    }
 
     @Test
     public void hostItem() {

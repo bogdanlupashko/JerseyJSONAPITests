@@ -29,6 +29,16 @@ public class Offerss {
     private String dateTime;
     @JsonIgnore
     private int periodId;
+    private int archived;
+
+    @JsonIgnore
+    public int getArchived() {
+        return archived;
+    }
+
+    public void setArchived(int archived) {
+        this.archived = archived;
+    }
 
     public int getId() {
         return id;

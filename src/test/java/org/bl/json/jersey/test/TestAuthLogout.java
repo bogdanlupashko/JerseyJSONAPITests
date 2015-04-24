@@ -35,13 +35,13 @@ public class TestAuthLogout {
 //        token = getToken();
 //    }
 
-    @Test
-    public void authLogout() {
-        Auth service = client.proxy(Auth.class);
-        String respose = service.authLogout(token);
-        Assert.assertTrue(respose.toString().isEmpty());
-        JerseyClient.LOG.error(respose.toString());
-    }
+//    @Test
+//    public void authLogout() {
+//        Auth service = client.proxy(Auth.class);
+//        String respose = service.authLogout(token);
+//        Assert.assertTrue(respose.toString().isEmpty());
+//        JerseyClient.LOG.error(respose.toString());
+//    }
 
     private  String getToken() {
         if (TestAuth.token != null) {

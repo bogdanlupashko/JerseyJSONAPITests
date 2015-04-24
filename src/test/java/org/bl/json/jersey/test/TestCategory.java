@@ -27,12 +27,12 @@ public class TestCategory {
     @BeforeClass
     public void init() {
         client = new RestClient();
-        token = TestAuth.token;
+        //token = TestAuth.token;
+        token = getToken();
         LOGGER.error(token);
-       // token = getToken();
     }
 
-    @Test
+    @Test(description = "<br> <br> <br> <b>Description </b> home page loading when user \n Mf")
     public void categoryHomepage() {
         Category service = client.proxy(Category.class);
         CategoryHomepage[] respose = service.categoryHomepage(token);
@@ -41,7 +41,7 @@ public class TestCategory {
         JerseyClient.LOG.error(respose.toString());
     }
 
-    @Test
+    @Test(description = "<br> <br> <br> <b>Description </b> home page loading when user \n Mf")
     public void categoryList() {
         Category service = client.proxy(Category.class);
         CategoryList[] respose = service.categoryList(token);
@@ -58,7 +58,6 @@ public class TestCategory {
             return TestAuth.token;
         } else {
             LOGGER.error("else statement");
-
             Auth service = client.proxy(Auth.class);
             AuthLogin respose = service.authLogin("googlecomua@mail.ru", "qqqqqq");
             Assert.assertNotNull(respose);

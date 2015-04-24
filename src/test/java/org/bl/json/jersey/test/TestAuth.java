@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.ITestNGMethod;
 
 
 
@@ -32,9 +33,18 @@ public class TestAuth {
        // LOGGER.error(token);
     }
 
-    @Test
+    @Test(description = "<br> <br> <br> <b>Description </b> <br> login test MF")
+
     public void authLogin() {
         token = getToken();
+    }
+
+    @Test(description = "<br> <br> <br> <b>Description </b>logout test MF")
+    public void authLogout() {
+        Auth service = client.proxy(Auth.class);
+        String respose = service.authLogout(token);
+        Assert.assertTrue(respose.toString().isEmpty());
+        JerseyClient.LOG.error(respose.toString());
     }
 
 //    @Test

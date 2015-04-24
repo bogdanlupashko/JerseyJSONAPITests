@@ -4,11 +4,7 @@ import org.bl.json.jersey.RestClient;
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.auth.AuthLogin;
 import org.bl.json.jersey.model.components.Offerss;
-import org.bl.json.jersey.model.notification.NotificationCount;
-import org.bl.json.jersey.model.offer.OfferItem;
-import org.bl.json.jersey.model.components.Offers;
 import org.bl.json.jersey.rest.service.Auth;
-import org.bl.json.jersey.rest.service.Notification;
 import org.bl.json.jersey.rest.service.Offer;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -29,8 +25,8 @@ public class TestOffer {
     @BeforeClass
     public  void init() {
         client = new RestClient();
-        token = TestAuth.token;
-//        token = getToken();
+      //  token = TestAuth.token;
+        token = getToken();
     }
 
 
@@ -53,10 +49,6 @@ public class TestOffer {
         Assert.assertNotNull(respose);
         JerseyClient.LOG.error(respose.toString());
     }
-
-
-
-
 
     private String getToken() {
         if (TestAuth.token != null) {

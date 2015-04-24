@@ -30,6 +30,17 @@ public class Offers {
     @JsonIgnore
     private int periodId;
 
+    @JsonIgnore
+    private int archived;
+
+    public int getArchived() {
+        return archived;
+    }
+
+    public void setArchived(int archived) {
+        this.archived = archived;
+    }
+
     public int getId() {
         return id;
     }
