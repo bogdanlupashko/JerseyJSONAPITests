@@ -1,8 +1,11 @@
 package org.bl.json.jersey.model.components;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 /**
  * Created by blupashko on 23.04.2015.
  */
+@JsonIgnoreProperties
 public class Schedule {
 
     private IntervalForADay[] mon;

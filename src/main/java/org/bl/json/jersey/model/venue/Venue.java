@@ -3,6 +3,7 @@ package org.bl.json.jersey.model.venue;
 import org.bl.json.jersey.model.components.Image;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by blupashko on 23.04.2015.
@@ -18,7 +19,7 @@ public class Venue {
     private float rating;
     private int open24h;
     private String status;
-    private ArrayList<Image> image;
+    private Map<String, String> image;
     private ArrayList<Image> background;
     private ArrayList<Image> pin;
 
@@ -102,13 +103,13 @@ public class Venue {
         this.status = status;
     }
 
-    public ArrayList<Image> getImage() {
-        return image;
-    }
-
-    public void setImage(ArrayList<Image> image) {
-        this.image = image;
-    }
+//    public Image getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(Image image) {
+//        this.image = image;
+//    }
 
     public ArrayList<Image> getBackground() {
         return background;

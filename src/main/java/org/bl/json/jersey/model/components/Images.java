@@ -1,25 +1,21 @@
 package org.bl.json.jersey.model.components;
 
+import java.util.Map;
+
 /**
  * Created by blupashko on 23.04.2015.
  */
 public class Images {
-    private String name;
-    private String[] urls;
 
-    public String getName() {
-        return name;
+    private Map<String,String[]> images;
+
+    public Map<String, String[]> getImages() {
+        return images;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setImages(Map<String, String[]> images) {
+        this.images = images;
     }
 
-    public String[] getUrls() {
-        return urls;
-    }
 
-    public void setUrls(String[] urls) {
-        this.urls = urls;
-    }
 }

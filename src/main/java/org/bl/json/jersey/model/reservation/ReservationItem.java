@@ -3,6 +3,7 @@ package org.bl.json.jersey.model.reservation;
 import org.bl.json.jersey.model.components.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by blupashko on 23.04.2015.
@@ -11,6 +12,7 @@ public class ReservationItem {
     private int id;
     private int userId;
     private int offerId;
+    private int periodId;
     private int requestId;
     private int transactionId;
     private String status;
@@ -25,16 +27,17 @@ public class ReservationItem {
     private String pickup;
     private String note;
     private String feedback;
-    private int payed;
+    private boolean payed;
     private int paymentId;
     private int apn;
     private int archived;
     private int invites;
-    private ReminderRes reminderRes;
-    private HostRes hostRes;
-    private ArrayList<Image> venueImage;
-    private Offer offer;
+    private boolean reminder;
+    private HostRes host;
+    private Map<String, String> venueImage;
+    private Offers offer;
     private Request request;
+
 
     public int getId() {
         return id;
@@ -58,6 +61,14 @@ public class ReservationItem {
 
     public void setOfferId(int offerId) {
         this.offerId = offerId;
+    }
+
+    public int getPeriodId() {
+        return periodId;
+    }
+
+    public void setPeriodId(int periodId) {
+        this.periodId = periodId;
     }
 
     public int getRequestId() {
@@ -172,11 +183,11 @@ public class ReservationItem {
         this.feedback = feedback;
     }
 
-    public int getPayed() {
+    public boolean getPayed() {
         return payed;
     }
 
-    public void setPayed(int payed) {
+    public void setPayed(boolean payed) {
         this.payed = payed;
     }
 
@@ -212,35 +223,35 @@ public class ReservationItem {
         this.invites = invites;
     }
 
-    public ReminderRes getReminderRes() {
-        return reminderRes;
+    public boolean isReminder() {
+        return reminder;
     }
 
-    public void setReminderRes(ReminderRes reminderRes) {
-        this.reminderRes = reminderRes;
+    public void setReminder(boolean reminder) {
+        this.reminder = reminder;
     }
 
-    public HostRes getHostRes() {
-        return hostRes;
+    public HostRes getHost() {
+        return host;
     }
 
-    public void setHostRes(HostRes hostRes) {
-        this.hostRes = hostRes;
+    public void setHost(HostRes host) {
+        this.host = host;
     }
 
-    public ArrayList<Image> getVenueImage() {
+    public Map<String, String> getVenueImage() {
         return venueImage;
     }
 
-    public void setVenueImage(ArrayList<Image> venueImage) {
+    public void setVenueImage(Map<String, String> venueImage) {
         this.venueImage = venueImage;
     }
 
-    public Offer getOffer() {
+    public Offers getOffer() {
         return offer;
     }
 
-    public void setOffer(Offer offer) {
+    public void setOffer(Offers offer) {
         this.offer = offer;
     }
 

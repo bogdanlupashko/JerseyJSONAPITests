@@ -8,6 +8,7 @@ import org.bl.json.jersey.model.venue.VenueList;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Map;
 
 
 @Path("/")
@@ -22,12 +23,12 @@ public interface Venue {
     @GET
     @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "venue/list")
     @Produces(MediaType.APPLICATION_JSON)
-    VenueList venueList(@QueryParam("token") String token);
+    VenueList[] venueList(@QueryParam("token") String token);
 
     @GET
     @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "venue/backgroundUrl")
     @Produces(MediaType.APPLICATION_JSON)
-    VenueBackground venueBackgroundUrl(@QueryParam("token") String token,
+    Map<String,String> venueBackgroundUrl(@QueryParam("token") String token,
                                     @QueryParam("venueId") int venueId);
 
 

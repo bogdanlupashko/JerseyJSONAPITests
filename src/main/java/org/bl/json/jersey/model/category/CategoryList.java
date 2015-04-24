@@ -2,15 +2,17 @@ package org.bl.json.jersey.model.category;
 
 import org.bl.json.jersey.model.components.Image;
 
-import java.util.LinkedList;
-
 /**
  * Created by blupashko on 17.04.2015.
  */
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 public class CategoryList {
+
     private int id;
     private String name;
-    private LinkedList<Image> image;
+    @JsonIgnore
+    private Image image;
     private String type;
     private boolean defaultMap;
     private String pinColor;
@@ -31,11 +33,11 @@ public class CategoryList {
         this.name = name;
     }
 
-    public LinkedList<Image> getImage() {
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(LinkedList<Image> image) {
+    public void setImage(Image image) {
         this.image = image;
     }
 
@@ -62,4 +64,7 @@ public class CategoryList {
     public void setPinColor(String pinColor) {
         this.pinColor = pinColor;
     }
+
+
+
 }

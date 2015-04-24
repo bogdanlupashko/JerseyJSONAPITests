@@ -60,11 +60,15 @@ public class TestUser {
     }
 
     private  String getToken() {
-        Auth service = client.proxy(Auth.class);
-        AuthLogin respose = service.authLogin("googlecomua@mail.ru", "qqqqqq");
-        Assert.assertNotNull(respose);
-        Assert.assertNotNull(respose.getId());
-        Assert.assertNotNull(respose.getToken());
-        return respose.getToken();
+        if (TestAuth.token != null) {
+            return TestAuth.token;
+        } else {
+            Auth service = client.proxy(Auth.class);
+            AuthLogin respose = service.authLogin("googlecomua@mail.ru", "qqqqqq");
+            Assert.assertNotNull(respose);
+            Assert.assertNotNull(respose.getId());
+            Assert.assertNotNull(respose.getToken());
+            return respose.getToken();
+        }
     }
 }

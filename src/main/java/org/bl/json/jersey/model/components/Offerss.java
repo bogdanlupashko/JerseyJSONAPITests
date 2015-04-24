@@ -1,9 +1,11 @@
 package org.bl.json.jersey.model.components;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  * Created by blupashko on 17.04.2015.
  */
-public class Offer {
+public class Offerss {
     private int id;
     private int venueId;
     private int userId;
@@ -25,6 +27,7 @@ public class Offer {
     private String status;
     private String bachelor;
     private String dateTime;
+    @JsonIgnore
     private int periodId;
 
     public int getId() {

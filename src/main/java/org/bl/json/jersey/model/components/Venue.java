@@ -10,7 +10,8 @@ public class Venue {
     private int categoryId;
     private String name;
     private int promoted;
-    private LinkedList<Image> image = new LinkedList<Image>();
+    private Image[] image;
+
 
     public int getId() {
         return id;
@@ -44,11 +45,11 @@ public class Venue {
         this.promoted = promoted;
     }
 
-    public LinkedList<Image> getImage() {
+    public Image[] getImage() {
         return image;
     }
 
-    public void setImage(LinkedList<Image> image) {
+    public void setImage(Image[] image) {
         this.image = image;
     }
 }

@@ -23,12 +23,12 @@ public interface Category {
     @GET
     @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "category/homepage")
     @Produces(MediaType.APPLICATION_JSON)
-    CategoryHomepage categoryHomepage(@QueryParam("token") String token);
+    CategoryHomepage[] categoryHomepage(@QueryParam("token") String token);
 
     @GET
     @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "category/list")
     @Produces(MediaType.APPLICATION_JSON)
-    CategoryList categoryList(@QueryParam("token") String token);
+    CategoryList[] categoryList(@QueryParam("token") String token);
 
     @GET
     @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "category/list")

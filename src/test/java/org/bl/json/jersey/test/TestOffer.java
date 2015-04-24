@@ -3,9 +3,10 @@ package org.bl.json.jersey.test;
 import org.bl.json.jersey.RestClient;
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.auth.AuthLogin;
+import org.bl.json.jersey.model.components.Offerss;
 import org.bl.json.jersey.model.notification.NotificationCount;
 import org.bl.json.jersey.model.offer.OfferItem;
-import org.bl.json.jersey.model.offer.OffersList;
+import org.bl.json.jersey.model.components.Offers;
 import org.bl.json.jersey.rest.service.Auth;
 import org.bl.json.jersey.rest.service.Notification;
 import org.bl.json.jersey.rest.service.Offer;
@@ -36,7 +37,7 @@ public class TestOffer {
     @Test
     public void offerList() {
         Offer service = client.proxy(Offer.class);
-        OffersList respose = service.offerList(token, id);
+        Offerss[] respose = service.offerList(token, id);
         JerseyClient.LOG.error(respose.toString());
         Assert.assertNotNull(respose);
        // offerId = respose.getOffers().getFirst().getId();
@@ -47,7 +48,7 @@ public class TestOffer {
     @Test
     public void offerItem() {
         Offer service = client.proxy(Offer.class);
-        OfferItem respose = service.offerItem(token, offerId);
+        Offerss respose = service.offerItem(token, offerId);
         JerseyClient.LOG.error(respose.toString());
         Assert.assertNotNull(respose);
         JerseyClient.LOG.error(respose.toString());

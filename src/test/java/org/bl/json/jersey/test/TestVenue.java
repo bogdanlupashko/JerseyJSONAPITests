@@ -13,6 +13,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Map;
+
 /**
  * @author Bogdan Lupashko
  */
@@ -42,7 +44,7 @@ public class TestVenue {
     @Test
     public void venueList() {
         Venue service = client.proxy(Venue.class);
-        VenueList respose = service.venueList(token);
+        VenueList[] respose = service.venueList(token);
         JerseyClient.LOG.error(respose.toString());
         Assert.assertNotNull(respose);
         JerseyClient.LOG.error(respose.toString());
@@ -51,7 +53,7 @@ public class TestVenue {
     @Test
     public void venueBackgroundUrl() {
         Venue service = client.proxy(Venue.class);
-        VenueBackground respose = service.venueBackgroundUrl(token, id);
+        Map<String,String> respose = service.venueBackgroundUrl(token, id);
         JerseyClient.LOG.error(respose.toString());
         Assert.assertNotNull(respose);
         JerseyClient.LOG.error(respose.toString());

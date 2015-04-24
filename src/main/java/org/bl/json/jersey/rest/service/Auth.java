@@ -26,7 +26,7 @@ public interface Auth {
     @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH +"auth/logout")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    AuthLogout authLogout(@FormParam("token") String token);
+    String authLogout(@FormParam("token") String token);
 
 //
 //    @POST

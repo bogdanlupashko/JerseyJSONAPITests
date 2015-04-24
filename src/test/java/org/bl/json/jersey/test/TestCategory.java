@@ -35,7 +35,7 @@ public class TestCategory {
     @Test
     public void categoryHomepage() {
         Category service = client.proxy(Category.class);
-        CategoryHomepage respose = service.categoryHomepage(token);
+        CategoryHomepage[] respose = service.categoryHomepage(token);
         JerseyClient.LOG.error(respose.toString());
         Assert.assertNotNull(respose);
         JerseyClient.LOG.error(respose.toString());
@@ -44,7 +44,7 @@ public class TestCategory {
     @Test
     public void categoryList() {
         Category service = client.proxy(Category.class);
-        CategoryList respose = service.categoryList(token);
+        CategoryList[] respose = service.categoryList(token);
         JerseyClient.LOG.error(respose.toString());
         Assert.assertNotNull(respose);
         JerseyClient.LOG.error(respose.toString());

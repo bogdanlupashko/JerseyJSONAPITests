@@ -1,13 +1,11 @@
-package org.bl.json.jersey.model.offer;
+package org.bl.json.jersey.model.components;
 
-import org.bl.json.jersey.model.components.Offers;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  * Created by blupashko on 17.04.2015.
  */
-public class OfferItem {
-
+public class Offers {
     private int id;
     private int venueId;
     private int userId;
@@ -17,7 +15,7 @@ public class OfferItem {
     private int cost;
     private String costType;
     private int deposit;
-    private boolean paymentFull;
+    private int paymentFull;
     private int paymentDeposit;
     private int people;
     private String peopleType;
@@ -31,7 +29,6 @@ public class OfferItem {
     private String dateTime;
     @JsonIgnore
     private int periodId;
-
 
     public int getId() {
         return id;
@@ -105,15 +102,15 @@ public class OfferItem {
         this.deposit = deposit;
     }
 
-    public boolean getPaymentFull() {
+    public int isPaymentFull() {
         return paymentFull;
     }
 
-    public void setPaymentFull(boolean paymentFull) {
+    public void setPaymentFull(int paymentFull) {
         this.paymentFull = paymentFull;
     }
 
-    public int getPaymentDeposit() {
+    public int isPaymentDeposit() {
         return paymentDeposit;
     }
 
