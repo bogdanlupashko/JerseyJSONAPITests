@@ -1,13 +1,15 @@
 package org.bl.json.jersey.client;
 
-import org.bl.json.jersey.model.auth.AuthLogin;
-import org.bl.json.jersey.rest.service.Auth;
 
-import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
-import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javax.ws.rs.client.Client;
+import org.testng.IReporter;
+import org.testng.ISuite;
+import org.testng.xml.XmlSuite;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class JerseyClient {
     public static final String MAIN_URL =  "http://vegaster.webprv.com/";
@@ -17,11 +19,11 @@ public class JerseyClient {
     public static Logger LOG = LoggerFactory.getLogger(JerseyClient.class.getName());
 
     public static void main(String[] args) {
-        Client client = new ResteasyClientBuilder().build();
-        ResteasyWebTarget target = (ResteasyWebTarget) client.target(MAIN_URL);
-        Auth resource = target.proxy(Auth.class);
-        AuthLogin login = resource.authLogin("googlecomua@mail.ru", "qqqqqq");
-        LOG.info(login.getToken());
-    }
+//        Client client = new ResteasyClientBuilder().build();
+//        ResteasyWebTarget target = (ResteasyWebTarget) client.target(MAIN_URL);
+//        Auth resource = target.proxy(Auth.class);
+//        AuthLogin login = resource.authLogin("googlecomua@mail.ru", "qqqqqq");
+//        LOG.info(login.getToken());
 
+    }
 }

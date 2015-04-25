@@ -4,7 +4,6 @@ import org.bl.json.jersey.RestClient;
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.auth.AuthLogin;
 
-import org.bl.json.jersey.model.venue.VenueBackground;
 import org.bl.json.jersey.model.venue.VenueItem;
 import org.bl.json.jersey.model.venue.VenueList;
 import org.bl.json.jersey.rest.service.Auth;

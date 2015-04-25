@@ -2,14 +2,12 @@ package org.bl.json.jersey.test;
 
 
 import org.bl.json.jersey.RestClient;
-import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.auth.AuthLogin;
 import org.bl.json.jersey.rest.service.Auth;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 
 /**

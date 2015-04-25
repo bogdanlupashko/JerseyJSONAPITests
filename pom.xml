@@ -34,7 +34,7 @@
                     <archive>
                         <manifest>
                             <mainClass>
-                                <!--org.bl.crawler.Enter-->
+                                org.bl.json.jersey.client.JerseyClient
                             </mainClass>
                         </manifest>
                     </archive>
