@@ -1,11 +1,12 @@
-package org.bl.json.jersey.model.components;
+package org.bl.json.jersey.model.reminder;
 
-import java.util.LinkedList;
+import java.util.Map;
 
 /**
  * Created by blupashko on 17.04.2015.
  */
-public class Reminder {
+public class ReminderList {
+
     private String type;
     private String venueName;
     private String venueLat;
@@ -21,7 +22,7 @@ public class Reminder {
     private int offerId;
     private boolean shared;
     private String ownerName;
-    private LinkedList<Image> venueImage;
+    private Map<String, String> venueImage;
 
     public String getType() {
         return type;
@@ -131,8 +132,12 @@ public class Reminder {
         return shared;
     }
 
-    public void setShared(boolean shared) {
-        this.shared = shared;
+    public void setShared(Object shared) {
+        if (shared instanceof Boolean) {
+            this.shared = (Boolean)shared;
+        } else if (shared instanceof Integer){
+            this.shared = ((Integer) shared).equals(1);
+        }
     }
 
     public String getOwnerName() {
@@ -143,11 +148,11 @@ public class Reminder {
         this.ownerName = ownerName;
     }
 
-    public LinkedList<Image> getVenueImage() {
+    public  Map<String, String> getVenueImage() {
         return venueImage;
     }
 
-    public void setVenueImage(LinkedList<Image> venueImage) {
+    public void setVenueImage( Map<String, String> venueImage) {
         this.venueImage = venueImage;
     }
 }

@@ -1,4 +1,4 @@
-package org.bl.json.jersey.model.components;
+package org.bl.json.jersey.model.notification;
 
 /**
  * Created by blupashko on 17.04.2015.

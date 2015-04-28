@@ -1,7 +1,6 @@
 package org.bl.json.jersey.model.offer;
 
-import org.bl.json.jersey.model.components.Offers;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreType;
 
 /**
  * Created by blupashko on 17.04.2015.
@@ -18,7 +17,7 @@ public class OfferItem {
     private String costType;
     private int deposit;
     private boolean paymentFull;
-    private int paymentDeposit;
+    private boolean paymentDeposit;
     private int people;
     private String peopleType;
     private String tableLocation;
@@ -29,9 +28,6 @@ public class OfferItem {
     private String status;
     private String bachelor;
     private String dateTime;
-    @JsonIgnore
-    private int periodId;
-
 
     public int getId() {
         return id;
@@ -105,20 +101,28 @@ public class OfferItem {
         this.deposit = deposit;
     }
 
-    public boolean getPaymentFull() {
+    public boolean isPaymentFull() {
         return paymentFull;
     }
 
-    public void setPaymentFull(boolean paymentFull) {
-        this.paymentFull = paymentFull;
+    public void setPaymentFull(Object paymentFull) {
+        if (paymentFull instanceof Boolean) {
+            this.paymentFull = (Boolean)paymentFull;
+        } else if (paymentFull instanceof Integer){
+            this.paymentFull = ((Integer) paymentFull).equals(1);
+        }
     }
 
-    public int getPaymentDeposit() {
+    public boolean getPaymentDeposit() {
         return paymentDeposit;
     }
 
-    public void setPaymentDeposit(int paymentDeposit) {
-        this.paymentDeposit = paymentDeposit;
+    public void setPaymentDeposit(Object paymentDeposit) {
+        if (paymentDeposit instanceof Boolean) {
+            this.paymentDeposit = (Boolean)paymentDeposit;
+        } else if (paymentDeposit instanceof Integer){
+            this.paymentDeposit = ((Integer) paymentDeposit).equals(1);
+        }
     }
 
     public int getPeople() {
@@ -199,13 +203,5 @@ public class OfferItem {
 
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
-    }
-
-    public int getPeriodId() {
-        return periodId;
-    }
-
-    public void setPeriodId(int periodId) {
-        this.periodId = periodId;
     }
 }

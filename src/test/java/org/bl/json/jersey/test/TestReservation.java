@@ -2,9 +2,9 @@ package org.bl.json.jersey.test;
 
 import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
-import org.bl.json.jersey.model.components.Offerss;
+import org.bl.json.jersey.model.offer.OfferWithArch;
 import org.bl.json.jersey.model.reservation.ReservationItem;
-import org.bl.json.jersey.model.reservation.ReservationItemNe;
+import org.bl.json.jersey.model.reservation.ReservationItemGetId;
 import org.bl.json.jersey.rest.service.Reservation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 public class TestReservation {
     private static Logger LOGGER = LoggerFactory.getLogger(TestReservation.class.getName());
-    static ReservationItemNe response;
+    static ReservationItemGetId response;
 
     @Test(description = "<br> <br> <br> <b>Description </b>Selected reservation test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#reservation\">API doc</a>")
     public void reservationItem() {
@@ -48,7 +48,7 @@ public class TestReservation {
         JerseyClient.LOG.error(response.toString());
     }
 
-    private int getPeriod(Offerss[] offers) {
+    private int getPeriod(OfferWithArch[] offers) {
         for (int i = 0; i < offers.length; i++) {
             if (offers[i].getId() == TestVariables.getOfferId()) {
                 return offers[i].getPeriodId();

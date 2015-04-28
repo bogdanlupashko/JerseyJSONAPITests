@@ -2,7 +2,6 @@ package org.bl.json.jersey.rest.service;
 
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.host.HostItem;
-import org.bl.json.jersey.model.host.HostsList;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,7 +17,7 @@ public interface Host {
     @GET
     @Path(JerseyClient.API_PREAMBLE + "host/list")
     @Produces(MediaType.APPLICATION_JSON)
-    HostsList hostsList(@QueryParam("token") String token, @QueryParam("id") int id);
+    HostItem[] hostsList(@QueryParam("token") String token, @QueryParam("id") int id);
 
     @GET
     @Path(JerseyClient.API_PREAMBLE + "host/item")

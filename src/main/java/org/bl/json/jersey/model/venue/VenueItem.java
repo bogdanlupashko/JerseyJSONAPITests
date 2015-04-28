@@ -1,21 +1,18 @@
 package org.bl.json.jersey.model.venue;
 
-import org.bl.json.jersey.model.components.*;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.bl.json.jersey.model.components.Schedule;
+import org.bl.json.jersey.model.reminder.ReminderForVenue;
 
 import java.util.Map;
 
 /**
  * Created by blupashko on 23.04.2015.
  */
-public class VenueItem {
-    private int id;
-    private String name;
-    private int categoryId;
+public class VenueItem extends VenueForCategory {
+
     private String description;
     private float lat;
     private float lng;
-    private int promoted;
     private float rating;
     private String phone;
     private String opentableUrl;
@@ -25,38 +22,11 @@ public class VenueItem {
     private int offersBachelorGirlsCount;
     private int offersBachelorCount;
     private Map<String, String[]> galleryImages;
-    private Map<String, String> image;
-    @JsonIgnore
     private Schedule schedule;
     private int open24h;
     private Map<String, String> pin;
     private String[] plans;
-    private ReminderRes reminder;
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
+    private ReminderForVenue reminder;
 
     public String getDescription() {
         return description;
@@ -80,14 +50,6 @@ public class VenueItem {
 
     public void setLng(float lng) {
         this.lng = lng;
-    }
-
-    public int getPromoted() {
-        return promoted;
-    }
-
-    public void setPromoted(int promoted) {
-        this.promoted = promoted;
     }
 
     public float getRating() {
@@ -162,14 +124,6 @@ public class VenueItem {
         this.galleryImages = galleryImages;
     }
 
-    public Map<String, String> getImage() {
-        return image;
-    }
-
-    public void setImage(Map<String, String> image) {
-        this.image = image;
-    }
-
     public Schedule getSchedule() {
         return schedule;
     }
@@ -178,7 +132,7 @@ public class VenueItem {
         this.schedule = schedule;
     }
 
-    public int isOpen24h() {
+    public int getOpen24h() {
         return open24h;
     }
 
@@ -202,11 +156,11 @@ public class VenueItem {
         this.plans = plans;
     }
 
-    public ReminderRes getReminder() {
+    public ReminderForVenue getReminder() {
         return reminder;
     }
 
-    public void setReminder(ReminderRes reminder) {
+    public void setReminder(ReminderForVenue reminder) {
         this.reminder = reminder;
     }
 }

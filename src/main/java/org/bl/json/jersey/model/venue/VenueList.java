@@ -1,54 +1,21 @@
 package org.bl.json.jersey.model.venue;
 
-import org.apache.velocity.app.Velocity;
-import org.bl.json.jersey.model.components.Image;
-
-import java.util.ArrayList;
 import java.util.Map;
 
 /**
  * Created by blupashko on 23.04.2015.
  */
-public class VenueList {
-    private int id;
-    private String name;
-    private int categoryId;
+public class VenueList extends VenueForCategory {
+
     private String description;
     private float lat;
     private float lng;
-    private int promoted;
     private float rating;
     private int minOffer;
     private int open24h;
     private String status;
-    private Map<String, String> image;
     private Map<String, String> background;
     private Map<String, String> pin;
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
 
     public String getDescription() {
         return description;
@@ -72,14 +39,6 @@ public class VenueList {
 
     public void setLng(float lng) {
         this.lng = lng;
-    }
-
-    public int getPromoted() {
-        return promoted;
-    }
-
-    public void setPromoted(int promoted) {
-        this.promoted = promoted;
     }
 
     public float getRating() {
@@ -112,14 +71,6 @@ public class VenueList {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Map<String, String> getImage() {
-        return image;
-    }
-
-    public void setImage(Map<String, String> image) {
-        this.image = image;
     }
 
     public Map<String, String> getBackground() {

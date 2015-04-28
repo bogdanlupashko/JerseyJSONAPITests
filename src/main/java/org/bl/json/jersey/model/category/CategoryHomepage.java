@@ -1,19 +1,13 @@
 package org.bl.json.jersey.model.category;
 
-import org.bl.json.jersey.model.components.Category;
-import org.bl.json.jersey.model.venue.Venue;
-import org.codehaus.jackson.annotate.JsonIgnore;
-
-import java.util.LinkedList;
+import org.bl.json.jersey.model.venue.VenueForCategory;
 
 /**
- * Created by blupashko on 17.04.2015.
+ * @author Bogdan Lupashko
  */
-public class CategoryHomepage extends CategoryList{
+public class CategoryHomepage extends Category{
 
-    @JsonIgnore
-    private Venue[] venues;
-
+    private VenueForCategory[] venues;
     private int venuesCount;
 
     public int getVenuesCount() {
@@ -24,11 +18,11 @@ public class CategoryHomepage extends CategoryList{
         this.venuesCount = venuesCount;
     }
 
-    public Venue[] getVenues() {
+    public VenueForCategory[] getVenues() {
         return venues;
     }
 
-    public void setVenues(Venue[] venues) {
+    public void setVenues(VenueForCategory[] venues) {
         this.venues = venues;
     }
 }

@@ -9,17 +9,17 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class UserProfile {
-    private Integer id;
-    private Integer affiliateId;
-    private Integer supportId;
-    private Integer active;
+    private int id;
+    private int affiliateId;
+    private int supportId;
+    private int active;
     private String email;
     private String role;
     private String firstName;
     private String lastName;
     private String gender;
     private String note;
-    private String phone;
+    private String phone; //
     private String photo;
     private String facebookId;
     private String twiiterId;

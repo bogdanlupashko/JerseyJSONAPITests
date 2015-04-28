@@ -1,20 +1,15 @@
-package org.bl.json.jersey.model.components;
+package org.bl.json.jersey.model.host;
 
-import org.apache.commons.lang.text.StrTokenizer;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 /**
- * Created by blupashko on 23.04.2015.
+ * @author Bogdan Lupashko
  */
-public class HostRes {
+
+public class HostSimple {
     private String firstName;
     private String lastName;
     private String phone;
-    private Map<String, String> photo;
     private String rating;
-
 
     public String getFirstName() {
         return firstName;
@@ -38,14 +33,6 @@ public class HostRes {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Map<String, String> getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Map<String, String> photo) {
-        this.photo = photo;
     }
 
     public String getRating() {

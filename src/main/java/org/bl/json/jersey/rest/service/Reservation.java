@@ -2,7 +2,7 @@ package org.bl.json.jersey.rest.service;
 
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.reservation.ReservationItem;
-import org.bl.json.jersey.model.reservation.ReservationItemNe;
+import org.bl.json.jersey.model.reservation.ReservationItemGetId;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -28,7 +28,7 @@ public interface Reservation {
     @Path(JerseyClient.API_PREAMBLE + "reservation/item")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    ReservationItemNe reservationItemPost(@QueryParam("token") String token,
+    ReservationItemGetId reservationItemPost(@QueryParam("token") String token,
                                         @FormParam("phone") String phone,
                                         @FormParam("malesCount") int malesCount,
                                         @FormParam("firstName") String firstName,

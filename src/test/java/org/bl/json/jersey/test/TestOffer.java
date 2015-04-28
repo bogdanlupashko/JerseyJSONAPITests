@@ -2,7 +2,7 @@ package org.bl.json.jersey.test;
 
 import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
-import org.bl.json.jersey.model.components.Offerss;
+import org.bl.json.jersey.model.offer.OfferWithArch;
 import org.bl.json.jersey.rest.service.Offer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
  */
 
 public class TestOffer {
-    static Offerss[] offers;
+    static OfferWithArch[] offers;
 
     @Test(description = "<br> <br> <br> <b>Description </b>Offers list test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#offer\">API doc</a>")
     public void offerList() {
@@ -26,13 +26,13 @@ public class TestOffer {
     @Test(description = "<br> <br> <br> <b>Description </b>Selected offer test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#offer\">API doc</a>")
     public void offerItem() {
         Offer service = TestVariables.getClient().proxy(Offer.class);
-        Offerss offerItem = service.offerItem(TestVariables.getToken(), TestVariables.getOfferId(), getPeriod(offers));
+        OfferWithArch offerItem = service.offerItem(TestVariables.getToken(), TestVariables.getOfferId(), getPeriod(offers));
         JerseyClient.LOG.error(offerItem.toString());
         Assert.assertNotNull(offerItem);
         JerseyClient.LOG.error(offerItem.toString());
     }
 
-    private int getPeriod(Offerss[] offers){
+    private int getPeriod(OfferWithArch[] offers){
         for (int i = 0; i < offers.length; i++) {
             if (offers[i].getId() == TestVariables.getOfferId()){
                 return offers[i].getPeriodId();

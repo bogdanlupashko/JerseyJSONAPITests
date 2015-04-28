@@ -1,17 +1,16 @@
-package org.bl.json.jersey.model.components;
+package org.bl.json.jersey.model.venue;
 
-import java.util.LinkedList;
+import java.util.Map;
 
 /**
- * Created by blupashko on 17.04.2015.
+ * @author Bogdan Lupashko
  */
-public class Venue {
+
+public class VenueSimple {
     private int id;
     private int categoryId;
     private String name;
-    private int promoted;
-    private Image[] image;
-
+    private Map<String, String> image;
 
     public int getId() {
         return id;
@@ -37,19 +36,11 @@ public class Venue {
         this.name = name;
     }
 
-    public int getPromoted() {
-        return promoted;
-    }
-
-    public void setPromoted(int promoted) {
-        this.promoted = promoted;
-    }
-
-    public Image[] getImage() {
+    public Map<String, String> getImage() {
         return image;
     }
 
-    public void setImage(Image[] image) {
+    public void setImage(Map<String, String> image) {
         this.image = image;
     }
 }

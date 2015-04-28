@@ -14,4 +14,6 @@ public class JerseyClient {
     public static Logger LOG = LoggerFactory.getLogger(JerseyClient.class.getName());
 
 
+
+
 }

@@ -1,37 +1,22 @@
 package org.bl.json.jersey.model.components;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
 /**
  * Created by blupashko on 23.04.2015.
  */
-@JsonIgnoreProperties
 public class Schedule {
 
-    @JsonIgnore
     private IntervalForADay[] mon;
-    @JsonIgnore
     private IntervalForADay[] tue;
-    @JsonIgnore
     private IntervalForADay[] wed;
-    @JsonIgnore
     private IntervalForADay[] thu;
-    @JsonIgnore
     private IntervalForADay[] fri;
-    @JsonIgnore
     private IntervalForADay[] sat;
-    @JsonIgnore
     private IntervalForADay[] sun;
 
-
-    private class IntervalForADay {
-        @JsonIgnore
+    private static class IntervalForADay {
         private String open;
-        @JsonIgnore
         private String close;
-        @JsonIgnore
-        private String inteval;
+        private String interval;
 
         public String getOpen() {
             return open;
@@ -49,12 +34,68 @@ public class Schedule {
             this.close = close;
         }
 
-        public String getInteval() {
-            return inteval;
+        public String getInterval() {
+            return interval;
         }
 
-        public void setInteval(String inteval) {
-            this.inteval = inteval;
+        public void setInterval(String interval) {
+            this.interval = interval;
         }
+    }
+
+    public IntervalForADay[] getMon() {
+        return mon;
+    }
+
+    public void setMon(IntervalForADay[] mon) {
+        this.mon = mon;
+    }
+
+    public IntervalForADay[] getTue() {
+        return tue;
+    }
+
+    public void setTue(IntervalForADay[] tue) {
+        this.tue = tue;
+    }
+
+    public IntervalForADay[] getWed() {
+        return wed;
+    }
+
+    public void setWed(IntervalForADay[] wed) {
+        this.wed = wed;
+    }
+
+    public IntervalForADay[] getThu() {
+        return thu;
+    }
+
+    public void setThu(IntervalForADay[] thu) {
+        this.thu = thu;
+    }
+
+    public IntervalForADay[] getFri() {
+        return fri;
+    }
+
+    public void setFri(IntervalForADay[] fri) {
+        this.fri = fri;
+    }
+
+    public IntervalForADay[] getSat() {
+        return sat;
+    }
+
+    public void setSat(IntervalForADay[] sat) {
+        this.sat = sat;
+    }
+
+    public IntervalForADay[] getSun() {
+        return sun;
+    }
+
+    public void setSun(IntervalForADay[] sun) {
+        this.sun = sun;
     }
 }

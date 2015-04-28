@@ -10,6 +10,7 @@
             </class>
         </classes>
     </test>
+
     <test name="userAgent">
         <classes>
             <class name="org.bl.json.jersey.test.TestUser">

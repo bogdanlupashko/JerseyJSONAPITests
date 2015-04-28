@@ -1,21 +1,14 @@
-package org.bl.json.jersey.model.components;
+package org.bl.json.jersey.model.reminder;
 
 /**
- * Created by blupashko on 23.04.2015.
+ * @author Bogdan Lupashko
  */
-public class ReminderRes {
-    private int id;
+
+public class ReminderSimple {
+
     private String reminderDateTime;
     private String addedDateTime;
     private int interval;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getReminderDateTime() {
         return reminderDateTime;

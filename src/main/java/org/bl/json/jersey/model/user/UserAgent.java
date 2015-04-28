@@ -1,13 +1,9 @@
 package org.bl.json.jersey.model.user;
 
-
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
 /**
  * Created by blupashko on 03.04.2015.
  */
 
-@JsonIgnoreProperties(ignoreUnknown=true)
 public class UserAgent {
     private Integer id;
     private String firstName;

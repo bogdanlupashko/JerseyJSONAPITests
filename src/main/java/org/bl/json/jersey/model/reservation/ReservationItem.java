@@ -1,8 +1,10 @@
 package org.bl.json.jersey.model.reservation;
 
 import org.bl.json.jersey.model.components.*;
+import org.bl.json.jersey.model.host.HostForReservation;
+import org.bl.json.jersey.model.offer.OfferWithArch;
+import org.bl.json.jersey.model.offer.OfferWithPeriod;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -30,14 +32,13 @@ public class ReservationItem {
     private boolean payed;
     private int paymentId;
     private int apn;
-    private int archived;
+    private boolean archived;
     private int invites;
     private boolean reminder;
-    private HostRes host;
+    private HostForReservation host;
     private Map<String, String> venueImage;
-    private Offers offer;
+    private OfferWithArch offer;
     private Request request;
-
 
     public int getId() {
         return id;
@@ -183,12 +184,16 @@ public class ReservationItem {
         this.feedback = feedback;
     }
 
-    public boolean getPayed() {
+    public boolean isPayed() {
         return payed;
     }
 
-    public void setPayed(boolean payed) {
-        this.payed = payed;
+    public void setPayed(Object payed) {
+        if (payed instanceof Boolean) {
+            this.payed = (Boolean)payed;
+        } else if (payed instanceof Integer){
+            this.payed = ((Integer) payed).equals(1);
+        }
     }
 
     public int getPaymentId() {
@@ -207,12 +212,16 @@ public class ReservationItem {
         this.apn = apn;
     }
 
-    public int getArchived() {
+    public boolean isArchived() {
         return archived;
     }
 
-    public void setArchived(int archived) {
-        this.archived = archived;
+    public void setArchived(Object archived) {
+        if (archived instanceof Boolean) {
+            this.archived = (Boolean)archived;
+        } else if (archived instanceof Integer){
+            this.archived = ((Integer) archived).equals(1);
+        }
     }
 
     public int getInvites() {
@@ -227,15 +236,19 @@ public class ReservationItem {
         return reminder;
     }
 
-    public void setReminder(boolean reminder) {
-        this.reminder = reminder;
+    public void setReminder(Object reminder) {
+        if (reminder instanceof Boolean) {
+            this.reminder = (Boolean)reminder;
+        } else if (reminder instanceof Integer){
+            this.reminder = ((Integer) reminder).equals(1);
+        }
     }
 
-    public HostRes getHost() {
+    public HostForReservation getHost() {
         return host;
     }
 
-    public void setHost(HostRes host) {
+    public void setHost(HostForReservation host) {
         this.host = host;
     }
 
@@ -247,11 +260,11 @@ public class ReservationItem {
         this.venueImage = venueImage;
     }
 
-    public Offers getOffer() {
+    public OfferWithArch getOffer() {
         return offer;
     }
 
-    public void setOffer(Offers offer) {
+    public void setOffer(OfferWithArch offer) {
         this.offer = offer;
     }
 
