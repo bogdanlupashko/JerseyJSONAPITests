@@ -1,13 +1,10 @@
 package org.bl.json.jersey.test;
 
-import org.bl.json.jersey.RestClient;
+import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
-import org.bl.json.jersey.model.auth.AuthLogin;
 import org.bl.json.jersey.model.host.HostItem;
-import org.bl.json.jersey.rest.service.Auth;
 import org.bl.json.jersey.rest.service.Host;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
@@ -15,48 +12,14 @@ import org.testng.annotations.Test;
  */
 
 public class TestHost {
-    static RestClient client;
-    static String token;
-    private int id = 40;
 
-    @BeforeClass
-    public  void init() {
-        client = new RestClient();
-        token = getToken();
-    }
-
-//    @Test
-//    public void hostList() {
-//        Host service = client.proxy(Host.class);
-//        HostsList respose = service.hostsList(token, id);
-//        JerseyClient.LOG.error(respose.toString());
-//        Assert.assertNotNull(respose);
-//        JerseyClient.LOG.error(respose.toString());
-//    }
-
-    @Test
+    @Test(description = "<br> <br> <br> <b>Description </b>Venue host test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#category\">API doc</a>")
     public void hostItem() {
-        Host service = client.proxy(Host.class);
-        HostItem respose = service.hostItem(token, id);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
+        Host service = TestVariables.getClient().proxy(Host.class);
+        HostItem response = service.hostItem(TestVariables.getToken(), TestVariables.getVenueId());
+        JerseyClient.LOG.error(response.toString());
+        Assert.assertNotNull(response);
+        JerseyClient.LOG.error(response.toString());
     }
-
-
-
-    private String getToken() {
-        if (TestAuth.token != null) {
-            return TestAuth.token;
-        } else {
-            Auth service = client.proxy(Auth.class);
-            AuthLogin respose = service.authLogin("googlecomua@mail.ru", "qqqqqq");
-            Assert.assertNotNull(respose);
-            Assert.assertNotNull(respose.getId());
-            Assert.assertNotNull(respose.getToken());
-            return respose.getToken();
-        }
-    }
-
 
 }

@@ -1,14 +1,12 @@
 package org.bl.json.jersey.test;
 
 
-import org.bl.json.jersey.RestClient;
-import org.bl.json.jersey.model.auth.AuthLogin;
+import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.rest.service.Auth;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
@@ -18,47 +16,19 @@ import org.testng.annotations.Test;
 
 
 public class TestAuth {
-    public static Logger LOGGER = LoggerFactory.getLogger(TestAuth.class.getName());
+    private static Logger LOGGER = LoggerFactory.getLogger(TestAuth.class.getName());
 
-    static RestClient client;
-    static String token;
-
-    @BeforeClass
-    public  void init() {
-        client = new RestClient();
-        token = getToken();
-       // LOGGER.error(token);
-    }
-
-    @Test(description = "<br> <br> <br> <b>Description </b> <br> login test MF")
-
+    @Test(description = "<br> <br> <br> <b>Description </b> <br> login test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#auth\">API doc</a>")
     public void authLogin() {
-        token = getToken();
+        TestVariables.getToken();
     }
 
-    @Test(description = "<br> <br> <br> <b>Description </b>logout test MF")
+    @Test(description = "<br> <br> <br> <b>Description </b>logout test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#auth\">API doc</a>")
     public void authLogout() {
-        Auth service = client.proxy(Auth.class);
-        String respose = service.authLogout(token);
-        Assert.assertTrue(respose.toString().isEmpty());
-        JerseyClient.LOG.error(respose.toString());
+        Auth service = TestVariables.getClient().proxy(Auth.class);
+        String response = service.authLogout(TestVariables.getToken());
+        Assert.assertTrue(response.toString().isEmpty());
+        JerseyClient.LOG.error(response.toString());
     }
 
-//    @Test
-//    public void authLogout() {
-//        Auth service = client.proxy(Auth.class);
-//        AuthLogout respose = service.authLogout(token);
-//        Assert.assertTrue(!respose.toString().isEmpty());
-//        JerseyClient.LOG.error(respose.toString());
-//    }
-
-    private  String getToken() {
-        Auth service = client.proxy(Auth.class);
-        AuthLogin respose = service.authLogin("googlecomua@mail.ru", "qqqqqq");
-        Assert.assertNotNull(respose);
-        Assert.assertNotNull(respose.getId());
-        Assert.assertNotNull(respose.getToken());
-        LOGGER.error("response auth : " + respose.getToken());
-        return respose.getToken();
-    }
 }

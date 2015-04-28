@@ -1,6 +1,7 @@
 package org.bl.json.jersey.model.venue;
 
 import org.bl.json.jersey.model.components.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.util.Map;
 
@@ -25,6 +26,7 @@ public class VenueItem {
     private int offersBachelorCount;
     private Map<String, String[]> galleryImages;
     private Map<String, String> image;
+    @JsonIgnore
     private Schedule schedule;
     private int open24h;
     private Map<String, String> pin;

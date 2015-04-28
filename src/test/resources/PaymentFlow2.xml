@@ -1,0 +1,184 @@
+<suite name="TestPaymentFlow">
+
+    <test name="login">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestAuth">
+                <methods>
+                    <include name=".*authLogin"/>
+                    <exclude name=".*authLogout"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="userAgent">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestUser">
+                <methods>
+                    <include name=".*userAgent"/>
+                    <exclude name=".*userProfile"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="homepage">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestCategory"/>
+        </classes>
+    </test>
+
+    <test name="notification">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestNotification"/>
+        </classes>
+    </test>
+
+    <test name="userProfile">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestUser">
+                <methods>
+                    <include name=".*userProfile"/>
+                    <exclude name=".*userAgent"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="venueList">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
+                    <exclude name=".*venueItem"/>
+                    <exclude name=".*venueBackgroundUrl"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="venueItem">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueItem"/>
+                    <exclude name=".*venueList"/>
+                    <exclude name=".*venueBackgroundUrl"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="offerList">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestOffer">
+            <methods>
+                <include name=".*offerList"/>
+                <exclude name=".*offerItem"/>
+            </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="offerItem">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestOffer">
+            <methods>
+                <include name=".*offerItem"/>
+                <exclude name=".*offerList"/>
+            </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="offerItemCurrent">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestOffer">
+            <methods>
+                <include name=".*offerItem"/>
+                <exclude name=".*offerList"/>
+            </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="user">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestUser">
+                <methods>
+                    <include name=".*userProfile"/>
+                    <exclude name=".*userAgent"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="reservationPost">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestReservation">
+                <methods>
+                    <include name=".*reservationItemPost"/>
+                    <exclude name=".*reservationItem"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="reservationGet">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestReservation">
+                <methods>
+                    <include name=".*reservationItem"/>
+                    <exclude name=".*reservationItemPost"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="venueBackground">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueBackgroundUrl"/>
+                    <exclude name=".*venueItem"/>
+                    <exclude name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="userAgent2">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestUser">
+                <methods>
+                    <include name=".*userAgent"/>
+                    <exclude name=".*userProfile"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="offerListItem">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestOffer">
+                <methods>
+                    <include name=".*offerList"/>
+                    <exclude name=".*offerItem"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="logout">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestAuth" >
+                <methods>
+                    <include name=".*authLogout"/>
+                    <exclude name=".*authLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

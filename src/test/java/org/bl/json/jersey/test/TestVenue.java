@@ -1,15 +1,11 @@
 package org.bl.json.jersey.test;
 
-import org.bl.json.jersey.RestClient;
+import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
-import org.bl.json.jersey.model.auth.AuthLogin;
-
 import org.bl.json.jersey.model.venue.VenueItem;
 import org.bl.json.jersey.model.venue.VenueList;
-import org.bl.json.jersey.rest.service.Auth;
 import org.bl.json.jersey.rest.service.Venue;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.Map;
@@ -20,54 +16,30 @@ import java.util.Map;
 
 public class TestVenue {
 
-    static RestClient client;
-    static String token;
-    private int id = 40;//need to be changed
-    private int venueId = 40; // jfkjrfkj
-
-    @BeforeClass
-    public  void init() {
-        client = new RestClient();
-        token = getToken();
-    }
-
-    @Test
+    @Test(description = "<br> <br> <br> <b>Description </b>Selected venue  test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#venue\">API doc</a>")
     public void venueItem() {
-        Venue service = client.proxy(Venue.class);
-        VenueItem respose = service.venueItem(token, id);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
+        Venue service = TestVariables.getClient().proxy(Venue.class);
+        VenueItem response = service.venueItem(TestVariables.getToken(), TestVariables.getVenueId());
+        JerseyClient.LOG.error(response.toString());
+        Assert.assertNotNull(response);
+        JerseyClient.LOG.error(response.toString());
     }
 
-    @Test
+    @Test(description = "<br> <br> <br> <b>Description </b>Venues list  test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#venue\">API doc</a>")
     public void venueList() {
-        Venue service = client.proxy(Venue.class);
-        VenueList[] respose = service.venueList(token);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
+        Venue service = TestVariables.getClient().proxy(Venue.class);
+        VenueList[] response = service.venueList(TestVariables.getToken());
+        JerseyClient.LOG.error(response.toString());
+        Assert.assertNotNull(response);
+        JerseyClient.LOG.error(response.toString());
     }
 
-    @Test
+    @Test(description = "<br> <br> <br> <b>Description </b>Venue background test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#venue\">API doc</a>")
     public void venueBackgroundUrl() {
-        Venue service = client.proxy(Venue.class);
-        Map<String,String> respose = service.venueBackgroundUrl(token, id);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
-    }
-
-    private String getToken() {
-        if (TestAuth.token != null) {
-            return TestAuth.token;
-        } else {
-            Auth service = client.proxy(Auth.class);
-            AuthLogin respose = service.authLogin("googlecomua@mail.ru", "qqqqqq");
-            Assert.assertNotNull(respose);
-            Assert.assertNotNull(respose.getId());
-            Assert.assertNotNull(respose.getToken());
-            return respose.getToken();
-        }
+        Venue service = TestVariables.getClient().proxy(Venue.class);
+        Map<String,String> response = service.venueBackgroundUrl(TestVariables.getToken(), TestVariables.getVenueId());
+        JerseyClient.LOG.error(response.toString());
+        Assert.assertNotNull(response);
+        JerseyClient.LOG.error(response.toString());
     }
 }

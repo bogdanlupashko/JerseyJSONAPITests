@@ -27,7 +27,7 @@ public class Offerss {
     private String status;
     private String bachelor;
     private String dateTime;
-    @JsonIgnore
+
     private int periodId;
     private int archived;
 

@@ -22,18 +22,16 @@ public interface Offer {
     @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "offer/list")
     @Produces(MediaType.APPLICATION_JSON)
     Offerss[] offerList(@QueryParam("token") String token,
-                         @QueryParam("id") int id);
+                        @QueryParam("id") int id,
+                        @QueryParam("dateTime") String dateTime);
 
 
     @GET
     @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "offer/item")
     @Produces(MediaType.APPLICATION_JSON)
     Offerss offerItem(@QueryParam("token") String token,
-                        @QueryParam("id") int id);
-
-
-
-
+                      @QueryParam("id") int id,
+                      @QueryParam("periodId") int periodId);
 
 
 }

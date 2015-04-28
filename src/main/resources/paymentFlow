@@ -1,20 +1,30 @@
 Auth
     login
+User
+    agent
 Category
     homepage
 Notification
     count
+User
+    profile
 Venue
     list
     item
-    background
-User
-    profile
-    agent
 Offer
     list
+    item (on Venue page)
     item
+User
+    profile
 Reservation
-    item
+    item (post)
+    item (get)
+Venue
+    background
+User
+    agent
+Offer
+    list/20
 
 

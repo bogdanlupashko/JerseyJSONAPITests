@@ -1,16 +1,13 @@
 package org.bl.json.jersey.test;
 
-import org.bl.json.jersey.RestClient;
+import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
-import org.bl.json.jersey.model.auth.AuthLogin;
 import org.bl.json.jersey.model.category.CategoryHomepage;
 import org.bl.json.jersey.model.category.CategoryList;
-import org.bl.json.jersey.rest.service.Auth;
 import org.bl.json.jersey.rest.service.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
@@ -20,51 +17,21 @@ import org.testng.annotations.Test;
 public class TestCategory {
     public static Logger LOGGER = LoggerFactory.getLogger(TestCategory.class.getName());
 
-
-    private RestClient client;
-    private String token;
-
-    @BeforeClass
-    public void init() {
-        client = new RestClient();
-        //token = TestAuth.token;
-        token = getToken();
-        LOGGER.error(token);
-    }
-
-    @Test(description = "<br> <br> <br> <b>Description </b> home page loading when user \n Mf")
+    @Test(description = "<br> <br> <br> <b>Description </b>home page test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#category\">API doc</a>")
     public void categoryHomepage() {
-        Category service = client.proxy(Category.class);
-        CategoryHomepage[] respose = service.categoryHomepage(token);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
+        Category service = TestVariables.getClient().proxy(Category.class);
+        CategoryHomepage[] response = service.categoryHomepage(TestVariables.getToken());
+        JerseyClient.LOG.error(response.toString());
+        Assert.assertNotNull(response);
+        JerseyClient.LOG.error(response.toString());
     }
 
-    @Test(description = "<br> <br> <br> <b>Description </b> home page loading when user \n Mf")
+    @Test(description = "<br> <br> <br> <b>Description </b>Categories list test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#category\">API doc</a>")
     public void categoryList() {
-        Category service = client.proxy(Category.class);
-        CategoryList[] respose = service.categoryList(token);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
+        Category service = TestVariables.getClient().proxy(Category.class);
+        CategoryList[] response = service.categoryList(TestVariables.getToken());
+        JerseyClient.LOG.error(response.toString());
+        Assert.assertNotNull(response);
+        JerseyClient.LOG.error(response.toString());
     }
-
-
-    private String getToken() {
-        LOGGER.error("getToken: " + TestAuth.token);
-        if (TestAuth.token != null) {
-            LOGGER.error("if statement");
-            return TestAuth.token;
-        } else {
-            LOGGER.error("else statement");
-            Auth service = client.proxy(Auth.class);
-            AuthLogin respose = service.authLogin("googlecomua@mail.ru", "qqqqqq");
-            Assert.assertNotNull(respose);
-            Assert.assertNotNull(respose.getId());
-            Assert.assertNotNull(respose.getToken());
-            return respose.getToken();
-        }
-    }
-
 }

@@ -1,13 +1,14 @@
 package org.bl.json.jersey.test;
 
-import org.bl.json.jersey.RestClient;
+import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
-import org.bl.json.jersey.model.auth.AuthLogin;
+import org.bl.json.jersey.model.components.Offerss;
 import org.bl.json.jersey.model.reservation.ReservationItem;
-import org.bl.json.jersey.rest.service.Auth;
+import org.bl.json.jersey.model.reservation.ReservationItemNe;
 import org.bl.json.jersey.rest.service.Reservation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /**
@@ -15,41 +16,44 @@ import org.testng.annotations.Test;
  */
 
 public class TestReservation {
+    private static Logger LOGGER = LoggerFactory.getLogger(TestReservation.class.getName());
+    static ReservationItemNe response;
 
-    static RestClient client;
-    static String token;
-    private int id = 612;//need to be changed
-
-    @BeforeClass
-    public  void init() {
-        client = new RestClient();
-        token = getToken();
-    }
-
-
-
-    @Test
+    @Test(description = "<br> <br> <br> <b>Description </b>Selected reservation test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#reservation\">API doc</a>")
     public void reservationItem() {
-        Reservation service = client.proxy(Reservation.class);
-        ReservationItem respose = service.reservationItem(token, id);
-        JerseyClient.LOG.error(respose.toString());
-        Assert.assertNotNull(respose);
-        JerseyClient.LOG.error(respose.toString());
+        Reservation service = TestVariables.getClient().proxy(Reservation.class);
+        ReservationItem reservationItem = service.reservationItem(TestVariables.getToken(), response.getReservationId());
+        JerseyClient.LOG.error(reservationItem.toString());
+        Assert.assertNotNull(reservationItem);
+        JerseyClient.LOG.error(reservationItem.toString());
     }
 
+    @Test(description = "<br> <br> <br> <b>Description </b>Request reservation test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#reservation\">API doc</a>")
+    public void reservationItemPost() {
+        Reservation service = TestVariables.getClient().proxy(Reservation.class);
+        response = service.reservationItemPost(TestVariables.getToken(),
+                TestUser.userProfile.getPhone(),
+                TestVariables.getMalesCount(),
+                TestUser.userProfile.getFirstName(),
+                TestVariables.getReservedDateTime(),
+                TestVariables.getOfferId(),
+                TestVariables.getFemalesCount(),
+                TestUser.userProfile.getEmail(),
+                getPeriod(TestOffer.offers),
+                TestUser.userProfile.getLastName());
 
+        JerseyClient.LOG.error(response.toString());
+        LOGGER.error(response.toString());
+        Assert.assertNotNull(response);
+        JerseyClient.LOG.error(response.toString());
+    }
 
-    private String getToken() {
-        if (TestAuth.token != null) {
-            return TestAuth.token;
-        } else {
-            Auth service = client.proxy(Auth.class);
-            AuthLogin respose = service.authLogin("googlecomua@mail.ru", "qqqqqq");
-            Assert.assertNotNull(respose);
-            Assert.assertNotNull(respose.getId());
-            Assert.assertNotNull(respose.getToken());
-            return respose.getToken();
+    private int getPeriod(Offerss[] offers) {
+        for (int i = 0; i < offers.length; i++) {
+            if (offers[i].getId() == TestVariables.getOfferId()) {
+                return offers[i].getPeriodId();
+            }
         }
+        return 0;
     }
-
 }
