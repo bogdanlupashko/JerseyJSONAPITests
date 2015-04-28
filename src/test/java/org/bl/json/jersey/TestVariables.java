@@ -12,6 +12,13 @@ import org.testng.Assert;
  */
 
 public class TestVariables {
+    public static final String MAIN_URL =  "http://vegaster.webprv.com/";
+    private static final String API_PATH =  "api/";
+    private static final String VERSION_API_PATH =  "v1.4/";
+
+    public static final String API_PREAMBLE = API_PATH + VERSION_API_PATH;
+
+
     private static Logger LOGGER = LoggerFactory.getLogger(TestAuth.class.getName());
     private static String email = "aa@aa.aa";
     private static String password = "qqqqqq";

@@ -19,13 +19,13 @@ import javax.ws.rs.core.MediaType;
 public interface Reservation {
 
     @GET
-    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "reservation/item")
+    @Path(JerseyClient.API_PREAMBLE + "reservation/item")
     @Produces(MediaType.APPLICATION_JSON)
     ReservationItem reservationItem(@QueryParam("token") String token,
                                     @QueryParam("id") int id);
 
     @POST
-    @Path(JerseyClient.API_PATH + JerseyClient.VERSION_API_PATH + "reservation/item")
+    @Path(JerseyClient.API_PREAMBLE + "reservation/item")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     ReservationItemNe reservationItemPost(@QueryParam("token") String token,
