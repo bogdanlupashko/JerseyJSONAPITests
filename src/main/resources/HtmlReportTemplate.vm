@@ -8,16 +8,14 @@ This page contains info about API tests
 <br>
 
 <script type="text/javascript">
-    function highlightTableRows(tableId, hoverClass)
-    {
+    function highlightTableRows(tableId, hoverClass) {
         var table = document.getElementById(tableId);
 
-        if (hoverClass){
+        if (hoverClass) {
 
-            var hoverClassReg = new RegExp("\\b"+hoverClass+"\\b");
+            var hoverClassReg = new RegExp("\\b" + hoverClass + "\\b");
 
-            table.onmouseover = table.onmouseout = function(e)
-            {
+            table.onmouseover = table.onmouseout = function (e) {
                 if (!e) e = window.event;
                 var elem = e.target || e.srcElement;
                 while (!elem.tagName || !elem.tagName.match(/td|th|table/i))
@@ -26,7 +24,7 @@ This page contains info about API tests
                 if (elem.parentNode.tagName == 'TR' && elem.parentNode.parentNode.tagName == 'TBODY') {
                     var row = elem.parentNode;
                     if (!row.getAttribute('clickedRow'))
-                        row.className = e.type=="mouseover"?row.className+" "+hoverClass:row.className.replace(hoverClassReg," ");
+                        row.className = e.type == "mouseover" ? row.className + " " + hoverClass : row.className.replace(hoverClassReg, " ");
                 }
             };
         }
@@ -58,26 +56,35 @@ This page contains info about API tests
 
     #foreach( $response in $responses)
         <tr>
-
-            <td>$response.description</td>
-            <td><a href="$response.docLink">$response.docLink</a></td>
-            <td>
-                <div id=$velocityCount></div>
-                <script>
-                    $(function() {
-                        $('#'+$velocityCount).jsonView(JSON.stringify($response.responseJson));
-                    });
-                </script>
-
-            </td>
+            #if ($response.status)
+                <td>$response.description</td>
+                <td><a href="$response.docLink">$response.docLink</a></td>
+                <td>
+                    <div id=$velocityCount></div>
+                    <script>
+                        $(function () {
+                            $('#' +$velocityCount).jsonView(JSON.stringify($response.responseJson));
+                        });
+                    </script>
+                </td>
+            #else
+                <td>$response.description</td>
+                <td><a href="$response.docLink">$response.docLink</a></td>
+                <td>$response.responseJson</td>
+            #end
         </tr>
     #end
 
 </table>
 
 <script>
-    $(function() {
-        $('#responseToJson').jsonView(JSON.stringify({id :"145", firstName :"Chad", lastName :"Solis", photo :"http://vegaster.webprv.com/uploads/cache/126x126/14285156872049_0d70577f.jpg"}));
+    $(function () {
+        $('#responseToJson').jsonView(JSON.stringify({
+            id: "145",
+            firstName: "Chad",
+            lastName: "Solis",
+            photo: "http://vegaster.webprv.com/uploads/cache/126x126/14285156872049_0d70577f.jpg"
+        }));
     });
 </script>
 <script type="text/javascript">

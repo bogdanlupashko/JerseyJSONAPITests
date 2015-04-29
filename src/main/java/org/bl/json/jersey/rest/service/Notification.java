@@ -17,6 +17,5 @@ public interface Notification {
     @GET
     @Path(JerseyClient.API_PREAMBLE + "notification/count")
     @Produces(MediaType.APPLICATION_JSON)
-    NotificationCount notificationCount(@QueryParam("token") String token);
-
+    NotificationCount notificationCount(@QueryParam("token") String token) throws Exception;
 }

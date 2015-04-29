@@ -23,8 +23,7 @@ public interface User {
     @GET
     @Path(JerseyClient.API_PREAMBLE +"user/profile")
     @Produces(MediaType.APPLICATION_JSON)
-    UserProfile userProfile(@QueryParam("token") String token);
-
+    UserProfile userProfile(@QueryParam("token") String token) throws Exception;
 
     @PUT
     @Path(JerseyClient.API_PREAMBLE +"user/profile")
@@ -38,12 +37,10 @@ public interface User {
                         @FormParam("firstName") String firstName,
                         @FormParam("lastName") String lastName,
                         @FormParam("leaveDate") String leaveDate,
-                        @FormParam("flightTime") String flightTime);
-
+                        @FormParam("flightTime") String flightTime) throws Exception;
 
     @GET
     @Path(JerseyClient.API_PREAMBLE +"user/agent")
     @Produces(MediaType.APPLICATION_JSON)
-    UserAgent userAgent(@QueryParam("token") String token);
-
+    UserAgent userAgent(@QueryParam("token") String token) throws Exception;
 }

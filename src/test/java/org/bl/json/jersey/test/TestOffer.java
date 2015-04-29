@@ -18,29 +18,42 @@ public class TestOffer {
 
     static OfferWithArch[] offers;
 
-    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + offerListDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + offerListDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void offerList() {
-        Offer service = TestVariables.getClient().proxy(Offer.class);
-        offers = service.offerList(TestVariables.getToken(), TestVariables.getVenueId(), TestVariables.getReservedDateTime());
-        TestVariables.reportFiller(docLink, offerListDescription, offers);
-        JerseyClient.LOG.error(offers.toString());
-        Assert.assertNotNull(offers);
-        JerseyClient.LOG.error(offers.toString());
+        try {
+            Offer service = TestVariables.getClient().proxy(Offer.class);
+            offers = service.offerList(TestVariables.getToken(), TestVariables.getVenueId(), TestVariables.getReservedDateTime());
+            TestVariables.reportFiller(docLink, offerListDescription, offers);
+            JerseyClient.LOG.error(offers.toString());
+            Assert.assertNotNull(offers);
+            JerseyClient.LOG.error(offers.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, offerListDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
+
     }
 
-    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + offerItemDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + offerItemDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void offerItem() {
-        Offer service = TestVariables.getClient().proxy(Offer.class);
-        OfferWithArch offerItem = service.offerItem(TestVariables.getToken(), TestVariables.getOfferId(), getPeriod(offers));
-        TestVariables.reportFiller(docLink, offerItemDescription, offerItem);
-        JerseyClient.LOG.error(offerItem.toString());
-        Assert.assertNotNull(offerItem);
-        JerseyClient.LOG.error(offerItem.toString());
+        try {
+            Offer service = TestVariables.getClient().proxy(Offer.class);
+            OfferWithArch offerItem = service.offerItem(TestVariables.getToken(), TestVariables.getOfferId(), getPeriod(offers));
+            TestVariables.reportFiller(docLink, offerItemDescription, offerItem);
+            JerseyClient.LOG.error(offerItem.toString());
+            Assert.assertNotNull(offerItem);
+            JerseyClient.LOG.error(offerItem.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, offerItemDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
     }
 
-    private int getPeriod(OfferWithArch[] offers){
+    private int getPeriod(OfferWithArch[] offers) {
         for (int i = 0; i < offers.length; i++) {
-            if (offers[i].getId() == TestVariables.getOfferId()){
+            if (offers[i].getId() == TestVariables.getOfferId()) {
                 return offers[i].getPeriodId();
             }
         }

@@ -22,17 +22,17 @@ public interface Venue {
     @Path(JerseyClient.API_PREAMBLE +"venue/item")
     @Produces(MediaType.APPLICATION_JSON)
     VenueItem venueItem(@QueryParam("token") String token,
-                        @QueryParam("id") int id);
+                        @QueryParam("id") int id) throws Exception;
 
     @GET
     @Path(JerseyClient.API_PREAMBLE + "venue/list")
     @Produces(MediaType.APPLICATION_JSON)
-    VenueList[] venueList(@QueryParam("token") String token);
+    VenueList[] venueList(@QueryParam("token") String token) throws Exception;
 
     @GET
     @Path(JerseyClient.API_PREAMBLE + "venue/backgroundUrl")
     @Produces(MediaType.APPLICATION_JSON)
     Map<String,String> venueBackgroundUrl(@QueryParam("token") String token,
-                                    @QueryParam("venueId") int venueId);
+                                    @QueryParam("venueId") int venueId) throws Exception;
 
 }

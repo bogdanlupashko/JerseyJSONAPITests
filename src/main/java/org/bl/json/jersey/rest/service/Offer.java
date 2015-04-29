@@ -19,7 +19,7 @@ public interface Offer {
     @Produces(MediaType.APPLICATION_JSON)
     OfferWithArch[] offerList(@QueryParam("token") String token,
                         @QueryParam("id") int id,
-                        @QueryParam("dateTime") String dateTime);
+                        @QueryParam("dateTime") String dateTime) throws Exception;
 
 
     @GET
@@ -27,5 +27,5 @@ public interface Offer {
     @Produces(MediaType.APPLICATION_JSON)
     OfferWithArch offerItem(@QueryParam("token") String token,
                       @QueryParam("id") int id,
-                      @QueryParam("periodId") int periodId);
+                      @QueryParam("periodId") int periodId) throws Exception;
 }

@@ -17,21 +17,33 @@ public class TestUser {
     private static final String userProfileDescription = "User profile test ";
     private static final String userAgentDescription = "Support agent test ";
 
-    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + userProfileDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + userProfileDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void userProfile() {
-        User service = TestVariables.getClient().proxy(User.class);
-        userProfile = service.userProfile(TestVariables.getToken());
-        TestVariables.reportFiller(docLink, userProfileDescription, userProfile);
-        JerseyClient.LOG.error(userProfile.toString());
-        Assert.assertNotNull(userProfile);
-        JerseyClient.LOG.error(userProfile.toString());
+        try {
+            User service = TestVariables.getClient().proxy(User.class);
+            userProfile = service.userProfile(TestVariables.getToken());
+            TestVariables.reportFiller(docLink, userProfileDescription, userProfile);
+            JerseyClient.LOG.error(userProfile.toString());
+            Assert.assertNotNull(userProfile);
+            JerseyClient.LOG.error(userProfile.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, userProfileDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
     }
 
-    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + userAgentDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + userAgentDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void userAgent() {
-        User service = TestVariables.getClient().proxy(User.class);
-        UserAgent response = service.userAgent(TestVariables.getToken());
-        TestVariables.reportFiller(docLink, userAgentDescription, response);
-        Assert.assertNotNull(response);
+        try {
+            User service = TestVariables.getClient().proxy(User.class);
+            UserAgent response = service.userAgent(TestVariables.getToken());
+            TestVariables.reportFiller(docLink, userAgentDescription, response);
+            Assert.assertNotNull(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, userAgentDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
     }
 }

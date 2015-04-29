@@ -21,19 +21,27 @@ public class TestAuth {
     private static final String authLogoutDescription = "logout test";
 
 
-    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authLoginDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authLoginDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void authLogin() {
         TestVariables.getToken();
 
     }
 
-    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authLogoutDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authLogoutDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void authLogout() {
-        Auth service = TestVariables.getClient().proxy(Auth.class);
-        String response = service.authLogout(TestVariables.getToken());
-        TestVariables.reportFiller(docLink, authLogoutDescription, response);
-        Assert.assertTrue(response.toString().isEmpty());
-        JerseyClient.LOG.error(response.toString());
-        new ReportGenerator().createHtmlReport(TestVariables.requestsToReport);
+        try {
+            Auth service = TestVariables.getClient().proxy(Auth.class);
+            String response = service.authLogout(TestVariables.getToken());
+            TestVariables.reportFiller(docLink, authLogoutDescription, response);
+            Assert.assertTrue(response.toString().isEmpty());
+            JerseyClient.LOG.error(response.toString());
+        } catch (Exception e){
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, authLogoutDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
+        finally {
+            new ReportGenerator().createHtmlReport(TestVariables.requestsToReport);
+        }
     }
 }

@@ -21,13 +21,12 @@ public interface Auth {
     @Path(JerseyClient.API_PREAMBLE + "auth/login")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    AuthLogin authLogin(@FormParam("email") String email, @FormParam("password") String password);
-
+    AuthLogin authLogin(@FormParam("email") String email, @FormParam("password") String password)  throws Exception;
 
     @POST
-    @Path(JerseyClient.API_PREAMBLE +"auth/logout")
+    @Path(JerseyClient.API_PREAMBLE + "auth/logout")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    String authLogout(@FormParam("token") String token);
+    String authLogout(@FormParam("token") String token)  throws Exception;
 
 }

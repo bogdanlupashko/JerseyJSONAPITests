@@ -17,11 +17,11 @@ public interface Host {
     @GET
     @Path(JerseyClient.API_PREAMBLE + "host/list")
     @Produces(MediaType.APPLICATION_JSON)
-    HostItem[] hostsList(@QueryParam("token") String token, @QueryParam("id") int id);
+    HostItem[] hostsList(@QueryParam("token") String token, @QueryParam("id") int id)  throws Exception;
 
     @GET
     @Path(JerseyClient.API_PREAMBLE + "host/item")
     @Produces(MediaType.APPLICATION_JSON)
-    HostItem hostItem(@QueryParam("token") String token, @QueryParam("id") int id);
+    HostItem hostItem(@QueryParam("token") String token, @QueryParam("id") int id) throws Exception;
 
 }

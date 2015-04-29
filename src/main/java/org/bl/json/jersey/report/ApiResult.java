@@ -8,6 +8,7 @@ public class ApiResult {
     private String docLink;
     private String description;
     private String responseJson;
+    private boolean status;
 
     public String getDocLink() {
         return docLink;
@@ -33,4 +34,11 @@ public class ApiResult {
         this.responseJson = responseJson;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 }

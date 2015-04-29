@@ -70,23 +70,39 @@ public class TestVariables {
         if (token != null) {
             return TestVariables.token;
         } else {
-            Auth service = getClient().proxy(Auth.class);
-            AuthLogin response = service.authLogin(email, password);
-            TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLoginDescription, response);
-            Assert.assertNotNull(response);
-            Assert.assertNotNull(response.getId());
-            Assert.assertNotNull(response.getToken());
-            LOGGER.error("response auth : " + response.getToken());
-            token = response.getToken();
+            try {
+                Auth service = getClient().proxy(Auth.class);
+                AuthLogin response = service.authLogin(email, password);
+                TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLoginDescription, response);
+                Assert.assertNotNull(response);
+                Assert.assertNotNull(response.getId());
+                Assert.assertNotNull(response.getToken());
+                LOGGER.error("response auth : " + response.getToken());
+                token = response.getToken();
+            } catch (Exception e) {
+                e.printStackTrace();
+                TestVariables.reportFillerStackTrace(TestAuth.docLink, TestAuth.authLoginDescription, e.getLocalizedMessage());
+                Assert.fail();
+            }
         }
         return token;
     }
 
-    public static void reportFiller(String docLink, String description, Object responseJson){
+    public static void reportFiller(String docLink, String description, Object responseJson) throws Exception {
         ApiResult apiResult = new ApiResult();
         apiResult.setDocLink(docLink);
         apiResult.setDescription(description);
         apiResult.setResponseJson(new Gson().toJson(responseJson));
+        apiResult.setStatus(true);
+        requestsToReport.add(apiResult);
+    }
+
+    public static void reportFillerStackTrace(String docLink, String description, String stackTrace) {
+        ApiResult apiResult = new ApiResult();
+        apiResult.setDocLink(docLink);
+        apiResult.setDescription(description);
+        apiResult.setResponseJson(stackTrace);
+        apiResult.setStatus(false);
         requestsToReport.add(apiResult);
     }
 
@@ -95,7 +111,7 @@ public class TestVariables {
         if (TestVariables.client != null) {
             return client;
         } else {
-           return new RestClient();
+            return new RestClient();
         }
     }
 

@@ -21,7 +21,7 @@ public interface Reservation {
     @Path(JerseyClient.API_PREAMBLE + "reservation/item")
     @Produces(MediaType.APPLICATION_JSON)
     ReservationItem reservationItem(@QueryParam("token") String token,
-                                    @QueryParam("id") int id);
+                                    @QueryParam("id") int id) throws Exception;
 
     @POST
     @Path(JerseyClient.API_PREAMBLE + "reservation/item")
@@ -36,5 +36,5 @@ public interface Reservation {
                                         @FormParam("femalesCount") int femalesCount,
                                         @FormParam("email") String email,
                                         @FormParam("periodId") int periodId,
-                                        @FormParam("lastName") String lastName);
+                                        @FormParam("lastName") String lastName) throws Exception;
 }
