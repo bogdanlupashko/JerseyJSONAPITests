@@ -4,7 +4,7 @@ package org.bl.json.jersey.model.user;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
- * Created by blupashko on 03.04.2015.
+ * @author Bogdan Lupashko
  */
 
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -22,7 +22,7 @@ public class UserProfile {
     private String phone; //
     private String photo;
     private String facebookId;
-    private String twiiterId;
+    private String twitterId;
     private String googleId;
     private Double rating;
     private String recover;
@@ -37,43 +37,35 @@ public class UserProfile {
     private String photoUrl;
 
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getAffiliateId() {
+    public int getAffiliateId() {
         return affiliateId;
     }
 
-    public void setAffiliateId(Integer affiliateId) {
+    public void setAffiliateId(int affiliateId) {
         this.affiliateId = affiliateId;
     }
 
-    public Integer getSupportId() {
+    public int getSupportId() {
         return supportId;
     }
 
-    public void setSupportId(Integer supportId) {
+    public void setSupportId(int supportId) {
         this.supportId = supportId;
     }
 
-    public Integer getActive() {
+    public int getActive() {
         return active;
     }
 
-    public void setActive(Integer active) {
+    public void setActive(int active) {
         this.active = active;
     }
 
@@ -125,6 +117,14 @@ public class UserProfile {
         this.note = note;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getPhoto() {
         return photo;
     }
@@ -141,12 +141,12 @@ public class UserProfile {
         this.facebookId = facebookId;
     }
 
-    public String getTwiiterId() {
-        return twiiterId;
+    public String getTwitterId() {
+        return twitterId;
     }
 
-    public void setTwiiterId(String twiiterId) {
-        this.twiiterId = twiiterId;
+    public void setTwitterId(String twitterId) {
+        this.twitterId = twitterId;
     }
 
     public String getGoogleId() {

@@ -17,18 +17,23 @@ import org.testng.annotations.Test;
 
 public class TestReservation {
     private static Logger LOGGER = LoggerFactory.getLogger(TestReservation.class.getName());
+    private static final String reservationItemDescription =  "Selected reservation test";
+    private static final String reservationItemPostDescription = "Request reservation test";
+    private static final String docLink = "http://vegaster.webprv.com/api/doc#reservation";
+
     static ReservationItemGetId response;
 
-    @Test(description = "<br> <br> <br> <b>Description </b>Selected reservation test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#reservation\">API doc</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + reservationItemDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void reservationItem() {
         Reservation service = TestVariables.getClient().proxy(Reservation.class);
         ReservationItem reservationItem = service.reservationItem(TestVariables.getToken(), response.getReservationId());
+        TestVariables.reportFiller(docLink, reservationItemDescription, response);
         JerseyClient.LOG.error(reservationItem.toString());
         Assert.assertNotNull(reservationItem);
         JerseyClient.LOG.error(reservationItem.toString());
     }
 
-    @Test(description = "<br> <br> <br> <b>Description </b>Request reservation test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#reservation\">API doc</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + reservationItemPostDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void reservationItemPost() {
         Reservation service = TestVariables.getClient().proxy(Reservation.class);
         response = service.reservationItemPost(TestVariables.getToken(),
@@ -41,6 +46,7 @@ public class TestReservation {
                 TestUser.userProfile.getEmail(),
                 getPeriod(TestOffer.offers),
                 TestUser.userProfile.getLastName());
+        TestVariables.reportFiller(docLink, reservationItemPostDescription, response);
 
         JerseyClient.LOG.error(response.toString());
         LOGGER.error(response.toString());

@@ -9,24 +9,29 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * Created by blupashko on 03.04.2015.
+ * @author Bogdan Lupashko
  */
 public class TestUser {
     public static UserProfile userProfile;
+    private static final String docLink = "http://vegaster.webprv.com/api/doc#user";
+    private static final String userProfileDescription = "User profile test ";
+    private static final String userAgentDescription = "Support agent test ";
 
-    @Test(description = "<br> <br> <br> <b>Description </b>User profile  test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#user\">API doc</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + userProfileDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void userProfile() {
         User service = TestVariables.getClient().proxy(User.class);
         userProfile = service.userProfile(TestVariables.getToken());
+        TestVariables.reportFiller(docLink, userProfileDescription, userProfile);
         JerseyClient.LOG.error(userProfile.toString());
         Assert.assertNotNull(userProfile);
         JerseyClient.LOG.error(userProfile.toString());
     }
 
-    @Test(description = "<br> <br> <br> <b>Description </b>Support agent  test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#user\">API doc</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + userAgentDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void userAgent() {
         User service = TestVariables.getClient().proxy(User.class);
         UserAgent response = service.userAgent(TestVariables.getToken());
+        TestVariables.reportFiller(docLink, userAgentDescription, response);
         Assert.assertNotNull(response);
     }
 }

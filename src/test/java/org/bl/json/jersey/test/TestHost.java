@@ -12,11 +12,15 @@ import org.testng.annotations.Test;
  */
 
 public class TestHost {
+    private static final String hostItemDescription = "Venue host test";
+    private static final String docLink = "http://vegaster.webprv.com/api/doc#host";
 
-    @Test(description = "<br> <br> <br> <b>Description </b>Venue host test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#category\">API doc</a>")
+
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + hostItemDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void hostItem() {
         Host service = TestVariables.getClient().proxy(Host.class);
         HostItem response = service.hostItem(TestVariables.getToken(), TestVariables.getVenueId());
+        TestVariables.reportFiller(docLink, hostItemDescription, response);
         JerseyClient.LOG.error(response.toString());
         Assert.assertNotNull(response);
         JerseyClient.LOG.error(response.toString());

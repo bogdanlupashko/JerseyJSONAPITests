@@ -1,7 +1,7 @@
 package org.bl.json.jersey.model.reminder;
 
 /**
- * Created by blupashko on 23.04.2015.
+ * @author Bogdan Lupashko
  */
 public class ReminderForVenue extends ReminderSimple {
     private int id;

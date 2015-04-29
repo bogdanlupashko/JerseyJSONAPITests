@@ -1,7 +1,7 @@
 package org.bl.json.jersey.model.user;
 
 /**
- * Created by blupashko on 03.04.2015.
+ * @author Bogdan Lupashko
  */
 
 public class UserAgent {
@@ -9,6 +9,11 @@ public class UserAgent {
     private String firstName;
     private String lastName;
     private String photo;
+
+    @Override
+    public String toString() {
+        return "{id :\"" + id + "\", firstName :\"" + firstName + "\", lastName :\"" + lastName + "\", photo :\"" + photo + "\"}";
+    }
 
     public Integer getId() {
         return id;

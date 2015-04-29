@@ -5,7 +5,7 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
 /**
- * Created by blupashko on 03.04.2015.
+ * @author Bogdan Lupashko
  */
 public class RestClient {
     private ResteasyWebTarget target;
@@ -22,6 +22,7 @@ public class RestClient {
 
         javax.ws.rs.client.Client client = new ResteasyClientBuilder().build();
         target = (ResteasyWebTarget) client.target(endpoint);
+
     }
 
     public <T> T proxy(java.lang.Class<T> clazz) {

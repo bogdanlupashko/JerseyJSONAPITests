@@ -1,7 +1,7 @@
 package org.bl.json.jersey.model.reminder;
 
 /**
- * Created by blupashko on 17.04.2015.
+ * @author Bogdan Lupashko
  */
 public class ReminderItemUpdate {
     private int id;

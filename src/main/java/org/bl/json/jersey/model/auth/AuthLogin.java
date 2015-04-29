@@ -1,5 +1,8 @@
 package org.bl.json.jersey.model.auth;
 
+/**
+ * @author Bogdan Lupashko
+ */
 
 public class AuthLogin {
 
@@ -21,4 +24,5 @@ public class AuthLogin {
     public void setId(Integer id) {
         this.id = id;
     }
+
 }

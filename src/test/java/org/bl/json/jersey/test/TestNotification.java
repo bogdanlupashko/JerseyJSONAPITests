@@ -12,11 +12,14 @@ import org.testng.annotations.Test;
  */
 
 public class TestNotification {
+    private static final String notificationCountDescription = "Notification test";
+    private static final String docLink = "http://vegaster.webprv.com/api/doc#notification";
 
-    @Test(description = "<br> <br> <br> <b>Description </b>Notification test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#notification\">API doc</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + notificationCountDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void notificationCount() {
         Notification service = TestVariables.getClient().proxy(Notification.class);
         NotificationCount response = service.notificationCount(TestVariables.getToken());
+        TestVariables.reportFiller(docLink, notificationCountDescription, response);
         JerseyClient.LOG.error(response.toString());
         Assert.assertNotNull(response);
         JerseyClient.LOG.error(response.toString());

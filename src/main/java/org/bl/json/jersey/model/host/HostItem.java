@@ -1,7 +1,7 @@
 package org.bl.json.jersey.model.host;
 
 /**
- * Created by blupashko on 17.04.2015.
+ * @author Bogdan Lupashko
  */
 public class HostItem extends HostSimple {
     private int id;

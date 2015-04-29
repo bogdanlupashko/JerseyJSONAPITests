@@ -1,9 +1,7 @@
 package org.bl.json.jersey.model.offer;
 
-import org.codehaus.jackson.annotate.JsonIgnoreType;
-
 /**
- * Created by blupashko on 17.04.2015.
+ * @author Bogdan Lupashko
  */
 public class OfferItem {
 
@@ -107,8 +105,8 @@ public class OfferItem {
 
     public void setPaymentFull(Object paymentFull) {
         if (paymentFull instanceof Boolean) {
-            this.paymentFull = (Boolean)paymentFull;
-        } else if (paymentFull instanceof Integer){
+            this.paymentFull = (Boolean) paymentFull;
+        } else if (paymentFull instanceof Integer) {
             this.paymentFull = ((Integer) paymentFull).equals(1);
         }
     }
@@ -119,8 +117,8 @@ public class OfferItem {
 
     public void setPaymentDeposit(Object paymentDeposit) {
         if (paymentDeposit instanceof Boolean) {
-            this.paymentDeposit = (Boolean)paymentDeposit;
-        } else if (paymentDeposit instanceof Integer){
+            this.paymentDeposit = (Boolean) paymentDeposit;
+        } else if (paymentDeposit instanceof Integer) {
             this.paymentDeposit = ((Integer) paymentDeposit).equals(1);
         }
     }

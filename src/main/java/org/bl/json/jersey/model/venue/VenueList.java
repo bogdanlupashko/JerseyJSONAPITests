@@ -3,7 +3,7 @@ package org.bl.json.jersey.model.venue;
 import java.util.Map;
 
 /**
- * Created by blupashko on 23.04.2015.
+ * @author Bogdan Lupashko
  */
 public class VenueList extends VenueForCategory {
 
@@ -12,7 +12,7 @@ public class VenueList extends VenueForCategory {
     private float lng;
     private float rating;
     private int minOffer;
-    private int open24h;
+    private boolean open24h;
     private String status;
     private Map<String, String> background;
     private Map<String, String> pin;
@@ -57,12 +57,16 @@ public class VenueList extends VenueForCategory {
         this.minOffer = minOffer;
     }
 
-    public int getOpen24h() {
+    public boolean getOpen24h() {
         return open24h;
     }
 
-    public void setOpen24h(int open24h) {
-        this.open24h = open24h;
+    public void setOpen24h(Object open24h) {
+        if (open24h instanceof Boolean) {
+            this.open24h = (Boolean)open24h;
+        } else if (open24h instanceof Integer){
+            this.open24h = ((Integer) open24h).equals(1);
+        }
     }
 
     public String getStatus() {

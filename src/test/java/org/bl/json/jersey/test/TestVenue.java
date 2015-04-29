@@ -15,29 +15,37 @@ import java.util.Map;
  */
 
 public class TestVenue {
+    private static final String docLink = "http://vegaster.webprv.com/api/doc#venue";
+    private static final String venueItemDescription = "Selected venue  test ";
+    private static final String venueListDescription = "Venues list  test ";
+    private static final String venueBackgroundUrlDescription =  "Venue background test";
 
-    @Test(description = "<br> <br> <br> <b>Description </b>Selected venue  test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#venue\">API doc</a>")
+
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + venueItemDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void venueItem() {
         Venue service = TestVariables.getClient().proxy(Venue.class);
         VenueItem response = service.venueItem(TestVariables.getToken(), TestVariables.getVenueId());
+        TestVariables.reportFiller(docLink, venueItemDescription, response);
         JerseyClient.LOG.error(response.toString());
         Assert.assertNotNull(response);
         JerseyClient.LOG.error(response.toString());
     }
 
-    @Test(description = "<br> <br> <br> <b>Description </b>Venues list  test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#venue\">API doc</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + venueListDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void venueList() {
         Venue service = TestVariables.getClient().proxy(Venue.class);
         VenueList[] response = service.venueList(TestVariables.getToken());
+        TestVariables.reportFiller(docLink, venueListDescription, response);
         JerseyClient.LOG.error(response.toString());
         Assert.assertNotNull(response);
         JerseyClient.LOG.error(response.toString());
     }
 
-    @Test(description = "<br> <br> <br> <b>Description </b>Venue background test Vegaster <br> <a href=\"http://vegaster.webprv.com/api/doc#venue\">API doc</a>")
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + venueBackgroundUrlDescription  + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void venueBackgroundUrl() {
         Venue service = TestVariables.getClient().proxy(Venue.class);
         Map<String,String> response = service.venueBackgroundUrl(TestVariables.getToken(), TestVariables.getVenueId());
+        TestVariables.reportFiller(docLink, venueBackgroundUrlDescription, response);
         JerseyClient.LOG.error(response.toString());
         Assert.assertNotNull(response);
         JerseyClient.LOG.error(response.toString());

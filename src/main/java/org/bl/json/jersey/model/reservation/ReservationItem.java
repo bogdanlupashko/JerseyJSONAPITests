@@ -8,7 +8,7 @@ import org.bl.json.jersey.model.offer.OfferWithPeriod;
 import java.util.Map;
 
 /**
- * Created by blupashko on 23.04.2015.
+ * @author Bogdan Lupashko
  */
 public class ReservationItem {
     private int id;

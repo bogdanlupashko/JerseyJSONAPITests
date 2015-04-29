@@ -10,7 +10,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
- * @author blupashko
+ * @author Bogdan Lupashko
  */
 public interface Offer {
 

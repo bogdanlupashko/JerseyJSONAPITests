@@ -1,7 +1,7 @@
 package org.bl.json.jersey.rest.service;
 
 /**
- * @author blupashko
+ * @author Bogdan Lupashko
  */
 public interface Viator {
     //TODO

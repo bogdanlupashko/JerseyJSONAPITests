@@ -6,7 +6,7 @@ import org.bl.json.jersey.model.reminder.ReminderForVenue;
 import java.util.Map;
 
 /**
- * Created by blupashko on 23.04.2015.
+ * @author Bogdan Lupashko
  */
 public class VenueItem extends VenueForCategory {
 

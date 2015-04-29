@@ -1,7 +1,7 @@
 package org.bl.json.jersey.model.components;
 
 /**
- * Created by blupashko on 23.04.2015.
+ * @author Bogdan Lupashko
  */
 public class Request {
     private int id;

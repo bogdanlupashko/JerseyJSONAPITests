@@ -1,27 +1,31 @@
 package org.bl.json.jersey;
 
+import com.google.gson.Gson;
 import org.bl.json.jersey.model.auth.AuthLogin;
+import org.bl.json.jersey.report.ApiResult;
 import org.bl.json.jersey.rest.service.Auth;
 import org.bl.json.jersey.test.TestAuth;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+
 /**
  * @author Bogdan Lupashko
  */
 
 public class TestVariables {
-    public static final String MAIN_URL =  "http://vegaster.webprv.com/";
-    private static final String API_PATH =  "api/";
-    private static final String VERSION_API_PATH =  "v1.4/";
 
-    public static final String API_PREAMBLE = API_PATH + VERSION_API_PATH;
+    public static final String DESCRIPTION_TESTS_HEADER = "<br> <b> Description </b> <br> ";
+    public static final String LINK_API_DOC_HEADER = "API doc ";
 
+
+    public static ArrayList<ApiResult> requestsToReport = new ArrayList<>();
 
     private static Logger LOGGER = LoggerFactory.getLogger(TestAuth.class.getName());
-    private static String email = "aa@aa.aa";
-    private static String password = "qqqqqq";
+    public static String email = "aa@aa.aa";
+    public static String password = "qqqqqq";
 
     private static int categoryId = 1;
     private static int venueId = 20;
@@ -63,18 +67,29 @@ public class TestVariables {
 
 
     public static String getToken() {
-        if (TestVariables.token != null) {
+        if (token != null) {
             return TestVariables.token;
         } else {
             Auth service = getClient().proxy(Auth.class);
-            AuthLogin respose = service.authLogin(email, password);
-            Assert.assertNotNull(respose);
-            Assert.assertNotNull(respose.getId());
-            Assert.assertNotNull(respose.getToken());
-            LOGGER.error("response auth : " + respose.getToken());
-            return respose.getToken();
+            AuthLogin response = service.authLogin(email, password);
+            TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLoginDescription, response);
+            Assert.assertNotNull(response);
+            Assert.assertNotNull(response.getId());
+            Assert.assertNotNull(response.getToken());
+            LOGGER.error("response auth : " + response.getToken());
+            token = response.getToken();
         }
+        return token;
     }
+
+    public static void reportFiller(String docLink, String description, Object responseJson){
+        ApiResult apiResult = new ApiResult();
+        apiResult.setDocLink(docLink);
+        apiResult.setDescription(description);
+        apiResult.setResponseJson(new Gson().toJson(responseJson));
+        requestsToReport.add(apiResult);
+    }
+
 
     public static RestClient getClient() {
         if (TestVariables.client != null) {
