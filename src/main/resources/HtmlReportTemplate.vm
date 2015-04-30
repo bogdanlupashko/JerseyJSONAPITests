@@ -43,6 +43,14 @@ This page contains info about API tests
     .hoverRow {
         background-color: aliceblue;
     }
+    .red {
+        background-color: rgba(255, 0, 0, 0.31);
+        border: 1px solid red;
+    }
+    .green {
+        background-color: rgba(0, 128, 0, 0.32);
+        border:1px solid green;
+    }
 </style>
 
 <table id='report' cellpadding="20" cellspacing="3" border="0" style="empty-cells:show">
@@ -55,38 +63,30 @@ This page contains info about API tests
     </tr>
 
     #foreach( $response in $responses)
-        <tr>
             #if ($response.status)
+                <tr class="green">
                 <td>$response.description</td>
                 <td><a href="$response.docLink">$response.docLink</a></td>
                 <td>
                     <div id=$velocityCount></div>
                     <script>
                         $(function () {
-                            $('#' +$velocityCount).jsonView(JSON.stringify($response.responseJson));
+                            $('#' +$velocityCount).jsonView(JSON.stringify($response.responseJson, collapsed));
                         });
                     </script>
                 </td>
+                </tr>
             #else
+                <tr class="red">
                 <td>$response.description</td>
                 <td><a href="$response.docLink">$response.docLink</a></td>
                 <td>$response.responseJson</td>
+                </tr>
             #end
-        </tr>
     #end
 
 </table>
 
-<script>
-    $(function () {
-        $('#responseToJson').jsonView(JSON.stringify({
-            id: "145",
-            firstName: "Chad",
-            lastName: "Solis",
-            photo: "http://vegaster.webprv.com/uploads/cache/126x126/14285156872049_0d70577f.jpg"
-        }));
-    });
-</script>
 <script type="text/javascript">
     highlightTableRows("report", "hoverRow");
 </script>

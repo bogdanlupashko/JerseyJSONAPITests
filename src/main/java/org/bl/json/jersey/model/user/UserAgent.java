@@ -10,11 +10,6 @@ public class UserAgent {
     private String lastName;
     private String photo;
 
-    @Override
-    public String toString() {
-        return "{id :\"" + id + "\", firstName :\"" + firstName + "\", lastName :\"" + lastName + "\", photo :\"" + photo + "\"}";
-    }
-
     public Integer getId() {
         return id;
     }

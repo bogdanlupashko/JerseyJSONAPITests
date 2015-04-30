@@ -12,16 +12,19 @@ import javax.ws.rs.core.MediaType;
 /**
  * @author Bogdan Lupashko
  */
+@Path(JerseyClient.API_PREAMBLE + "host/")
 public interface Host {
 
     @GET
-    @Path(JerseyClient.API_PREAMBLE + "host/list")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    HostItem[] hostsList(@QueryParam("token") String token, @QueryParam("id") int id)  throws Exception;
+    HostItem[] hostsList(@QueryParam("token") String token,
+                         @QueryParam("id") int id)  throws Exception; //Venue Id required
 
     @GET
-    @Path(JerseyClient.API_PREAMBLE + "host/item")
+    @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
-    HostItem hostItem(@QueryParam("token") String token, @QueryParam("id") int id) throws Exception;
+    HostItem hostItem(@QueryParam("token") String token,
+                      @QueryParam("id") int id) throws Exception; //Host User Id required
 
 }

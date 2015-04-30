@@ -113,27 +113,27 @@
         </classes>
     </test>
 
-    <test name="reservationPost">
-        <classes>
-            <class name="org.bl.json.jersey.test.TestReservation">
-                <methods>
-                    <include name=".*reservationItemPost"/>
-                    <exclude name=".*reservationItem"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+    <!--<test name="reservationPost">-->
+        <!--<classes>-->
+            <!--<class name="org.bl.json.jersey.test.TestReservation">-->
+                <!--<methods>-->
+                    <!--<include name=".*reservationItemPost"/>-->
+                    <!--<exclude name=".*reservationItem"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
 
-    <test name="reservationGet">
-        <classes>
-            <class name="org.bl.json.jersey.test.TestReservation">
-                <methods>
-                    <include name=".*reservationItem"/>
-                    <exclude name=".*reservationItemPost"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+    <!--<test name="reservationGet">-->
+        <!--<classes>-->
+            <!--<class name="org.bl.json.jersey.test.TestReservation">-->
+                <!--<methods>-->
+                    <!--<include name=".*reservationItem"/>-->
+                    <!--<exclude name=".*reservationItemPost"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
 
 
     <test name="venueBackground">

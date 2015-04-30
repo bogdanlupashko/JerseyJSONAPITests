@@ -1,4 +1,4 @@
-package org.bl.json.jersey.model.components;
+package org.bl.json.jersey.model.request;
 
 /**
  * @author Bogdan Lupashko

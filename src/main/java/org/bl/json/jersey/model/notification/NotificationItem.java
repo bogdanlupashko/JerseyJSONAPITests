@@ -3,12 +3,12 @@ package org.bl.json.jersey.model.notification;
 /**
  * @author Bogdan Lupashko
  */
-public class Notification {
+public class NotificationItem {
     private int id;
     private String message;
     private String venueName;
     private String date;
-    private int read;
+    private boolean read;
     private int reservationId;
     private String reservationStatus;
     private String requestStatus;
@@ -47,12 +47,16 @@ public class Notification {
         this.date = date;
     }
 
-    public int getRead() {
+    public boolean getRead() {
         return read;
     }
 
-    public void setRead(int read) {
-        this.read = read;
+    public void setRead(Object read) {
+        if (read instanceof Boolean) {
+            this.read = (Boolean)read;
+        } else if (read instanceof Integer){
+            this.read = ((Integer) read).equals(1);
+        }
     }
 
     public int getReservationId() {

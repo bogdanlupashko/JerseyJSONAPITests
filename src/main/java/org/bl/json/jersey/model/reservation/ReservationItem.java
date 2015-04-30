@@ -1,9 +1,8 @@
 package org.bl.json.jersey.model.reservation;
 
-import org.bl.json.jersey.model.components.*;
 import org.bl.json.jersey.model.host.HostForReservation;
 import org.bl.json.jersey.model.offer.OfferWithArch;
-import org.bl.json.jersey.model.offer.OfferWithPeriod;
+import org.bl.json.jersey.model.request.Request;
 
 import java.util.Map;
 

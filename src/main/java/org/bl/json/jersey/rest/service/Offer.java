@@ -12,20 +12,21 @@ import javax.ws.rs.core.MediaType;
 /**
  * @author Bogdan Lupashko
  */
+@Path(JerseyClient.API_PREAMBLE + "offer/")
 public interface Offer {
 
     @GET
-    @Path(JerseyClient.API_PREAMBLE + "offer/list")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     OfferWithArch[] offerList(@QueryParam("token") String token,
-                        @QueryParam("id") int id,
-                        @QueryParam("dateTime") String dateTime) throws Exception;
+                              @QueryParam("id") int id,
+                              @QueryParam("dateTime") String dateTime) throws Exception;
 
 
     @GET
-    @Path(JerseyClient.API_PREAMBLE + "offer/item")
+    @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
     OfferWithArch offerItem(@QueryParam("token") String token,
-                      @QueryParam("id") int id,
-                      @QueryParam("periodId") int periodId) throws Exception;
+                            @QueryParam("id") int id,
+                            @QueryParam("periodId") int periodId) throws Exception;
 }

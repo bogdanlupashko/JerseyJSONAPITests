@@ -13,21 +13,24 @@ import javax.ws.rs.core.MediaType;
 /**
  * @author Bogdan Lupashko
  */
+@Path(JerseyClient.API_PREAMBLE + "category/")
 public interface Category {
 
     @GET
-    @Path(JerseyClient.API_PREAMBLE + "category/homepage")
+    @Path("homepage")
     @Produces(MediaType.APPLICATION_JSON)
     CategoryHomepage[] categoryHomepage(@QueryParam("token") String token)  throws Exception;
 
     @GET
-    @Path(JerseyClient.API_PREAMBLE + "category/list")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     CategoryList[] categoryList(@QueryParam("token") String token)  throws Exception;
 
     @GET
-    @Path(JerseyClient.API_PREAMBLE + "category/list")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    CategoryList categoryListTrip(@QueryParam("token") String token, @QueryParam("displayPlanTrip") int displayPlanTrip) throws Exception;
+    CategoryList categoryListTrip(@QueryParam("token") String token,
+                                  @QueryParam("displayPlanTrip") int displayPlanTrip,
+                                  @QueryParam("parentId") int parentId) throws Exception;
 
 }

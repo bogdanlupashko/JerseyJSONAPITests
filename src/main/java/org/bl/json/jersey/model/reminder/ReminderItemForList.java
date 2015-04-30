@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * @author Bogdan Lupashko
  */
-public class ReminderList {
+public class ReminderItemForList extends ReminderSimple {
 
     private String type;
     private String venueName;
@@ -16,9 +16,6 @@ public class ReminderList {
     private String reservationReservedDateTime;
     private String reservationStatus;
     private int reservationId;
-    private String reminderDateTime;
-    private String addedDateTime;
-    private int interval;
     private int offerId;
     private boolean shared;
     private String ownerName;
@@ -94,30 +91,6 @@ public class ReminderList {
 
     public void setReservationId(int reservationId) {
         this.reservationId = reservationId;
-    }
-
-    public String getReminderDateTime() {
-        return reminderDateTime;
-    }
-
-    public void setReminderDateTime(String reminderDateTime) {
-        this.reminderDateTime = reminderDateTime;
-    }
-
-    public String getAddedDateTime() {
-        return addedDateTime;
-    }
-
-    public void setAddedDateTime(String addedDateTime) {
-        this.addedDateTime = addedDateTime;
-    }
-
-    public int getInterval() {
-        return interval;
-    }
-
-    public void setInterval(int interval) {
-        this.interval = interval;
     }
 
     public int getOfferId() {
