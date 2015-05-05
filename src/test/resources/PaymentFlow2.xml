@@ -5,7 +5,6 @@
             <class name="org.bl.json.jersey.test.TestAuth">
                 <methods>
                     <include name=".*authLogin"/>
-                    <exclude name=".*authLogout"/>
                 </methods>
             </class>
         </classes>
@@ -16,7 +15,6 @@
             <class name="org.bl.json.jersey.test.TestUser">
                 <methods>
                     <include name=".*userAgent"/>
-                    <exclude name=".*userProfile"/>
                 </methods>
             </class>
         </classes>
@@ -30,7 +28,11 @@
 
     <test name="notification">
         <classes>
-            <class name="org.bl.json.jersey.test.TestNotification"/>
+            <class name="org.bl.json.jersey.test.TestNotification">
+                <methods>
+                    <include name=".*notificationCount"/>
+                </methods>
+            </class>
         </classes>
     </test>
 
@@ -39,31 +41,26 @@
             <class name="org.bl.json.jersey.test.TestUser">
                 <methods>
                     <include name=".*userProfile"/>
-                    <exclude name=".*userAgent"/>
                 </methods>
             </class>
         </classes>
     </test>
 
-    <!--<test name="venueList">-->
-        <!--<classes>-->
-            <!--<class name="org.bl.json.jersey.test.TestVenue">-->
-                <!--<methods>-->
-                    <!--<include name=".*venueList"/>-->
-                    <!--<exclude name=".*venueItem"/>-->
-                    <!--<exclude name=".*venueBackgroundUrl"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="venueList">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
     <test name="venueItem">
         <classes>
             <class name="org.bl.json.jersey.test.TestVenue">
                 <methods>
                     <include name=".*venueItem"/>
-                    <exclude name=".*venueList"/>
-                    <exclude name=".*venueBackgroundUrl"/>
                 </methods>
             </class>
         </classes>
@@ -74,7 +71,6 @@
             <class name="org.bl.json.jersey.test.TestOffer">
             <methods>
                 <include name=".*offerList"/>
-                <exclude name=".*offerItem"/>
             </methods>
             </class>
         </classes>
@@ -85,7 +81,6 @@
             <class name="org.bl.json.jersey.test.TestOffer">
             <methods>
                 <include name=".*offerItem"/>
-                <exclude name=".*offerList"/>
             </methods>
             </class>
         </classes>
@@ -96,7 +91,6 @@
             <class name="org.bl.json.jersey.test.TestOffer">
             <methods>
                 <include name=".*offerItem"/>
-                <exclude name=".*offerList"/>
             </methods>
             </class>
         </classes>
@@ -107,7 +101,6 @@
             <class name="org.bl.json.jersey.test.TestUser">
                 <methods>
                     <include name=".*userProfile"/>
-                    <exclude name=".*userAgent"/>
                 </methods>
             </class>
         </classes>
@@ -118,7 +111,6 @@
             <!--<class name="org.bl.json.jersey.test.TestReservation">-->
                 <!--<methods>-->
                     <!--<include name=".*reservationItemPost"/>-->
-                    <!--<exclude name=".*reservationItem"/>-->
                 <!--</methods>-->
             <!--</class>-->
         <!--</classes>-->
@@ -129,20 +121,16 @@
             <!--<class name="org.bl.json.jersey.test.TestReservation">-->
                 <!--<methods>-->
                     <!--<include name=".*reservationItem"/>-->
-                    <!--<exclude name=".*reservationItemPost"/>-->
                 <!--</methods>-->
             <!--</class>-->
         <!--</classes>-->
     <!--</test>-->
-
 
     <test name="venueBackground">
         <classes>
             <class name="org.bl.json.jersey.test.TestVenue">
                 <methods>
                     <include name=".*venueBackgroundUrl"/>
-                    <exclude name=".*venueItem"/>
-                    <exclude name=".*venueList"/>
                 </methods>
             </class>
         </classes>
@@ -153,7 +141,6 @@
             <class name="org.bl.json.jersey.test.TestUser">
                 <methods>
                     <include name=".*userAgent"/>
-                    <exclude name=".*userProfile"/>
                 </methods>
             </class>
         </classes>
@@ -164,19 +151,16 @@
             <class name="org.bl.json.jersey.test.TestOffer">
                 <methods>
                     <include name=".*offerList"/>
-                    <exclude name=".*offerItem"/>
                 </methods>
             </class>
         </classes>
     </test>
-
 
     <test name="logout">
         <classes>
             <class name="org.bl.json.jersey.test.TestAuth" >
                 <methods>
                     <include name=".*authLogout"/>
-                    <exclude name=".*authLogin"/>
                 </methods>
             </class>
         </classes>

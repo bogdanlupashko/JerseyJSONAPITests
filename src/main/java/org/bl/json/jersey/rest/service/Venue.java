@@ -38,14 +38,13 @@ public interface Venue {
                         @QueryParam("centerLat") float centerLat,
                         @QueryParam("centerLng") float centerLng,
                         @QueryParam("deltaLat") float deltaLat,
-                        @QueryParam("deltaLng") float deltaLng,
-                        @QueryParam("id") int id) throws Exception;
+                        @QueryParam("deltaLng") float deltaLng) throws Exception;
 
     @GET
     @Path("gallery")
     @Produces(MediaType.APPLICATION_JSON)
-    VenueGalery[] venueMap(@QueryParam("token") String token,
-                           @QueryParam("id") int id) throws Exception;
+    VenueGalery[] venueGalery(@QueryParam("token") String token,
+                              @QueryParam("id") int id) throws Exception;
 
     @GET
     @Path("backgroundUrl")

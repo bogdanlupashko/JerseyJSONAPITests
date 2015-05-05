@@ -7,7 +7,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  * @author Bogdan Lupashko
  */
 
-@JsonIgnoreProperties(ignoreUnknown=true)
 public class UserProfile {
     private int id;
     private int affiliateId;
@@ -19,7 +18,7 @@ public class UserProfile {
     private String lastName;
     private String gender;
     private String note;
-    private String phone; //
+    private String phone;
     private String photo;
     private String facebookId;
     private String twitterId;

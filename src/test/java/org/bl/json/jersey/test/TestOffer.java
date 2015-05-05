@@ -22,7 +22,7 @@ public class TestOffer {
     public void offerList() {
         try {
             Offer service = TestVariables.getClient().proxy(Offer.class);
-            offers = service.offerList(TestVariables.getToken(), TestVariables.getVenueId(), TestVariables.getReservedDateTime());
+            offers = service.offerList(TestVariables.getToken(), TestVariables.venueId, TestVariables.reservedDateTime);
             TestVariables.reportFiller(docLink, offerListDescription, offers);
             JerseyClient.LOG.error(offers.toString());
             Assert.assertNotNull(offers);
@@ -39,7 +39,7 @@ public class TestOffer {
     public void offerItem() {
         try {
             Offer service = TestVariables.getClient().proxy(Offer.class);
-            OfferWithArch offerItem = service.offerItem(TestVariables.getToken(), TestVariables.getOfferId(), getPeriod(offers));
+            OfferWithArch offerItem = service.offerItem(TestVariables.getToken(), TestVariables.offerId, getPeriod(offers));
             TestVariables.reportFiller(docLink, offerItemDescription, offerItem);
             JerseyClient.LOG.error(offerItem.toString());
             Assert.assertNotNull(offerItem);
@@ -53,7 +53,7 @@ public class TestOffer {
 
     private int getPeriod(OfferWithArch[] offers) {
         for (int i = 0; i < offers.length; i++) {
-            if (offers[i].getId() == TestVariables.getOfferId()) {
+            if (offers[i].getId() == TestVariables.offerId) {
                 return offers[i].getPeriodId();
             }
         }

@@ -1,6 +1,7 @@
 package org.bl.json.jersey;
 
 import com.google.gson.Gson;
+import org.apache.commons.io.FileUtils;
 import org.bl.json.jersey.model.auth.AuthLogin;
 import org.bl.json.jersey.report.ApiResult;
 import org.bl.json.jersey.rest.service.Auth;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -31,41 +33,70 @@ public class TestVariables {
     public static String firstName = "qqqqqq";
     public static String lastName = "qqqqqq";
     public static String deviceToken = "qqqqqq";
+    public static String affiliateCode = "100500";
 
-    private static int categoryId = 1;
-    private static int venueId = 20;
-    private final static int offerId = 257;
-    private static int malesCount = 4;
-    private static int femalesCount = 0;
-    private static String reservedDateTime = "2015-04-27T00:05:54-0700";
+    public static String tripName = "qqqqqq";
+    public static String type = "flight";
+    /**
+     * @type value: flight, hotel, event, restaurant, show, misc
+     */
+    public static String syncCode = "100500";
+    public static int travelType = 1;
+    /**
+     * TRAVEL_TYPE_PARTY = 1;
+     * TRAVEL_TYPE_VACATION = 2;
+     * TRAVEL_TYPE_BUSINESS = 3;
+     */
 
-    public static String getReservedDateTime() {
-        return reservedDateTime;
-    }
+    public static int costType = 1; /** @type value: const COST_TYPE_PER_PERSON = 1;const COST_TYPE_TOTAL_PACKAGE = 2;*/
 
-    public static int getFemalesCount() {
-        return femalesCount;
-    }
 
-    public static int getMalesCount() {
-        return malesCount;
-    }
+    public static int[] categories = {1, 2};
 
-    public static Logger getLOGGER() {
-        return LOGGER;
-    }
 
-    public static int getCategoryId() {
-        return categoryId;
-    }
+    public static int categoryId = 1;
+    public static int venueId = 20;
+    public static int requestId = 20;
+    public static int hostId = 20;
+    public static int reservationId = 20;
+    public final static int offerId = 257;
+    public static int malesCount = 4;
+    public static int femalesCount = 0;
+    public static float lat = 45.2f;
+    public static float deltaLat = 64646.242f;
+    public static float lng = 64646.242f;
+    public static float deltaLng = 64646.242f;
+    public static String reservedDateTime = "2015-04-27T00:05:54-0700";
+    public static String beginDateTime = "2015-06-27T00:05:54-0700";
+    public static String leaveDate = "2015-06-27T00:05:54-0700";
+    public static String flightTime = "2015-06-27T00:05:54-0700";
+    public static int budget = 20;
+    public static int viatorId = 20;
+    public static String note = "some notes";
+    public static String status = "confirmed_by_user";
+    public static File photoFile = FileUtils.getFile("src\\java\\resources\\photo.jpg");
+    /**
+     * @status values: confirmed_by_user, cancelled_by_user
+     */
+    public static String paymentId = "ygfyegfefefeg";
+    public static String provider = "facebook"; /**facebook, google, twitter */
+    public static String tokenProvider = "egfgyrgygy";
+    public static int tripStatus = 4;
+    /**
+     *  STATUS_NEW = 1;
+     *  STATUS_CANCELED = 2;
+     *  STATUS_HAVE_PLAN = 3;
+     *  STATUS_APPROVED = 4;
+     *  STATUS_EXPIRED = 5;
+     *
+     *  STATUS_NEW => [STATUS_CANCELED],
+     *  STATUS_CANCELED => [],
+     *  STATUS_HAVE_PLAN => [STATUS_CANCELED, STATUS_APPROVED]
+     *  STATUS_APPROVED => [STATUS_CANCELED],
+     *  STATUS_EXPIRED => [].
+     *
+     */
 
-    public static int getVenueId() {
-        return venueId;
-    }
-
-    public static int getOfferId() {
-        return offerId;
-    }
 
     static RestClient client;
     static String token;

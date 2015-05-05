@@ -32,7 +32,7 @@ public interface User {
     @Path("profile")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    UserProfile userProfile(@FormParam("token") String token,
+    String userProfile(@FormParam("token") String token,
                             @FormParam("email") String email,
                             @FormParam("passwordRaw") String passwordRaw,
                             @FormParam("passwordRepeat") String passwordRepeat,
@@ -61,7 +61,8 @@ public interface User {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     String userSocialsLink(@FormParam("token") String token,
-                           @FormParam("provider") String provider) throws Exception;
+                           @FormParam("provider") String provider,
+                           @FormParam("tokenProvider") String tokenProvider) throws Exception;
 
     @DELETE
     @Path("social")
@@ -82,8 +83,8 @@ public interface User {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     String userTrack(@FormParam("token") String token,
-                     @FormParam("lat") String lat,
-                     @FormParam("lng") String lng) throws Exception;
+                     @FormParam("lat") float lat,
+                     @FormParam("lng") float lng) throws Exception;
 
     @GET
     @Path("agent")

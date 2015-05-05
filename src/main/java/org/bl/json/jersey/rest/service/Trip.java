@@ -31,7 +31,7 @@ public interface Trip {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    TripSimple tripListGet(@QueryParam("token") String token) throws Exception;
+    TripSimple[] tripListGet(@QueryParam("token") String token) throws Exception;
 
     @GET
     @Path("item")
@@ -65,7 +65,8 @@ public interface Trip {
     @Path("activity")
     @Produces(MediaType.APPLICATION_JSON)
     TripActivity tripActivityGet(@QueryParam("token") String token,
-                                 @QueryParam("id") int id) throws Exception;
+                                 @QueryParam("id") int id,
+                                 @QueryParam("tripId") int tripId) throws Exception;
 
     @POST
     @Path("activity")
@@ -106,7 +107,7 @@ public interface Trip {
 
 
     @GET
-    @Path("activityTypes")
+    @Path("syncItem")
     @Produces(MediaType.APPLICATION_JSON)
     TripSyncItem tripSyncItemGet(@QueryParam("token") String token,
                                  @QueryParam("id") int id) throws Exception;
@@ -117,18 +118,17 @@ public interface Trip {
     TripRequest tripRequestGet(@QueryParam("token") String token,
                                @QueryParam("id") int id) throws Exception;
 
-
     @POST
     @Path("request")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    TripId tripRequestCreate(@QueryParam("token") String token,
-                             @QueryParam("travelType") int travelType,
-                             @QueryParam("categories") String[] categories,
-                             @QueryParam("malesCount") int malesCount,
-                             @QueryParam("femalesCount") int femalesCount,
-                             @QueryParam("budget") int budget,
-                             @QueryParam("costType") int costType/** @type value: const COST_TYPE_PER_PERSON = 1;const COST_TYPE_TOTAL_PACKAGE = 2;*/
+    TripId tripRequestCreate(@FormParam("token") String token,
+                             @FormParam("travelType") int travelType,
+                             @FormParam("categories") int[] categories,
+                             @FormParam("malesCount") int malesCount,
+                             @FormParam("femalesCount") int femalesCount,
+                             @FormParam("budget") int budget,
+                             @FormParam("costType") int costType/** @type value: const COST_TYPE_PER_PERSON = 1;const COST_TYPE_TOTAL_PACKAGE = 2;*/
     ) throws Exception;
 
     @GET
