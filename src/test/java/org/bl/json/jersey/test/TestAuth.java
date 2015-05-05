@@ -2,6 +2,8 @@ package org.bl.json.jersey.test;
 
 import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
+import org.bl.json.jersey.model.auth.AuthLogin;
+import org.bl.json.jersey.model.components.UserTopCategories;
 import org.bl.json.jersey.report.ReportGenerator;
 import org.bl.json.jersey.rest.service.Auth;
 import org.slf4j.Logger;
@@ -19,6 +21,12 @@ public class TestAuth {
     public static final String docLink = "http://vegaster.webprv.com/api/doc#auth";
     public static final String authLoginDescription = "Login test";
     private static final String authLogoutDescription = "logout test";
+    private static final String authRegisterDescription = "register test";
+    private static final String authRecoverDescription = "recover test";
+    private static final String authHotelListDescription = "hotels list test";
+    private static final String authPasswordCheckDescription = "password check test";
+    private static final String authDeviceTokenUpdateDescription = "password check test";
+    private static final String authCategoriesListDescription = "categories list test";
 
 
     @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authLoginDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
@@ -35,13 +43,121 @@ public class TestAuth {
             TestVariables.reportFiller(docLink, authLogoutDescription, response);
             Assert.assertTrue(response.toString().isEmpty());
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TestVariables.reportFillerStackTrace(docLink, authLogoutDescription, e.getLocalizedMessage());
             Assert.fail();
-        }
-        finally {
+        } finally {
             new ReportGenerator().createHtmlReport(TestVariables.requestsToReport);
         }
     }
+
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authRegisterDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    public void authRegister() {
+        try {
+            Auth service = TestVariables.getClient().proxy(Auth.class);
+            AuthLogin response = service.authRegister(TestVariables.email,
+                    TestVariables.passwordRaw,
+                    TestVariables.passwordRepeat,
+                    TestVariables.phone,
+                    TestVariables.firstName,
+                    TestVariables.lastName);
+
+            TestVariables.reportFiller(docLink, authRegisterDescription, response);
+            Assert.assertNotNull(response);
+            JerseyClient.LOG.error(response.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, authRegisterDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
+    }
+
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authRecoverDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    public void authRecover() {
+        try {
+            Auth service = TestVariables.getClient().proxy(Auth.class);
+            String response = service.authRecover(TestVariables.email);
+
+            TestVariables.reportFiller(docLink, authRecoverDescription, response);
+            Assert.assertTrue(response.toString().isEmpty());
+            JerseyClient.LOG.error(response.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, authRecoverDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
+
+    }
+
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authHotelListDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    public void hotelsList() {
+        try {
+            Auth service = TestVariables.getClient().proxy(Auth.class);
+            String[] response = service.authHotelsList(TestVariables.email);
+
+            TestVariables.reportFiller(docLink, authHotelListDescription, response);
+            Assert.assertNotNull(response);
+            JerseyClient.LOG.error(response.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, authHotelListDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
+
+    }
+
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authPasswordCheckDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    public void passwordCheck() {
+        try {
+            Auth service = TestVariables.getClient().proxy(Auth.class);
+            String response = service.authPasswordCheck(TestVariables.getToken(),
+                    TestVariables.password);
+
+            TestVariables.reportFiller(docLink, authPasswordCheckDescription, response);
+            Assert.assertTrue(response.toString().isEmpty());
+            JerseyClient.LOG.error(response.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, authPasswordCheckDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
+
+    }
+
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authDeviceTokenUpdateDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    public void deviceTokenUpdate() {
+        try {
+            Auth service = TestVariables.getClient().proxy(Auth.class);
+            String response = service.authDeviceTokenUpdate(TestVariables.deviceToken);
+
+            TestVariables.reportFiller(docLink, authDeviceTokenUpdateDescription, response);
+            Assert.assertTrue(response.toString().isEmpty());
+            JerseyClient.LOG.error(response.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, authDeviceTokenUpdateDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
+
+    }
+
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authCategoriesListDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    public void categoriesList() {
+        try {
+            Auth service = TestVariables.getClient().proxy(Auth.class);
+            UserTopCategories[] response = service.authCategoriesList(TestVariables.getToken());
+
+            TestVariables.reportFiller(docLink, authCategoriesListDescription, response);
+            Assert.assertNotNull(response);
+            JerseyClient.LOG.error(response.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            TestVariables.reportFillerStackTrace(docLink, authCategoriesListDescription, e.getLocalizedMessage());
+            Assert.fail();
+        }
+
+    }
+
 }
+

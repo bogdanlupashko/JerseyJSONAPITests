@@ -71,7 +71,7 @@ This page contains info about API tests
                     <div id=$velocityCount></div>
                     <script>
                         $(function () {
-                            $('#' +$velocityCount).jsonView(JSON.stringify($response.responseJson, collapsed));
+                            $('#' +$velocityCount).jsonView(JSON.stringify($response.responseJson));
                         });
                     </script>
                 </td>

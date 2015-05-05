@@ -20,12 +20,17 @@ public class TestVariables {
     public static final String DESCRIPTION_TESTS_HEADER = "<br> <b> Description </b> <br> ";
     public static final String LINK_API_DOC_HEADER = "API doc ";
 
-
     public static ArrayList<ApiResult> requestsToReport = new ArrayList<>();
 
-    private static Logger LOGGER = LoggerFactory.getLogger(TestAuth.class.getName());
-    public static String email = "aa@aa.aa";
+    private final static Logger LOGGER = LoggerFactory.getLogger(TestAuth.class.getName());
+    public static String email = "m1@mm.mm";
     public static String password = "qqqqqq";
+    public static String passwordRaw = "qqqqqq";
+    public static String passwordRepeat = "qqqqqq";
+    public static String phone = "1234567890";
+    public static String firstName = "qqqqqq";
+    public static String lastName = "qqqqqq";
+    public static String deviceToken = "qqqqqq";
 
     private static int categoryId = 1;
     private static int venueId = 20;

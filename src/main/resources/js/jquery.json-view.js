@@ -1,24 +1,17 @@
-;(function ($) {
+;
+(function ($) {
     'use strict';
 
-    var collapser = function(collapsed) {
+    var collapser = function (collapsed) {
+
         var item = $('<span />', {
-            'class': 'collapser',
+            'class': 'collapser collapsed',
             on: {
-                click: function() {
+                click: function () {
                     var $this = $(this);
 
                     $this.toggleClass('collapsed');
-                    var block = $this.parent().children('.block');
-                    var ul = block.children('ul');
 
-                    if ($this.hasClass('collapsed')) {
-                        ul.hide();
-                        block.children('.dots, .comments').show();
-                    } else {
-                        ul.show();
-                        block.children('.dots, .comments').hide();
-                    }
                 }
             }
         });
@@ -30,12 +23,12 @@
         return item;
     };
 
-    var formatter = function(json, opts) {
+    var formatter = function (json, opts) {
         var options = $.extend({}, {
             nl2br: true
         }, opts);
 
-        var htmlEncode = function(html) {
+        var htmlEncode = function (html) {
             if (!html.toString()) {
                 return '';
             }
@@ -43,15 +36,15 @@
             return html.toString().replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         };
 
-        var span = function(val, cls) {
+        var span = function (val, cls) {
             return $('<span />', {
                 'class': cls,
                 html: htmlEncode(val)
             });
         };
 
-        var genBlock = function(val, level) {
-            switch($.type(val)) {
+        var genBlock = function (val, level) {
+            switch ($.type(val)) {
                 case 'object':
                     if (!level) {
                         level = 0;
@@ -75,7 +68,7 @@
                         'class': 'obj collapsible level' + level
                     });
 
-                    $.each(val, function(key, data) {
+                    $.each(val, function (key, data) {
                         cnt--;
                         var item = $('<li />')
                             .append(span('"', 'q'))
@@ -130,7 +123,7 @@
                         'class': 'obj collapsible level' + level
                     });
 
-                    $.each(val, function(key, data) {
+                    $.each(val, function (key, data) {
                         cnt--;
                         var item = $('<li />')
                             .append(genBlock(data, level + 1));
@@ -175,7 +168,7 @@
                         }
                     }
 
-                    var text = $('<span />', { 'class': 'str' })
+                    var text = $('<span />', {'class': 'str'})
                         .html(val);
 
                     return $('<span />')
@@ -200,7 +193,7 @@
         return genBlock(json);
     };
 
-    return $.fn.jsonView = function(json, options) {
+    return $.fn.jsonView = function (json, options) {
         var $this = $(this);
 
         options = $.extend({}, {
@@ -221,4 +214,5 @@
         return $this;
     };
 
-})(jQuery);
+})
+(jQuery);

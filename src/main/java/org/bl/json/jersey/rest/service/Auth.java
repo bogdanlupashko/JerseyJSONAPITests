@@ -37,8 +37,7 @@ public interface Auth {
     @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    String authRegister(@FormParam("token") String token,
-                        @FormParam("email") String email,
+    AuthLogin authRegister(@FormParam("email") String email,
                         @FormParam("passwordRaw") String passwordRaw,
                         @FormParam("passwordRepeat") String passwordRepeat,
                         @FormParam("phone") String phone,
@@ -49,13 +48,12 @@ public interface Auth {
     @Path("recover")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    String authRecover(@FormParam("token") String token,
-                       @FormParam("email") String email) throws Exception;
+    String authRecover(@FormParam("email") String email) throws Exception;
 
     @GET
     @Path("hotelsList")
     @Produces(MediaType.APPLICATION_JSON)
-    String[] authHotelList(@QueryParam("token") String token)  throws Exception;
+    String[] authHotelsList(@QueryParam("token") String token)  throws Exception;
 
     @POST
     @Path("passwordCheck")
@@ -73,8 +71,6 @@ public interface Auth {
     @GET
     @Path("categoriesList")
     @Produces(MediaType.APPLICATION_JSON)
-    UserTopCategories authCategoriesList(@QueryParam("token") String token) throws Exception;
-
-
+    UserTopCategories[] authCategoriesList(@QueryParam("token") String token) throws Exception;
 
 }
