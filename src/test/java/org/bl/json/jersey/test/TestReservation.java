@@ -2,6 +2,7 @@ package org.bl.json.jersey.test;
 
 import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
+import org.bl.json.jersey.model.errors.ErrorString;
 import org.bl.json.jersey.model.offer.OfferWithArch;
 import org.bl.json.jersey.model.reservation.ReservationItem;
 import org.bl.json.jersey.model.reservation.ReservationItemGetId;
@@ -10,6 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import javax.ws.rs.ProcessingException;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * @author Bogdan Lupashko
@@ -34,10 +38,20 @@ public class TestReservation {
             JerseyClient.LOG.error(reservationItem.toString());
             Assert.assertNotNull(reservationItem);
             JerseyClient.LOG.error(reservationItem.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, reservationItemDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, reservationItemDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, reservationItemDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, reservationItemDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, reservationItemDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -53,18 +67,28 @@ public class TestReservation {
                     TestVariables.offerId,
                     TestVariables.femalesCount,
                     TestUser.userProfile.getEmail(),
-                    getPeriod(TestOffer.offers),
-                    TestUser.userProfile.getLastName());
+                   // getPeriod(TestOffer.offers),
+                    18789,TestUser.userProfile.getLastName());
 
             TestVariables.reportFiller(docLink, reservationItemPostDescription, reservationItemId);
             JerseyClient.LOG.error(reservationItemId.toString());
             LOGGER.error(reservationItemId.toString());
             Assert.assertNotNull(reservationItemId);
             JerseyClient.LOG.error(reservationItemId.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, reservationItemPostDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, reservationItemPostDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, reservationItemPostDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, reservationItemPostDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, reservationItemPostDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -80,10 +104,20 @@ public class TestReservation {
             LOGGER.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, reservationItemDeleteDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, reservationItemDeleteDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, reservationItemDeleteDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, reservationItemDeleteDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, reservationItemDeleteDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -100,10 +134,20 @@ public class TestReservation {
             LOGGER.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, reservationItemPayDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, reservationItemPayDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, reservationItemPayDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, reservationItemPayDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, reservationItemPayDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 

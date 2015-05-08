@@ -3,6 +3,8 @@ package org.bl.json.jersey;
 import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
 import org.bl.json.jersey.model.auth.AuthLogin;
+import org.bl.json.jersey.model.errors.Error;
+import org.bl.json.jersey.model.errors.ErrorString;
 import org.bl.json.jersey.report.ApiResult;
 import org.bl.json.jersey.rest.service.Auth;
 import org.bl.json.jersey.test.TestAuth;
@@ -10,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
+import javax.ws.rs.ProcessingException;
+import javax.ws.rs.WebApplicationException;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -48,7 +52,10 @@ public class TestVariables {
      * TRAVEL_TYPE_BUSINESS = 3;
      */
 
-    public static int costType = 1; /** @type value: const COST_TYPE_PER_PERSON = 1;const COST_TYPE_TOTAL_PACKAGE = 2;*/
+    public static int costType = 1;
+    /**
+     * @type value: const COST_TYPE_PER_PERSON = 1;const COST_TYPE_TOTAL_PACKAGE = 2;
+     */
 
 
     public static int[] categories = {1, 2};
@@ -66,8 +73,8 @@ public class TestVariables {
     public static float deltaLat = 64646.242f;
     public static float lng = 64646.242f;
     public static float deltaLng = 64646.242f;
-    public static String reservedDateTime = "2015-04-27T00:05:54-0700";
-    public static String beginDateTime = "2015-06-27T00:05:54-0700";
+    public static String reservedDateTime = "2015-06-01T22:00:00-0700";
+    public static String beginDateTime = "2015-06-27T22:05:54-0700";
     public static String leaveDate = "2015-06-27T00:05:54-0700";
     public static String flightTime = "2015-06-27T00:05:54-0700";
     public static int budget = 20;
@@ -79,28 +86,29 @@ public class TestVariables {
      * @status values: confirmed_by_user, cancelled_by_user
      */
     public static String paymentId = "ygfyegfefefeg";
-    public static String provider = "facebook"; /**facebook, google, twitter */
+    public static String provider = "facebook";
+    /**
+     * facebook, google, twitter
+     */
     public static String tokenProvider = "egfgyrgygy";
     public static int tripStatus = 4;
     /**
-     *  STATUS_NEW = 1;
-     *  STATUS_CANCELED = 2;
-     *  STATUS_HAVE_PLAN = 3;
-     *  STATUS_APPROVED = 4;
-     *  STATUS_EXPIRED = 5;
-     *
-     *  STATUS_NEW => [STATUS_CANCELED],
-     *  STATUS_CANCELED => [],
-     *  STATUS_HAVE_PLAN => [STATUS_CANCELED, STATUS_APPROVED]
-     *  STATUS_APPROVED => [STATUS_CANCELED],
-     *  STATUS_EXPIRED => [].
-     *
+     * STATUS_NEW = 1;
+     * STATUS_CANCELED = 2;
+     * STATUS_HAVE_PLAN = 3;
+     * STATUS_APPROVED = 4;
+     * STATUS_EXPIRED = 5;
+     * <p/>
+     * STATUS_NEW => [STATUS_CANCELED],
+     * STATUS_CANCELED => [],
+     * STATUS_HAVE_PLAN => [STATUS_CANCELED, STATUS_APPROVED]
+     * STATUS_APPROVED => [STATUS_CANCELED],
+     * STATUS_EXPIRED => [].
      */
 
 
     static RestClient client;
     static String token;
-
 
     public static String getToken() {
         if (token != null) {
@@ -109,22 +117,36 @@ public class TestVariables {
             try {
                 Auth service = getClient().proxy(Auth.class);
                 AuthLogin response = service.authLogin(email, password);
+
                 TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLoginDescription, response);
-                Assert.assertNotNull(response);
-                Assert.assertNotNull(response.getId());
-                Assert.assertNotNull(response.getToken());
-                LOGGER.error("response auth : " + response.getToken());
+//                Assert.assertNotNull(response);
+//                Assert.assertNotNull(response.getId());
+//                Assert.assertNotNull(response.getToken());
+//                Assert.assertNotNull(response.getErrors());
                 token = response.getToken();
-            } catch (Exception e) {
-                e.printStackTrace();
-                TestVariables.reportFillerStackTrace(TestAuth.docLink, TestAuth.authLoginDescription, e.getLocalizedMessage());
-                Assert.fail();
+
+            } catch (WebApplicationException errorsMessage) {
+                try {
+                    TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLoginDescription, errorsMessage.getResponse().readEntity(Error.class));
+
+                } catch (ProcessingException e) {
+                    try {
+                        TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLoginDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                    } catch (ProcessingException e1) {
+                        TestVariables.reportFillerStackTrace(TestAuth.docLink, TestAuth.authLoginDescription, errorsMessage.getLocalizedMessage());
+                    }
+                }
+            } catch (ProcessingException pro) {
+                TestVariables.reportFillerStackTrace(TestAuth.docLink, TestAuth.authLoginDescription, pro.getLocalizedMessage());
+                Assert.fail("Object mapping failed : ", pro.getCause());
             }
+
+            return token;
         }
-        return token;
     }
 
-    public static void reportFiller(String docLink, String description, Object responseJson) throws Exception {
+
+    public static void reportFiller(String docLink, String description, Object responseJson) throws WebApplicationException {
         ApiResult apiResult = new ApiResult();
         apiResult.setDocLink(docLink);
         apiResult.setDescription(description);

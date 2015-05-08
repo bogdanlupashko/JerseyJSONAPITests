@@ -13,6 +13,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import java.io.File;
 
@@ -26,7 +27,7 @@ public interface User {
     @GET
     @Path("profile")
     @Produces(MediaType.APPLICATION_JSON)
-    UserProfile userProfile(@QueryParam("token") String token) throws Exception;
+    UserProfile userProfile(@QueryParam("token") String token) throws WebApplicationException;
 
     @PUT
     @Path("profile")
@@ -40,21 +41,21 @@ public interface User {
                             @FormParam("firstName") String firstName,
                             @FormParam("lastName") String lastName,
                             @FormParam("leaveDate") String leaveDate,
-                            @FormParam("flightTime") String flightTime) throws Exception;
+                            @FormParam("flightTime") String flightTime) throws WebApplicationException;
 
     @POST
     @Path("photo")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     String userPhotoSet(@FormParam("token") String token,
-                        @FormParam("file") File file) throws Exception;
+                        @FormParam("file") File file) throws WebApplicationException;
 
     @DELETE
     @Path("photo")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     String userPhotoDelete(@FormParam("token") String token,
-                           @FormParam("file") File file) throws Exception;
+                           @FormParam("file") File file) throws WebApplicationException;
 
     @POST
     @Path("social")
@@ -62,21 +63,21 @@ public interface User {
     @Consumes("application/x-www-form-urlencoded")
     String userSocialsLink(@FormParam("token") String token,
                            @FormParam("provider") String provider,
-                           @FormParam("tokenProvider") String tokenProvider) throws Exception;
+                           @FormParam("tokenProvider") String tokenProvider) throws WebApplicationException;
 
     @DELETE
     @Path("social")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     String userSocialsLinkDelete(@FormParam("token") String token,
-                                 @FormParam("provider") String provider) throws Exception;
+                                 @FormParam("provider") String provider) throws WebApplicationException;
 
     @PUT
     @Path("affiliate")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     String userAffiliateSet(@FormParam("token") String token,
-                            @FormParam("code") String code) throws Exception;
+                            @FormParam("code") String code) throws WebApplicationException;
 
     @POST
     @Path("track")
@@ -84,11 +85,11 @@ public interface User {
     @Consumes("application/x-www-form-urlencoded")
     String userTrack(@FormParam("token") String token,
                      @FormParam("lat") float lat,
-                     @FormParam("lng") float lng) throws Exception;
+                     @FormParam("lng") float lng) throws WebApplicationException;
 
     @GET
     @Path("agent")
     @Produces(MediaType.APPLICATION_JSON)
-    UserAgent userAgent(@QueryParam("token") String token) throws Exception;
+    UserAgent userAgent(@QueryParam("token") String token) throws WebApplicationException;
 
 }

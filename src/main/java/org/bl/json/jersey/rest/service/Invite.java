@@ -10,7 +10,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * @author Bogdan Lupashko
@@ -22,8 +24,8 @@ public interface Invite {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    Invited[] inviteList(@QueryParam("token") String token,
-                         @QueryParam("reservationId") int reservationId) throws Exception;
+    Response inviteList(@QueryParam("token") String token,
+                         @QueryParam("reservationId") int reservationId) throws WebApplicationException;
 
     @POST
     @Path("share")
@@ -31,5 +33,5 @@ public interface Invite {
     @Consumes("application/x-www-form-urlencoded")
     String inviteShare(@FormParam("token") String token,
                        @FormParam("reservationId") int reservationId,
-                       @FormParam("contacts") Invited[] contacts) throws Exception;
+                       @FormParam("contacts") Invited[] contacts) throws WebApplicationException;
 }

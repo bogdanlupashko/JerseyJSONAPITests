@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -24,7 +25,7 @@ public interface Request {
     @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
     PriceYourRequest requestItem(@QueryParam("token") String token,
-                                 @FormParam("id") int id) throws Exception;
+                                 @FormParam("id") int id) throws WebApplicationException;
 
     @POST
     @Path("item")
@@ -40,13 +41,13 @@ public interface Request {
                          @FormParam("malesCount") int malesCount,
                          @FormParam("femalesCount") int femalesCount,
                          @FormParam("budget") float budget,
-                         @FormParam("note") String note) throws Exception;
+                         @FormParam("note") String note) throws WebApplicationException;
 
     @GET
     @Path("status")
     @Produces(MediaType.APPLICATION_JSON)
     String requestStatus(@QueryParam("token") String token,
-                         @QueryParam("id") int id) throws Exception;
+                         @QueryParam("id") int id) throws WebApplicationException;
 
 
     @PUT
@@ -57,7 +58,7 @@ public interface Request {
                          @FormParam("id") int id,
                          @FormParam("status") String status
                          /**@status values: confirmed_by_user, cancelled_by_user*/
-    ) throws Exception;
+    ) throws WebApplicationException;
 
 
 }

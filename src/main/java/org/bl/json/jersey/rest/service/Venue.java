@@ -10,6 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
 
@@ -23,13 +24,13 @@ public interface Venue {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    VenueList[] venueList(@QueryParam("token") String token) throws Exception;
+    VenueList[] venueList(@QueryParam("token") String token) throws WebApplicationException;
 
     @GET
     @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
     VenueItem venueItem(@QueryParam("token") String token,
-                        @QueryParam("id") int id) throws Exception;
+                        @QueryParam("id") int id) throws WebApplicationException;
 
     @GET
     @Path("map")
@@ -38,24 +39,24 @@ public interface Venue {
                         @QueryParam("centerLat") float centerLat,
                         @QueryParam("centerLng") float centerLng,
                         @QueryParam("deltaLat") float deltaLat,
-                        @QueryParam("deltaLng") float deltaLng) throws Exception;
+                        @QueryParam("deltaLng") float deltaLng) throws WebApplicationException;
 
     @GET
     @Path("gallery")
     @Produces(MediaType.APPLICATION_JSON)
     VenueGalery[] venueGalery(@QueryParam("token") String token,
-                              @QueryParam("id") int id) throws Exception;
+                              @QueryParam("id") int id) throws WebApplicationException;
 
     @GET
     @Path("backgroundUrl")
     @Produces(MediaType.APPLICATION_JSON)
     Map<String, String> venueBackgroundUrl(@QueryParam("token") String token,
-                                           @QueryParam("venueId") int venueId) throws Exception;
+                                           @QueryParam("venueId") int venueId) throws WebApplicationException;
 
     @GET
     @Path("thumb")
     @Produces(MediaType.APPLICATION_JSON)
     Map<String, String> venueThumb(@QueryParam("token") String token,
-                                   @QueryParam("venueId") int venueId) throws Exception;
+                                   @QueryParam("venueId") int venueId) throws WebApplicationException;
 
 }

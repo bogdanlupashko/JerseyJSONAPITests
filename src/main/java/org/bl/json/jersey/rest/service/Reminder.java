@@ -14,6 +14,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -25,13 +26,13 @@ public interface Reminder {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    ReminderItemForList[] reminderList(@QueryParam("token") String token) throws Exception;
+    ReminderItemForList[] reminderList(@QueryParam("token") String token) throws WebApplicationException;
 
     @GET
     @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
     ReminderItem reminderItem(@QueryParam("token") String token,
-                              @FormParam("id") int id) throws Exception;
+                              @FormParam("id") int id) throws WebApplicationException;
 
     @PUT
     @Path("item")
@@ -40,7 +41,7 @@ public interface Reminder {
     ReminderId reminderItemIdReminderDate(@FormParam("token") String token,
                                           @FormParam("id") int id,
                                           @FormParam("reminderDateTime") String reminderDateTime,
-                                          @FormParam("addedDateTime") String addedDateTime) throws Exception;
+                                          @FormParam("addedDateTime") String addedDateTime) throws WebApplicationException;
 
     @PUT
     @Path("item")
@@ -49,7 +50,7 @@ public interface Reminder {
     ReminderId reminderItemIdInterval(@FormParam("token") String token,
                                       @FormParam("id") int id,
                                       @FormParam("interval") int interval,
-                                      @FormParam("addedDateTime") String addedDateTime) throws Exception;
+                                      @FormParam("addedDateTime") String addedDateTime) throws WebApplicationException;
 
     @DELETE
     @Path("item")
@@ -65,7 +66,7 @@ public interface Reminder {
     ReminderId addReminderItemIdReminderDate(@FormParam("token") String token,
                                              @FormParam("id") int id,
                                              @FormParam("reminderDateTime") String reminderDateTime,
-                                             @FormParam("addedDateTime") String addedDateTime) throws Exception;
+                                             @FormParam("addedDateTime") String addedDateTime) throws WebApplicationException;
 
     @POST
     @Path("venue")

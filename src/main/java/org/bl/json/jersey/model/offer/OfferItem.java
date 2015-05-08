@@ -26,6 +26,15 @@ public class OfferItem {
     private String status;
     private String bachelor;
     private String dateTime;
+    private int periodId;
+
+    public int getPeriodId() {
+        return periodId;
+    }
+
+    public void setPeriodId(int periodId) {
+        this.periodId = periodId;
+    }
 
     public int getId() {
         return id;

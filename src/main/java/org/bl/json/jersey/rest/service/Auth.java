@@ -11,7 +11,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * @author Bogdan Lupashko
@@ -25,13 +27,13 @@ public interface Auth {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     AuthLogin authLogin(@FormParam("email") String email,
-                        @FormParam("password") String password) throws Exception;
+                        @FormParam("password") String password) throws WebApplicationException;
 
     @POST
     @Path("logout")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    String authLogout(@FormParam("token") String token) throws Exception;
+    String authLogout(@FormParam("token") String token) throws WebApplicationException;
 
     @POST
     @Path("register")
@@ -42,35 +44,35 @@ public interface Auth {
                         @FormParam("passwordRepeat") String passwordRepeat,
                         @FormParam("phone") String phone,
                         @FormParam("firstName") String firstName,
-                        @FormParam("lastName") String lastName) throws Exception;
+                        @FormParam("lastName") String lastName) throws WebApplicationException;
 
     @POST
     @Path("recover")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    String authRecover(@FormParam("email") String email) throws Exception;
+    String authRecover(@FormParam("email") String email) throws WebApplicationException;
 
     @GET
     @Path("hotelsList")
     @Produces(MediaType.APPLICATION_JSON)
-    String[] authHotelsList(@QueryParam("token") String token)  throws Exception;
+    String[] authHotelsList(@QueryParam("token") String token)  throws WebApplicationException;
 
     @POST
     @Path("passwordCheck")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     String authPasswordCheck(@FormParam("token") String token,
-                             @FormParam("password") String password) throws Exception;
+                             @FormParam("password") String password) throws WebApplicationException;
 
     @POST
     @Path("deviceTokenUpdate")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
-    String authDeviceTokenUpdate(@FormParam("token") String token) throws Exception;
+    String authDeviceTokenUpdate(@FormParam("token") String token) throws WebApplicationException;
 
     @GET
     @Path("categoriesList")
     @Produces(MediaType.APPLICATION_JSON)
-    UserTopCategories[] authCategoriesList(@QueryParam("token") String token) throws Exception;
+    UserTopCategories[] authCategoriesList(@QueryParam("token") String token) throws WebApplicationException;
 
 }

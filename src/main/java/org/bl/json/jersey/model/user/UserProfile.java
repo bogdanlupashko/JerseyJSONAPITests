@@ -31,10 +31,10 @@ public class UserProfile {
     private String leaveDate;
     private String flightTime;
     private String pending;
+    private String deviceToken;
     private String homepage;
     private String registeredDateTime;
     private String photoUrl;
-
 
     public int getId() {
         return id;
@@ -218,6 +218,14 @@ public class UserProfile {
 
     public void setPending(String pending) {
         this.pending = pending;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
     }
 
     public String getHomepage() {

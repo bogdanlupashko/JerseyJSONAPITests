@@ -2,10 +2,14 @@ package org.bl.json.jersey.test;
 
 import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
+import org.bl.json.jersey.model.errors.ErrorString;
 import org.bl.json.jersey.model.offer.OfferWithArch;
 import org.bl.json.jersey.rest.service.Offer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import javax.ws.rs.ProcessingException;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * @author Bogdan Lupashko
@@ -22,15 +26,31 @@ public class TestOffer {
     public void offerList() {
         try {
             Offer service = TestVariables.getClient().proxy(Offer.class);
-            offers = service.offerList(TestVariables.getToken(), TestVariables.venueId, TestVariables.reservedDateTime);
+            offers = service.offerList(TestVariables.getToken(),
+                    TestVariables.venueId);
+
             TestVariables.reportFiller(docLink, offerListDescription, offers);
             JerseyClient.LOG.error(offers.toString());
             Assert.assertNotNull(offers);
-            JerseyClient.LOG.error(offers.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, offerListDescription, e.getLocalizedMessage());
-            Assert.fail();
+
+        } catch (WebApplicationException errorsMessage) {
+            errorsMessage.printStackTrace();
+//            try {
+//                TestVariables.reportFiller(docLink, offerListDescription, errorsMessage.getResponse().readEntity(Error.class));
+//
+//            } catch (ProcessingException e) {
+//                try {
+//                    e.printStackTrace();
+//                    TestVariables.reportFiller(docLink, offerListDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+//                } catch (ProcessingException e1) {
+//                    e1.printStackTrace();
+//                    TestVariables.reportFillerStackTrace(docLink, offerListDescription, errorsMessage.getLocalizedMessage());
+//                }
+//            }
+//        } catch (ProcessingException pro) {
+//
+//            TestVariables.reportFillerStackTrace(docLink, offerListDescription, pro.getLocalizedMessage());
+//            Assert.fail("Object mapping failed : ", pro.getCause());
         }
 
     }
@@ -44,10 +64,20 @@ public class TestOffer {
             JerseyClient.LOG.error(offerItem.toString());
             Assert.assertNotNull(offerItem);
             JerseyClient.LOG.error(offerItem.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, offerItemDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, offerItemDescription, errorsMessage.getResponse().readEntity(Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, offerItemDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, offerItemDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, offerItemDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 

@@ -4,9 +4,13 @@ import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.category.CategoryHomepage;
 import org.bl.json.jersey.model.category.CategoryList;
+import org.bl.json.jersey.model.errors.ErrorString;
 import org.bl.json.jersey.rest.service.Category;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import javax.ws.rs.ProcessingException;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * @author Bogdan Lupashko
@@ -27,10 +31,20 @@ public class TestCategory {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, categoryHomepageDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, categoryHomepageDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, categoryHomepageDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, categoryHomepageDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, categoryHomepageDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -43,10 +57,20 @@ public class TestCategory {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, categoryListDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, categoryListDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, categoryListDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, categoryListDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, categoryListDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 }

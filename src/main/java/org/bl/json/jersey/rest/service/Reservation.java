@@ -12,6 +12,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -25,7 +26,7 @@ public interface Reservation {
     @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
     ReservationItem reservationItem(@QueryParam("token") String token,
-                                    @QueryParam("id") int id) throws Exception;
+                                    @QueryParam("id") int id) throws WebApplicationException;
 
     @POST
     @Path("item")
@@ -40,14 +41,14 @@ public interface Reservation {
                                              @FormParam("femalesCount") int femalesCount,
                                              @FormParam("email") String email,
                                              @FormParam("periodId") int periodId,
-                                             @FormParam("lastName") String lastName) throws Exception;
+                                             @FormParam("lastName") String lastName) throws WebApplicationException;
 
     @DELETE
     @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     String reservationItemDelete(@QueryParam("token") String token,
-                                 @FormParam("id") int id) throws Exception;
+                                 @FormParam("id") int id) throws WebApplicationException;
 
     @POST
     @Path("pay")
@@ -55,5 +56,5 @@ public interface Reservation {
     @Consumes("application/x-www-form-urlencoded")
     String reservationItemPay(@QueryParam("token") String token,
                               @FormParam("reservationId") int reservationId,
-                              @FormParam("paymentId") String paymentId) throws Exception;
+                              @FormParam("paymentId") String paymentId) throws WebApplicationException;
 }

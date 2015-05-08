@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -23,12 +24,12 @@ public interface Notification {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    NotificationItem[] notificationList(@QueryParam("token") String token) throws Exception;
+    NotificationItem[] notificationList(@QueryParam("token") String token) throws WebApplicationException;
 
     @GET
     @Path("count")
     @Produces(MediaType.APPLICATION_JSON)
-    NotificationCount notificationCount(@QueryParam("token") String token) throws Exception;
+    NotificationCount notificationCount(@QueryParam("token") String token) throws WebApplicationException;
 
 
     @PUT
@@ -36,6 +37,6 @@ public interface Notification {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes("application/x-www-form-urlencoded")
     String notificationRead(@FormParam("token") String token,
-                            @FormParam("id") int id) throws Exception; //Notification ID required
+                            @FormParam("id") int id) throws WebApplicationException; //Notification ID required
 
 }

@@ -2,6 +2,7 @@ package org.bl.json.jersey.test;
 
 import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
+import org.bl.json.jersey.model.errors.ErrorString;
 import org.bl.json.jersey.model.trip.TripActivity;
 import org.bl.json.jersey.model.trip.TripId;
 import org.bl.json.jersey.model.trip.TripItem;
@@ -14,6 +15,8 @@ import org.bl.json.jersey.rest.service.Trip;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import javax.ws.rs.ProcessingException;
+import javax.ws.rs.WebApplicationException;
 import java.util.Map;
 
 /**
@@ -48,10 +51,20 @@ public class TestTrip {
             JerseyClient.LOG.error(userCreatedTrips.toString());
             Assert.assertNotNull(userCreatedTrips);
             JerseyClient.LOG.error(userCreatedTrips.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, userCreatedTripsDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, userCreatedTripsDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, userCreatedTripsDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, userCreatedTripsDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, userCreatedTripsDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -65,10 +78,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, userCreatedTripItemDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, userCreatedTripItemDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, userCreatedTripItemDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, userCreatedTripItemDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, userCreatedTripItemDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -82,10 +105,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, userCreationTripItemDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, userCreationTripItemDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, userCreationTripItemDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, userCreationTripItemDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, userCreationTripItemDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -100,10 +133,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, userUpdateTripItemDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, userUpdateTripItemDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, userUpdateTripItemDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, userUpdateTripItemDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, userUpdateTripItemDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -117,10 +160,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, userCreationTripItemDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, userCreationTripItemDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, userCreationTripItemDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, userCreationTripItemDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, userCreationTripItemDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -135,10 +188,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, activityGetInfoDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, activityGetInfoDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, activityGetInfoDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, activityGetInfoDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, activityGetInfoDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
     public static TripId tripId;
@@ -157,10 +220,20 @@ public class TestTrip {
             JerseyClient.LOG.error(tripId.toString());
             Assert.assertNotNull(tripId);
             JerseyClient.LOG.error(tripId.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, activityPostInfoDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, activityPostInfoDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, activityPostInfoDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, activityPostInfoDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, activityPostInfoDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -178,10 +251,20 @@ public class TestTrip {
             JerseyClient.LOG.error(tripId.toString());
             Assert.assertNotNull(tripId);
             JerseyClient.LOG.error(tripId.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, activityPutInfoDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, activityPutInfoDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, activityPutInfoDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, activityPutInfoDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, activityPutInfoDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -197,10 +280,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, activityDeleteInfoDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, activityDeleteInfoDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, activityDeleteInfoDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, activityDeleteInfoDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, activityDeleteInfoDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -215,10 +308,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, tripSyncDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, tripSyncDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, tripSyncDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, tripSyncDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, tripSyncDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -232,10 +335,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, activityTypesDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, activityTypesDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, activityTypesDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, activityTypesDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, activityTypesDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -250,10 +363,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, tripSyncItemDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, tripSyncItemDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, tripSyncItemDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, tripSyncItemDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, tripSyncItemDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -268,10 +391,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, getTripRequestDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, getTripRequestDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, getTripRequestDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, getTripRequestDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, getTripRequestDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -291,10 +424,20 @@ public class TestTrip {
             JerseyClient.LOG.error(tripId.toString());
             Assert.assertNotNull(tripId);
             JerseyClient.LOG.error(tripId.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, createTripRequestDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, createTripRequestDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, createTripRequestDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, createTripRequestDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, createTripRequestDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -310,10 +453,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(tripId);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, getPlanTripDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, getPlanTripDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, getPlanTripDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, getPlanTripDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, getPlanTripDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -329,10 +482,20 @@ public class TestTrip {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(tripId);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, changePlanTripStatusDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, changePlanTripStatusDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, changePlanTripStatusDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, changePlanTripStatusDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, changePlanTripStatusDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 

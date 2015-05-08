@@ -3,15 +3,19 @@ package org.bl.json.jersey.model.offer;
 /**
  * @author Bogdan Lupashko
  */
-public class OfferWithArch extends OfferWithPeriod {
+public class OfferWithArch extends OfferItem {
 
-    private int archived;
+    private boolean archived;
 
-    public int getArchived() {
+    public boolean getArchived() {
         return archived;
     }
 
-    public void setArchived(int archived) {
-        this.archived = archived;
+    public void setArchived(Object archived) {
+        if (archived instanceof Boolean) {
+            this.archived = (Boolean)archived;
+        } else if (archived instanceof Integer){
+            this.archived = ((Integer) archived).equals(1);
+        }
     }
 }

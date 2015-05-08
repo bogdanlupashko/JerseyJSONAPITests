@@ -1,4 +1,4 @@
-<suite name="TestPaymentFlow">
+<suite name="PaymentFlow">
 
     <test name="login">
         <classes>
@@ -46,15 +46,15 @@
         </classes>
     </test>
 
-    <test name="venueList">
-        <classes>
-            <class name="org.bl.json.jersey.test.TestVenue">
-                <methods>
-                    <include name=".*venueList"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+    <!--<test name="venueList">-->
+        <!--<classes>-->
+            <!--<class name="org.bl.json.jersey.test.TestVenue">-->
+                <!--<methods>-->
+                    <!--<include name=".*venueList"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="venueItem">
         <classes>

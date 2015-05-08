@@ -10,8 +10,6 @@ import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 public class RestClient {
     private ResteasyWebTarget target;
 
-
-
     private static final String DEFAULT_ENDPOINT = JerseyClient.MAIN_URL;
 
     public RestClient() {

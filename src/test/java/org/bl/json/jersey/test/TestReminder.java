@@ -2,11 +2,15 @@ package org.bl.json.jersey.test;
 
 import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
+import org.bl.json.jersey.model.errors.ErrorString;
 import org.bl.json.jersey.model.reminder.ReminderItem;
 import org.bl.json.jersey.model.reminder.ReminderItemForList;
 import org.bl.json.jersey.rest.service.Reminder;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import javax.ws.rs.ProcessingException;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * @author Bogdan Lupashko
@@ -28,10 +32,20 @@ public class TestReminder {
             JerseyClient.LOG.error(reminderItems.toString());
             Assert.assertNotNull(reminderItems);
             JerseyClient.LOG.error(reminderItems.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, reminderListDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, reminderListDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, reminderListDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, reminderListDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, reminderListDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
@@ -45,10 +59,20 @@ public class TestReminder {
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
             JerseyClient.LOG.error(response.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TestVariables.reportFillerStackTrace(docLink, getReminderItemDescription, e.getLocalizedMessage());
-            Assert.fail();
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(docLink, getReminderItemDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(docLink, getReminderItemDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(docLink, getReminderItemDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(docLink, getReminderItemDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
 
