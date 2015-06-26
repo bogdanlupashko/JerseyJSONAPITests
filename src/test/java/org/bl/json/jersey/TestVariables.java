@@ -79,6 +79,7 @@ public class TestVariables {
     public static String flightTime = "2015-06-27T00:05:54-0700";
     public static int budget = 20;
     public static int viatorId = 20;
+    public static int showsId = 12;
     public static String note = "some notes";
     public static String status = "confirmed_by_user";
     public static File photoFile = FileUtils.getFile("src\\java\\resources\\photo.jpg");

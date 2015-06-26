@@ -1,0 +1,45 @@
+<suite name="FlowShow">
+
+    <test name="login">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestAuth">
+                <methods>
+                    <include name=".*authLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Showitem">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestShows">
+                <methods>
+                    <include name=".*showsItem"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="ShowList">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestShows">
+                <methods>
+                    <include name=".*showsList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="logout">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestAuth">
+                <methods>
+                    <include name=".*authLogout"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+</suite>
