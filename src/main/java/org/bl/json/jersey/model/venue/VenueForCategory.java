@@ -7,6 +7,15 @@ package org.bl.json.jersey.model.venue;
 public class VenueForCategory extends VenueSimple {
 
     private int promoted;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getPromoted() {
         return promoted;

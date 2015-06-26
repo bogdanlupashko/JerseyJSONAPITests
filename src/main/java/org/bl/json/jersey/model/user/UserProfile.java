@@ -32,9 +32,36 @@ public class UserProfile {
     private String flightTime;
     private String pending;
     private String deviceToken;
+    private String deviceType;
+    private String lastActivityTime;
+    private String version;
     private String homepage;
     private String registeredDateTime;
     private String photoUrl;
+
+    public String getLastActivityTime() {
+        return lastActivityTime;
+    }
+
+    public void setLastActivityTime(String lastActivityTime) {
+        this.lastActivityTime = lastActivityTime;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getDeviceType() {
+        return deviceType;
+    }
+
+    public void setDeviceType(String deviceType) {
+        this.deviceType = deviceType;
+    }
 
     public int getId() {
         return id;
