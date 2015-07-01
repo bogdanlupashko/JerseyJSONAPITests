@@ -1,7 +1,7 @@
 package org.bl.json.jersey.rest.service;
 
 import org.bl.json.jersey.client.JerseyClient;
-import org.bl.json.jersey.model.invite.Invited;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -33,5 +33,5 @@ public interface Invite {
     @Consumes("application/x-www-form-urlencoded")
     String inviteShare(@FormParam("token") String token,
                        @FormParam("reservationId") int reservationId,
-                       @FormParam("contacts") Invited[] contacts) throws WebApplicationException;
+                       @FormParam("contacts") Map<String, String>[] contacts) throws WebApplicationException;
 }

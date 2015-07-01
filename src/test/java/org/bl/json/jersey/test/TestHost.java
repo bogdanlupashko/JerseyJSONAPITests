@@ -4,6 +4,7 @@ import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.errors.ErrorString;
 import org.bl.json.jersey.model.host.HostItem;
+import org.bl.json.jersey.model.host.HostList;
 import org.bl.json.jersey.rest.service.Host;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -55,7 +56,7 @@ public class TestHost {
     public void hostsList() {
         try {
             Host service = TestVariables.getClient().proxy(Host.class);
-            HostItem[] response = service.hostsList(TestVariables.getToken(), TestVariables.venueId);
+            HostList[] response = service.hostsList(TestVariables.getToken(), TestVariables.venueId);
             TestVariables.reportFiller(docLink, hostListDescription, response);
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);

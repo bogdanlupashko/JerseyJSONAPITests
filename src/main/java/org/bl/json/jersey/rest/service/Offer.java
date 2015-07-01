@@ -27,6 +27,5 @@ public interface Offer {
     @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
     OfferWithArch offerItem(@QueryParam("token") String token,
-                            @QueryParam("id") int id,
-                            @QueryParam("periodId") int periodId) throws WebApplicationException;
+                            @QueryParam("id") int id) throws WebApplicationException;
 }

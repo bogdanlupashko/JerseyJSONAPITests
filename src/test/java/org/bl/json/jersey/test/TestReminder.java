@@ -54,7 +54,7 @@ public class TestReminder {
         try {
             Reminder service = TestVariables.getClient().proxy(Reminder.class);
             ReminderItem response = service.reminderItem(TestVariables.getToken(),
-                    getReminderId(reminderItems));
+                    TestVariables.reservationId);
             TestVariables.reportFiller(docLink, getReminderItemDescription, response);
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);
@@ -78,7 +78,7 @@ public class TestReminder {
 
     private int getReminderId( ReminderItemForList[] reminderItems){
         for ( ReminderItemForList item : reminderItems){
-            return 0;
+            return item.getReservationId();
         }
         return 0;
     }

@@ -58,7 +58,7 @@ public class TestInvite {
             Invite service = TestVariables.getClient().proxy(Invite.class);
             String response = service.inviteShare(TestVariables.getToken(),
                     TestReservation.reservationItemId.getReservationId(),
-                    (Invited[]) invitedContacts.getEntity());
+                    TestVariables.contacts);
             TestVariables.reportFiller(docLink, inviteListDescription, response);
             JerseyClient.LOG.error(response.toString());
             Assert.assertNotNull(response);

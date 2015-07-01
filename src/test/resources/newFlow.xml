@@ -10,11 +10,83 @@
         </classes>
     </test>
 
-    <test name="login">
+    <test name="qw">
         <classes>
-            <class name="org.bl.json.jersey.test.TestAuth">
+            <class name="org.bl.json.jersey.test.TestVenue">
                 <methods>
-                    <include name=".*authLogout"/>
+                    <include name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="q1w">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="q2w">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="q3w">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="q43w">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="q13w">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="q123w">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="q23w">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="q33w">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestVenue">
+                <methods>
+                    <include name=".*venueList"/>
                 </methods>
             </class>
         </classes>

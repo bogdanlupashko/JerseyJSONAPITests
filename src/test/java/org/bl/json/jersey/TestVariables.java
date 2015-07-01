@@ -1,6 +1,7 @@
 package org.bl.json.jersey;
 
 import com.google.gson.Gson;
+import com.sun.javafx.collections.MappingChange;
 import org.apache.commons.io.FileUtils;
 import org.bl.json.jersey.model.auth.AuthLogin;
 import org.bl.json.jersey.model.errors.Error;
@@ -16,6 +17,8 @@ import javax.ws.rs.ProcessingException;
 import javax.ws.rs.WebApplicationException;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Bogdan Lupashko
@@ -65,7 +68,7 @@ public class TestVariables {
     public static int venueId = 20;
     public static int requestId = 20;
     public static int hostId = 20;
-    public static int reservationId = 20;
+    public static int reservationId = 678;
     public final static int offerId = 257;
     public static int malesCount = 4;
     public static int femalesCount = 0;
@@ -83,6 +86,9 @@ public class TestVariables {
     public static String note = "some notes";
     public static String status = "confirmed_by_user";
     public static File photoFile = FileUtils.getFile("src\\java\\resources\\photo.jpg");
+    public static Map<String,String>[] contacts;
+
+
     /**
      * @status values: confirmed_by_user, cancelled_by_user
      */
@@ -112,6 +118,8 @@ public class TestVariables {
     static String token;
 
     public static String getToken() {
+//        contacts[0].put("email", "email@email.com");
+//        contacts[0].put("fullName", "John Smith");
         if (token != null) {
             return TestVariables.token;
         } else {

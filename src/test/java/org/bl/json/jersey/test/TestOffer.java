@@ -35,22 +35,22 @@ public class TestOffer {
 
         } catch (WebApplicationException errorsMessage) {
             errorsMessage.printStackTrace();
-//            try {
-//                TestVariables.reportFiller(docLink, offerListDescription, errorsMessage.getResponse().readEntity(Error.class));
-//
-//            } catch (ProcessingException e) {
-//                try {
-//                    e.printStackTrace();
-//                    TestVariables.reportFiller(docLink, offerListDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
-//                } catch (ProcessingException e1) {
-//                    e1.printStackTrace();
-//                    TestVariables.reportFillerStackTrace(docLink, offerListDescription, errorsMessage.getLocalizedMessage());
-//                }
-//            }
-//        } catch (ProcessingException pro) {
-//
-//            TestVariables.reportFillerStackTrace(docLink, offerListDescription, pro.getLocalizedMessage());
-//            Assert.fail("Object mapping failed : ", pro.getCause());
+            try {
+                TestVariables.reportFiller(docLink, offerListDescription, errorsMessage.getResponse().readEntity(Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    e.printStackTrace();
+                    TestVariables.reportFiller(docLink, offerListDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    e1.printStackTrace();
+                    TestVariables.reportFillerStackTrace(docLink, offerListDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+
+            TestVariables.reportFillerStackTrace(docLink, offerListDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
         }
 
     }
@@ -59,7 +59,7 @@ public class TestOffer {
     public void offerItem() {
         try {
             Offer service = TestVariables.getClient().proxy(Offer.class);
-            OfferWithArch offerItem = service.offerItem(TestVariables.getToken(), TestVariables.offerId, getPeriod(offers));
+            OfferWithArch offerItem = service.offerItem(TestVariables.getToken(), TestVariables.offerId);
             TestVariables.reportFiller(docLink, offerItemDescription, offerItem);
             JerseyClient.LOG.error(offerItem.toString());
             Assert.assertNotNull(offerItem);
@@ -87,6 +87,6 @@ public class TestOffer {
                 return offers[i].getPeriodId();
             }
         }
-        return 0;
+        return 19004;
     }
 }

@@ -2,6 +2,7 @@ package org.bl.json.jersey.rest.service;
 
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.host.HostItem;
+import org.bl.json.jersey.model.host.HostList;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,7 +20,7 @@ public interface Host {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    HostItem[] hostsList(@QueryParam("token") String token,
+    HostList[] hostsList(@QueryParam("token") String token,
                          @QueryParam("id") int id)  throws WebApplicationException; //Venue Id required
 
     @GET

@@ -117,7 +117,7 @@ public class TestVenue {
         try {
             Venue service = TestVariables.getClient().proxy(Venue.class);
             VenueGalery[] response = service.venueGalery(TestVariables.getToken(),
-                    venueItem.getId());
+                    getVenueId());
 
             TestVariables.reportFiller(docLink, venueGaleryDescription, response);
             JerseyClient.LOG.error(response.toString());
@@ -171,7 +171,7 @@ public class TestVenue {
         try {
             Venue service = TestVariables.getClient().proxy(Venue.class);
             Map<String, String>  response = service.venueThumb(TestVariables.getToken(),
-                    venueItem.getId());
+                    getVenueId());
 
             TestVariables.reportFiller(docLink, venueThumbDescription, response);
             JerseyClient.LOG.error(response.toString());
@@ -193,4 +193,10 @@ public class TestVenue {
             Assert.fail("Object mapping failed : ", pro.getCause());
         }
     }
+
+    public int getVenueId(){
+
+        return TestVariables.venueId;
+    }
+
 }

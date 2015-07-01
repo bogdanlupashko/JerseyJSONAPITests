@@ -14,6 +14,24 @@ public class NotificationItem {
     private String requestStatus;
     private int venueId;
     private String type;
+    private String titleAlt;
+    private int  hostId;
+
+     public String getTitleAlt() {
+        return titleAlt;
+    }
+
+    public void setTitleAlt(String titleAlt) {
+        this.titleAlt = titleAlt;
+    }
+
+    public int getHostId() {
+        return hostId;
+    }
+
+    public void setHostId(int hostId) {
+        this.hostId = hostId;
+    }
 
     public int getId() {
         return id;
