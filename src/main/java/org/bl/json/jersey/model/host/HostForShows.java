@@ -3,33 +3,33 @@ package org.bl.json.jersey.model.host;
 /**
  * Created by blupashko on 26.06.2015.
  */
-public class HostForShows extends HostItem {
+public class HostForShows extends HostSimple {
 
-    private int affiliateId;
-    private int supportId;
-    private int active;
+    private String photo;
+    private String email;
+    private int id;
 
-    public int getAffiliateId() {
-        return affiliateId;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setAffiliateId(int affiliateId) {
-        this.affiliateId = affiliateId;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
-    public int getSupportId() {
-        return supportId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSupportId(int supportId) {
-        this.supportId = supportId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getActive() {
-        return active;
+    public int getId() {
+        return id;
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public void setId(int id) {
+        this.id = id;
     }
 }

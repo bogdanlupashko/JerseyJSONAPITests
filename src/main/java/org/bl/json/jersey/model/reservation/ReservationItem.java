@@ -11,11 +11,15 @@ import java.util.Map;
  */
 public class ReservationItem {
     private int id;
+    private String type;
     private int userId;
     private int offerId;
     private int periodId;
     private int requestId;
+    private int showTourId;
+    private int showTourPeriodId;
     private int transactionId;
+    private int redeemTrigger;
     private String status;
     private String firstName;
     private String lastName;
@@ -28,8 +32,10 @@ public class ReservationItem {
     private String pickup;
     private String note;
     private String feedback;
+    private String customData;
     private boolean payed;
     private int paymentId;
+    private int guests;
     private int apn;
     private boolean archived;
     private int invites;
@@ -38,6 +44,54 @@ public class ReservationItem {
     private Map<String, String> venueImage;
     private OfferWithArch offer;
     private Request request;
+
+    public String getCustomData() {
+        return customData;
+    }
+
+    public void setCustomData(String customData) {
+        this.customData = customData;
+    }
+
+    public int getGuests() {
+        return guests;
+    }
+
+    public void setGuests(int guests) {
+        this.guests = guests;
+    }
+
+    public int getRedeemTrigger() {
+        return redeemTrigger;
+    }
+
+    public void setRedeemTrigger(int redeemTrigger) {
+        this.redeemTrigger = redeemTrigger;
+    }
+
+    public int getShowTourId() {
+        return showTourId;
+    }
+
+    public void setShowTourId(int showTourId) {
+        this.showTourId = showTourId;
+    }
+
+    public int getShowTourPeriodId() {
+        return showTourPeriodId;
+    }
+
+    public void setShowTourPeriodId(int showTourPeriodId) {
+        this.showTourPeriodId = showTourPeriodId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getId() {
         return id;

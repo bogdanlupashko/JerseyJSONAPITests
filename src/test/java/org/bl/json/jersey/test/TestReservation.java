@@ -33,7 +33,7 @@ public class TestReservation {
     public void reservationItem() {
         try {
             Reservation service = TestVariables.getClient().proxy(Reservation.class);
-            ReservationItem reservationItem = service.reservationItem(TestVariables.getToken(), reservationItemId.getReservationId());
+            ReservationItem reservationItem = service.reservationItem(TestVariables.getToken(), TestVariables.reservationId);//reservationItemId.getReservationId());
             TestVariables.reportFiller(docLink, reservationItemDescription, reservationItem);
             JerseyClient.LOG.error(reservationItem.toString());
             Assert.assertNotNull(reservationItem);
@@ -126,7 +126,7 @@ public class TestReservation {
         try {
             Reservation service = TestVariables.getClient().proxy(Reservation.class);
             String response = service.reservationItemPay(TestVariables.getToken(),
-                    reservationItemId.getReservationId(),
+                    TestVariables.reservationId,
                     TestVariables.paymentId);
 
             TestVariables.reportFiller(docLink, reservationItemPayDescription, response);

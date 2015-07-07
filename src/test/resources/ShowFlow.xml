@@ -10,6 +10,16 @@
         </classes>
     </test>
 
+    <test name="ShowList">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestShows">
+                <methods>
+                    <include name=".*showsList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
     <test name="Showitem">
         <classes>
             <class name="org.bl.json.jersey.test.TestShows">
@@ -20,15 +30,37 @@
         </classes>
     </test>
 
-    <test name="ShowList">
+    <test name="ShowReservation">
         <classes>
             <class name="org.bl.json.jersey.test.TestShows">
                 <methods>
-                    <include name=".*showsList"/>
+                    <include name=".*showsReservationPost"/>
                 </methods>
             </class>
         </classes>
     </test>
+
+    <test name="ShowitemPay">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestReservation">
+                <methods>
+                    <include name=".*reservationItemPay"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Showitemget">
+        <classes>
+            <class name="org.bl.json.jersey.test.TestReservation">
+                <methods>
+                    <include name=".*reservationItem"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
 
 
     <test name="logout">
@@ -40,6 +72,5 @@
             </class>
         </classes>
     </test>
-
 
 </suite>

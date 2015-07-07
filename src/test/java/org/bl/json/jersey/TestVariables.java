@@ -44,11 +44,15 @@ public class TestVariables {
 
     public static String tripName = "qqqqqq";
     public static String type = "flight";
+    public static String showType = "showTour";
+    public static String showTypeViator = "viator";
     /**
      * @type value: flight, hotel, event, restaurant, show, misc
      */
     public static String syncCode = "100500";
     public static int travelType = 1;
+    public static int eventId = 12;
+    public static int periodId = 271;
     /**
      * TRAVEL_TYPE_PARTY = 1;
      * TRAVEL_TYPE_VACATION = 2;
@@ -68,7 +72,7 @@ public class TestVariables {
     public static int venueId = 20;
     public static int requestId = 20;
     public static int hostId = 20;
-    public static int reservationId = 678;
+    public static int reservationId = 777;
     public final static int offerId = 257;
     public static int malesCount = 4;
     public static int femalesCount = 0;
@@ -92,7 +96,7 @@ public class TestVariables {
     /**
      * @status values: confirmed_by_user, cancelled_by_user
      */
-    public static String paymentId = "ygfyegfefefeg";
+    public static String paymentId = "PAY-39X01690TH6710111KV7PV2A";
     public static String provider = "facebook";
     /**
      * facebook, google, twitter

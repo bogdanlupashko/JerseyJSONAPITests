@@ -11,88 +11,49 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 public class ShowsItem {
     private int id;
+    private int hostId;
     private String category;
+    private String type;
     private int providerId;
     private String title;
-    private String image;
     private String description;
     private int pickUp;
     private int air;
     private String departurePoint;
     private int costType;
     private Float price;
-    private Float salePrice;
+    private Float priceOld;
     private String duration;
     private Float rating;
-    private String itemsToBring;
-    private String finePrint;
-    private String createdAt;
-    private String updatedAt;
-    private HostForShows[] hosts;
-    private Period[] periods;
     private String thumb;
     private int userAgreement;
     private String specialRequirement;
-    @JsonIgnore
-    private String customData;
+    private String itemsToBring;
+    private String finePrint;
+    private String guestLimit;
+    private String createdAt;
+    private String updatedAt;
+    private String[] customData;
     private Map<String, String> mainImage;
     private Map<String, String>[] images;
+    private HostForShows host;
+    private Period[] periods;
     private Provider provider;
 
-    public Provider getProvider() {
-        return provider;
+    public String getType() {
+        return type;
     }
 
-    public void setProvider(Provider provider) {
-        this.provider = provider;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Map<String, String>[] getImages() {
-        return images;
+    public String getGuestLimit() {
+        return guestLimit;
     }
 
-    public void setImages(Map<String, String>[] images) {
-        this.images = images;
-    }
-
-    public Map<String, String> getMainImage() {
-        return mainImage;
-    }
-
-    public void setMainImage(Map<String, String> mainImage) {
-        this.mainImage = mainImage;
-    }
-
-    public String getCustomData() {
-        return customData;
-    }
-
-    public void setCustomData(String customData) {
-        this.customData = customData;
-    }
-
-    public String getSpecialRequirement() {
-        return specialRequirement;
-    }
-
-    public void setSpecialRequirement(String specialRequirement) {
-        this.specialRequirement = specialRequirement;
-    }
-
-    public int getUserAgreement() {
-        return userAgreement;
-    }
-
-    public void setUserAgreement(int userAgreement) {
-        this.userAgreement = userAgreement;
-    }
-
-    public String getThumb() {
-        return thumb;
-    }
-
-    public void setThumb(String thumb) {
-        this.thumb = thumb;
+    public void setGuestLimit(String guestLimit) {
+        this.guestLimit = guestLimit;
     }
 
     public int getId() {
@@ -101,6 +62,14 @@ public class ShowsItem {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getHostId() {
+        return hostId;
+    }
+
+    public void setHostId(int hostId) {
+        this.hostId = hostId;
     }
 
     public String getCategory() {
@@ -115,7 +84,7 @@ public class ShowsItem {
         return providerId;
     }
 
-    public void setProviderId(int provider) {
+    public void setProviderId(int providerId) {
         this.providerId = providerId;
     }
 
@@ -125,14 +94,6 @@ public class ShowsItem {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getDescription() {
@@ -183,12 +144,12 @@ public class ShowsItem {
         this.price = price;
     }
 
-    public Float getSalePrice() {
-        return salePrice;
+    public Float getPriceOld() {
+        return priceOld;
     }
 
-    public void setSalePrice(Float salePrice) {
-        this.salePrice = salePrice;
+    public void setPriceOld(Float priceOld) {
+        this.priceOld = priceOld;
     }
 
     public String getDuration() {
@@ -205,6 +166,30 @@ public class ShowsItem {
 
     public void setRating(Float rating) {
         this.rating = rating;
+    }
+
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
+    }
+
+    public int getUserAgreement() {
+        return userAgreement;
+    }
+
+    public void setUserAgreement(int userAgreement) {
+        this.userAgreement = userAgreement;
+    }
+
+    public String getSpecialRequirement() {
+        return specialRequirement;
+    }
+
+    public void setSpecialRequirement(String specialRequirement) {
+        this.specialRequirement = specialRequirement;
     }
 
     public String getItemsToBring() {
@@ -239,12 +224,36 @@ public class ShowsItem {
         this.updatedAt = updatedAt;
     }
 
-    public HostForShows[] getHosts() {
-        return hosts;
+    public String[] getCustomData() {
+        return customData;
     }
 
-    public void setHosts(HostForShows[] hosts) {
-        this.hosts = hosts;
+    public void setCustomData(String[] customData) {
+        this.customData = customData;
+    }
+
+    public Map<String, String> getMainImage() {
+        return mainImage;
+    }
+
+    public void setMainImage(Map<String, String> mainImage) {
+        this.mainImage = mainImage;
+    }
+
+    public Map<String, String>[] getImages() {
+        return images;
+    }
+
+    public void setImages(Map<String, String>[] images) {
+        this.images = images;
+    }
+
+    public HostForShows getHost() {
+        return host;
+    }
+
+    public void setHost(HostForShows host) {
+        this.host = host;
     }
 
     public Period[] getPeriods() {
@@ -255,8 +264,11 @@ public class ShowsItem {
         this.periods = periods;
     }
 
+    public Provider getProvider() {
+        return provider;
+    }
 
-
-
-
+    public void setProvider(Provider provider) {
+        this.provider = provider;
+    }
 }

@@ -41,32 +41,32 @@ public class TestAuth {
 
     }
 
-//    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authLogoutDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
-//    public void authLogout() {
-//        try {
-//            Auth service = TestVariables.getClient().proxy(Auth.class);
-//            String response = service.authLogout(TestVariables.getToken());
-//            TestVariables.reportFiller(docLink, authLogoutDescription, response);
-//            Assert.assertTrue(response.toString().isEmpty());
-//            JerseyClient.LOG.error(response.toString());
-//        } catch (WebApplicationException errorsMessage) {
-//            try {
-//                TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLogoutDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
-//
-//            } catch (ProcessingException e) {
-//                try {
-//                    TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLogoutDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
-//                } catch (ProcessingException e1) {
-//                    TestVariables.reportFillerStackTrace(TestAuth.docLink, TestAuth.authLogoutDescription, errorsMessage.getLocalizedMessage());
-//                }
-//            }
-//        } catch (ProcessingException pro) {
-//            TestVariables.reportFillerStackTrace(TestAuth.docLink, TestAuth.authLogoutDescription, pro.getLocalizedMessage());
-//            Assert.fail("Object mapping failed : ", pro.getCause());
-//        } finally {
-//            new ReportGenerator().createHtmlReport(TestVariables.requestsToReport);
-//        }
-//    }
+    @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authLogoutDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
+    public void authLogout() {
+        try {
+            Auth service = TestVariables.getClient().proxy(Auth.class);
+            String response = service.authLogout(TestVariables.getToken());
+            TestVariables.reportFiller(docLink, authLogoutDescription, response);
+            Assert.assertTrue(response.toString().isEmpty());
+            JerseyClient.LOG.error(response.toString());
+        } catch (WebApplicationException errorsMessage) {
+            try {
+                TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLogoutDescription, errorsMessage.getResponse().readEntity(org.bl.json.jersey.model.errors.Error.class));
+
+            } catch (ProcessingException e) {
+                try {
+                    TestVariables.reportFiller(TestAuth.docLink, TestAuth.authLogoutDescription, errorsMessage.getResponse().readEntity(ErrorString.class));
+                } catch (ProcessingException e1) {
+                    TestVariables.reportFillerStackTrace(TestAuth.docLink, TestAuth.authLogoutDescription, errorsMessage.getLocalizedMessage());
+                }
+            }
+        } catch (ProcessingException pro) {
+            TestVariables.reportFillerStackTrace(TestAuth.docLink, TestAuth.authLogoutDescription, pro.getLocalizedMessage());
+            Assert.fail("Object mapping failed : ", pro.getCause());
+        } finally {
+            new ReportGenerator().createHtmlReport(TestVariables.requestsToReport);
+        }
+    }
 
     @Test(description = TestVariables.DESCRIPTION_TESTS_HEADER + authRegisterDescription + "<br> <a href=" + docLink + ">" + TestVariables.LINK_API_DOC_HEADER + "</a>")
     public void authRegister() {
