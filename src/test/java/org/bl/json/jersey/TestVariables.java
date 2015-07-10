@@ -72,7 +72,7 @@ public class TestVariables {
     public static int venueId = 20;
     public static int requestId = 20;
     public static int hostId = 20;
-    public static int reservationId = 777;
+    public static int reservationId = 819;
     public final static int offerId = 257;
     public static int malesCount = 4;
     public static int femalesCount = 0;
