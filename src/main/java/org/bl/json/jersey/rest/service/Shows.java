@@ -2,6 +2,7 @@ package org.bl.json.jersey.rest.service;
 
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.reservation.ReservationItemGetId;
+import org.bl.json.jersey.model.shows.ShowListItem;
 import org.bl.json.jersey.model.shows.ShowsItem;
 
 import javax.ws.rs.*;
@@ -24,7 +25,7 @@ public interface Shows {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    ShowsItem[] showsList(@QueryParam("token") String token) throws WebApplicationException;
+    ShowListItem[] showsList(@QueryParam("token") String token) throws WebApplicationException;
 
     @POST
     @Path("item")

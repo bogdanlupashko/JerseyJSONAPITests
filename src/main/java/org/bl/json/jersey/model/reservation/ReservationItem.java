@@ -3,6 +3,7 @@ package org.bl.json.jersey.model.reservation;
 import org.bl.json.jersey.model.host.HostForReservation;
 import org.bl.json.jersey.model.offer.OfferWithArch;
 import org.bl.json.jersey.model.request.Request;
+import org.bl.json.jersey.model.shows.ShowsItem;
 
 import java.util.Map;
 
@@ -44,6 +45,16 @@ public class ReservationItem {
     private Map<String, String> venueImage;
     private OfferWithArch offer;
     private Request request;
+
+    private ShowsItem showTour;
+
+    public ShowsItem getShowTour() {
+        return showTour;
+    }
+
+    public void setShowTour(ShowsItem showTour) {
+        this.showTour = showTour;
+    }
 
     public String getCustomData() {
         return customData;

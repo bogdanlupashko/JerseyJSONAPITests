@@ -21,6 +21,20 @@
     <build>
         <plugins>
             <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <suiteXmlFiles>
+                    <suiteXmlFile>src/test/resources/ShowFlow.xml</suiteXmlFile>
+      <!--                  <suiteXmlFile>src/test/resources/newFlow.xml</suiteXmlFile>
+-->
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <application.properties>/application.properties</application.properties>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>

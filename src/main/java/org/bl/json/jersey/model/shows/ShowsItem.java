@@ -31,6 +31,8 @@ public class ShowsItem {
     private String itemsToBring;
     private String finePrint;
     private String guestLimit;
+    private int minGuests;
+    private int maxGuests;
     private String createdAt;
     private String updatedAt;
     private String[] customData;
@@ -39,6 +41,22 @@ public class ShowsItem {
     private HostForShows host;
     private Period[] periods;
     private Provider provider;
+
+    public int getMinGuests() {
+        return minGuests;
+    }
+
+    public void setMinGuests(int minGuests) {
+        this.minGuests = minGuests;
+    }
+
+    public int getMaxGuests() {
+        return maxGuests;
+    }
+
+    public void setMaxGuests(int maxGuests) {
+        this.maxGuests = maxGuests;
+    }
 
     public String getType() {
         return type;

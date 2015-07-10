@@ -60,9 +60,6 @@
         </classes>
     </test>
 
-
-
-
     <test name="logout">
         <classes>
             <class name="org.bl.json.jersey.test.TestAuth">

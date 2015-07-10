@@ -4,6 +4,7 @@ import org.bl.json.jersey.TestVariables;
 import org.bl.json.jersey.client.JerseyClient;
 import org.bl.json.jersey.model.errors.ErrorString;
 import org.bl.json.jersey.model.reservation.ReservationItemGetId;
+import org.bl.json.jersey.model.shows.ShowListItem;
 import org.bl.json.jersey.model.shows.ShowsItem;
 import org.bl.json.jersey.rest.service.Shows;
 import org.testng.Assert;
@@ -53,7 +54,7 @@ public class TestShows {
     public void showsList() {
         try {
             Shows service = TestVariables.getClient().proxy(Shows.class);
-            ShowsItem[] response = service.showsList(TestVariables.getToken());
+            ShowListItem[] response = service.showsList(TestVariables.getToken());
 
             TestVariables.reportFiller(docLink, showsListDescription, response);
             JerseyClient.LOG.error(response.toString());
